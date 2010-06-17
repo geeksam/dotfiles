@@ -1,0 +1,69 @@
+# Environment-tweaking
+alias bashrc='e ~/command_line_fu/'
+alias    rsc='source ~/.bash_profile; source ~/command_line_fu/bashrc'
+
+# Shortcut for editing/reloading /etc/hosts
+alias edit_hosts="mate /private/etc/hosts"
+alias reload_hosts="dscacheutil -flushcache"
+
+# ProjectDX hacking
+alias pdx="cd ~/rails/pdxrails; rake setup"
+alias cms="cd ~/rails/cms; rake setup"
+
+# misc
+alias holler='growlnotify -t "Dude!" -m "That thing you asked for is done."'
+
+# Command-line fu
+alias   e='mate'
+alias  e.='mate .'
+alias  ll='ls -lh'
+alias  l1='ls -1h'
+alias lal='ls -alh'
+alias  ls='ls -h'
+alias  df='df -h'
+alias  du='du -h'
+alias  cp='cp -i'
+alias  mv='mv -i'
+alias  rm='rm -i'
+
+# Lazy ancestor directory fu
+alias        ..='cd ..'
+alias       ...='cd ../..'
+alias      ....='cd ../../..'
+alias     .....='cd ../../../..'
+alias    ......='cd ../../../../..'
+alias   .......='cd ../../../../../..'
+alias  ........='cd ../../../../../../..'
+alias .........='cd ../../../../../../../..'
+
+# Subversion
+alias   svi='svn info'
+alias   svs='svn status --ignore-externals'
+alias svnew='svs | grep "^\?"'
+alias svcon='svs | grep "^C"'
+alias svchg='svs | grep "^M"'
+alias   svu='svn update $@'
+alias   sdl='svn diff $@ | less'
+alias   sdm='svn diff $@ | mate'
+
+# git
+alias   g='git';            complete -o default -o nospace -F _git g
+alias  gb='git branch';     complete -o default -o nospace -F _git_branch gb
+alias gco='git checkout';   complete -o default -o nospace -F _git_checkout gco
+alias gcp='git cherry-pick' 
+alias  gd='git diff';       complete -o default -o nospace -F _git_diff gd
+alias  gs='git status'      
+alias gsv='git svn';        complete -o default -o nospace -F _git_svn gsv
+
+# Rails stuff
+alias    ss='./script/server'
+alias    sc='./script/console'
+alias    sg='./script/generate'
+alias    sd='./script/destroy'
+alias    sp='./script/plugin'
+alias sspec='./script/spec'
+alias  ssps='./script/spec_server'
+
+# RF-specific
+alias story='sgc'  # scrumninja-git-client, fka "the story command"
+
