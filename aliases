@@ -44,7 +44,7 @@ alias  gb='git branch';     complete -o default -o nospace -F _git_branch gb
 alias gco='git checkout';   complete -o default -o nospace -F _git_checkout gco
 alias gcp='git cherry-pick' 
 alias  gd='git diff';       complete -o default -o nospace -F _git_diff gd
-alias  gs='git status'      
+alias  gs='git status -s'      
 alias gsv='git svn';        complete -o default -o nospace -F _git_svn gsv
 
 # Rails stuff
