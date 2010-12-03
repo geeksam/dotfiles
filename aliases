@@ -38,16 +38,6 @@ alias   .......='cd ../../../../../..'
 alias  ........='cd ../../../../../../..'
 alias .........='cd ../../../../../../../..'
 
-# Subversion
-alias   svi='svn info'
-alias   svs='svn status --ignore-externals'
-alias svnew='svs | grep "^\?"'
-alias svcon='svs | grep "^C"'
-alias svchg='svs | grep "^M"'
-alias   svu='svn update $@'
-alias   sdl='svn diff $@ | less'
-alias   sdm='svn diff $@ | mate'
-
 # git
 alias   g='git';            complete -o default -o nospace -F _git g
 alias  gb='git branch';     complete -o default -o nospace -F _git_branch gb
