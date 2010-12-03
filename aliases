@@ -48,6 +48,8 @@ alias  gs='git status -s'
 alias gsv='git svn';        complete -o default -o nospace -F _git_svn gsv
 
 # Rails stuff
+alias    rs='./script/rails server'
+alias    rc='./script/rails console'
 alias    ss='./script/server'
 alias    sc='./script/console'
 alias    sg='./script/generate'
