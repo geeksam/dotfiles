@@ -7,8 +7,8 @@ alias edit_hosts="mate /private/etc/hosts"
 alias reload_hosts="dscacheutil -flushcache"
 
 # ProjectDX hacking
-alias pdx="cd ~/rails/pdxrails; rake setup"
-alias cms="cd ~/rails/cms; rake setup"
+alias pdx="cd ~/rails/pdxrails"
+alias cms="cd ~/rails/cms"
 
 # misc
 alias holler='growlnotify -t "Dude!" -m "That thing you asked for is done."; say process finished'
