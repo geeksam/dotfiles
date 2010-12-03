@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+cuke_env = ARGV.first
+
+%x{dropdb -U projectdx projectdx_#{cuke_env}}
+%x{createdb -U projectdx -T projectdx_test projectdx_#{cuke_env}}
