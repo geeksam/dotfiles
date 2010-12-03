@@ -13,6 +13,7 @@ alias cms="cd ~/rails/cms"
 # misc
 alias holler='growlnotify -t "Dude!" -m "That thing you asked for is done."; say process finished'
 # to get pass/fail, consider replacing this with a function: http://blog.larsstrand.org/article.php?story=BashPromptWithExitStatus
+alias t2='cd ~/rails/t2; ./script/server -p 4444'
 
 # Command-line fu
 alias   e='mate'
