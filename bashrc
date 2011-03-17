@@ -1,5 +1,7 @@
+# Use TextMate, thank you;
+export EDITOR='mate -w'
+
 # Include stuff
-source ~/command_line_fu/environment_variables
 source ~/command_line_fu/path
 source ~/command_line_fu/aliases
 source ~/command_line_fu/completion

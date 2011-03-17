@@ -9,6 +9,7 @@ alias reload_hosts="dscacheutil -flushcache"
 # ProjectDX hacking
 alias pdx="cd ~/rails/pdxrails"
 alias cms="cd ~/rails/cms"
+alias ech="cd ~/rails/energy_champions"
 
 # misc
 alias holler='growlnotify -t "Dude!" -m "That thing you asked for is done."; say process finished'
@@ -44,10 +45,11 @@ alias  gb='git branch';     complete -o default -o nospace -F _git_branch gb
 alias gco='git checkout';   complete -o default -o nospace -F _git_checkout gco
 alias gcp='git cherry-pick' 
 alias  gd='git diff';       complete -o default -o nospace -F _git_diff gd
-alias  gs='git status -s'      
+alias  gs='git status -bs'
 alias gsv='git svn';        complete -o default -o nospace -F _git_svn gsv
 
 # Rails stuff
+alias r='rails'
 alias    rs='./script/rails server'
 alias    rc='./script/rails console'
 alias    ss='./script/server'
