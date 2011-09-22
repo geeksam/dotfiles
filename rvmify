@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+which_ruby = ARGV.shift || 'ruby-1.8.7-p302'
+
+contents = <<EOF
+rvm use #{which_ruby}@#{File.basename(Dir.pwd)} --create --install
+bundle check
+EOF
+
+File.open(File.join(Dir.pwd, '.rvmrc'), 'w') { |f| f << contents }

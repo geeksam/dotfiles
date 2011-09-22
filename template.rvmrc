@@ -1,0 +1,25 @@
+PROJECT_RUBY="ruby-1.8.7-p302"
+
+# use the global gemset in order to check for and install bundler, since we
+# don't need it to be different for different projects
+rvm use $PROJECT_RUBY@global --create --install
+
+# If we have a Gemfile...
+if [ -f ./Gemfile ]
+  # make sure Bundler is available
+  if `ruby -rubygems -e "gem 'bundler'" &>/dev/null`; then
+    # do nothing
+  else
+    echo "Installing Bundler..."
+    gem install bundler
+  fi
+fi
+
+# now use the gemset named after this local directory (hope no collisions!) and check the bundle
+GEMSET=$(basename $(cd $(dirname "$0"); pwd) )
+rvm use $PROJECT_RUBY@$GEMSET --create
+
+# If we have a Gemfile, find out if it's happy
+if [ -f ./Gemfile ]
+  bundle check
+fi

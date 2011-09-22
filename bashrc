@@ -8,4 +8,4 @@ source ~/command_line_fu/completion
 source ~/command_line_fu/history_sharing
 
 # Prompt
-export PS1="\n[ \@ :: \w\$(__git_ps1 ' :: %s') ]\n$ "
+export PS1="\n[ \@ :: \w\$(__git_ps1 ' :: %s') :: rvm: (\$(~/.rvm/bin/rvm-prompt)) ]\n$ "

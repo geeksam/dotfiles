@@ -1,6 +1,4 @@
 #!/usr/bin/env ruby
-
-cuke_env = ARGV.first
-
-%x{dropdb -U projectdx projectdx_#{cuke_env}}
-%x{createdb -U projectdx -T projectdx_test projectdx_#{cuke_env}}
+db_name = "platypus_%s" % ['cucumber', ARGV.first].compact.join('_')
+%x{dropdb -U projectdx #{db_name}}
+%x{createdb -U projectdx -T platypus_test #{db_name}}

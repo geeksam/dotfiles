@@ -6,10 +6,12 @@ alias    rsc='source ~/.bash_profile; source ~/command_line_fu/bashrc'
 alias edit_hosts="mate /private/etc/hosts"
 alias reload_hosts="dscacheutil -flushcache"
 
-# ProjectDX hacking
-alias pdx="cd ~/rails/pdxrails"
+# RF hacking
+alias plat="cd ~/rails/platypus"
+alias rfip="cd ~/rails/incentive_processing"
 alias cms="cd ~/rails/cms"
-alias ech="cd ~/rails/energy_champions"
+alias sonof="cd ~/rails/sonoma_financing"
+alias tpr="cd ~/work/telepromptr"
 
 # misc
 alias holler='growlnotify -t "Dude!" -m "That thing you asked for is done."; say process finished'
@@ -48,17 +50,20 @@ alias  gd='git diff';       complete -o default -o nospace -F _git_diff gd
 alias  gs='git status -bs'
 alias gsv='git svn';        complete -o default -o nospace -F _git_svn gsv
 
-# Rails stuff
-alias r='rails'
-alias    rs='./script/rails server'
-alias    rc='./script/rails console'
+# Rails 3
+alias  r='rails'
+alias rc='rails console'
+alias rg='rails generate'
+alias rs='rails server'
+# Rails 2
 alias    ss='./script/server'
 alias    sc='./script/console'
 alias    sg='./script/generate'
 alias    sd='./script/destroy'
 alias    sp='./script/plugin'
-alias sspec='./script/spec'
-alias  ssps='./script/spec_server'
+# Bundler
+alias  b='bundle'
+alias be='bundle exec'
 
 # RF-specific
 alias story='sgc'  # scrumninja-git-client, fka "the story command"
