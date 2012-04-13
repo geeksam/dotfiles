@@ -9,6 +9,7 @@ if [ -f ~/command_line_fu/private_aliases ]; then
 fi
 source ~/command_line_fu/completion
 source ~/command_line_fu/history_sharing
+source ~/command_line_fu/ree_gc_settings
 
 # Prompt
 export PS1="\n[ \@ :: \w\$(__git_ps1 ' :: %s') :: rvm: (\$(~/.rvm/bin/rvm-prompt)) ]\n$ "
