@@ -1,5 +1,5 @@
 # Environment-tweaking
-alias bashrc='e ~/command_line_fu/'
+alias cmd-fu='e ~/command_line_fu/'
 alias    rsc='source ~/.bash_profile; source ~/command_line_fu/bashrc'
 
 # Shortcut for editing/reloading /etc/hosts
