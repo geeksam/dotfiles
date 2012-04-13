@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+# Because I can never remember the command line to run specific Test::Unit tests in a Rails app
+
+def debug_cmd(cmd)
+  puts '', cmd, ''
+end
+
+def run_cmd(cmd)
+  `#{cmd}`.strip
+end
+
+def exec_cmd(cmd)
+  debug_cmd cmd
+  exec cmd
+end
+
+# Find the Rake test loader
+gem_dir          = run_cmd('rvm gemset dir')  # only works if you're running RVM, obviously
+rake_test_loader = run_cmd("find #{gem_dir} -name 'rake_test_loader.rb'")
+
+# Build list of test files (hooray for shell expansion)
+test_files = ARGV.map { |arg| '"%s"' % arg }.join(' ')
+
+# Run 'em
+exec_cmd 'ruby -I"lib:test" "%s" %s' % [rake_test_loader, test_files]
