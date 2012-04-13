@@ -6,17 +6,9 @@ alias    rsc='source ~/.bash_profile; source ~/command_line_fu/bashrc'
 alias edit_hosts="mate /private/etc/hosts"
 alias reload_hosts="dscacheutil -flushcache"
 
-# RF hacking
-alias plat="cd ~/rails/platypus"
-alias rfip="cd ~/rails/incentive_processing"
-alias cms="cd ~/rails/cms"
-alias sonof="cd ~/rails/sonoma_financing"
-alias tpr="cd ~/work/telepromptr"
-
 # misc
 alias holler='growlnotify -t "Dude!" -m "That thing you asked for is done."; say process finished'
 # to get pass/fail, consider replacing this with a function: http://blog.larsstrand.org/article.php?story=BashPromptWithExitStatus
-alias t2='cd ~/rails/t2; ./script/server -p 4444'
 
 # Command-line fu
 alias   e='mate'
@@ -47,6 +39,7 @@ alias  gb='git branch';     complete -o default -o nospace -F _git_branch gb
 alias gco='git checkout';   complete -o default -o nospace -F _git_checkout gco
 alias gcp='git cherry-pick' 
 alias  gd='git diff';       complete -o default -o nospace -F _git_diff gd
+alias  gg='git log --pretty=oneline --abbrev-commit --branches=* --graph --decorate --color'
 alias  gs='git status -bs'
 alias gsv='git svn';        complete -o default -o nospace -F _git_svn gsv
 
@@ -61,10 +54,7 @@ alias    sc='./script/console'
 alias    sg='./script/generate'
 alias    sd='./script/destroy'
 alias    sp='./script/plugin'
+
 # Bundler
 alias  b='bundle'
 alias be='bundle exec'
-
-# RF-specific
-alias story='sgc'  # scrumninja-git-client, fka "the story command"
-
