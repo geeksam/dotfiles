@@ -46,6 +46,9 @@ alias  gg='git log --oneline --abbrev-commit --branches=* --graph --decorate --c
 alias  gs='git status -bs'
 alias gsv='git svn';        complete -o default -o nospace -F _git_svn gsv
 
+# Faster, pussycat! Test! Test!
+alias rtf='rake test:fast'
+
 # Rails 3
 alias  r='rails'
 alias rc='rails console'
