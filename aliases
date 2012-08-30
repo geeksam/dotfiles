@@ -10,8 +10,15 @@ alias reload_hosts="dscacheutil -flushcache"
 alias holler='growlnotify -t "Dude!" -m "That thing you asked for is done."; say process finished'
 # to get pass/fail, consider replacing this with a function: http://blog.larsstrand.org/article.php?story=BashPromptWithExitStatus
 
-# projects
-alias kook='cd ~/fun/kookaburra'
+# Look for a project directory and cd into it
+function hack {
+  # I'd DRY this up if I knew more about bash, but this is good enough
+  if [ -e ~/work/"$1" ]; then
+    cd ~/work/"$1"
+  elif [ -e ~/fun/"$1" ]; then
+    cd ~/fun/"$1"
+  fi
+}
 
 # Command-line fu
 alias   e='mate'
