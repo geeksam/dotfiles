@@ -51,6 +51,7 @@ alias gcp='git cherry-pick'
 alias  gd='git diff';       complete -o default -o nospace -F _git_diff gd
 alias  gg='git log --oneline --abbrev-commit --branches=* --graph --decorate --color'
 alias  gs='git status -bs'
+alias gst='git status'
 alias gsv='git svn';        complete -o default -o nospace -F _git_svn gsv
 
 # Faster, pussycat! Test! Test!
