@@ -1,0 +1,15 @@
+#/bin/bash
+
+# Use window #1 or create a new one for vim
+if [ `tmux display-message -p '#I'` == '1' ]; then
+  tmux rename-window "$1 vim"
+else
+  tmux new-window -n "$1 vim"
+fi
+
+# Open vim in the target directory
+tmux send-keys "hack $1; clear; vim" C-m
+
+# Open a second window also in the target directory
+tmux new-window -n "$1"
+tmux send-keys "hack $1; clear" C-m
