@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+from_commit, to_commit, *commands = *ARGV.dup
+command = commands && commands.join(' ')
+
+if [from_commit, to_commit, command].any? { |e| e.nil? || e =~ /^\s*$/ }
+  puts <<-HELP
+    USAGE:  #{File.basename(__FILE__)} from_commit to_commit command
+  HELP
+  exit
+end
+
+exec "(set -e && git rev-list --reverse #{from_commit}..#{to_commit} | while read rev; do git checkout $rev; #{command}; done)"
