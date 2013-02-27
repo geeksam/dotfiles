@@ -1,5 +1,5 @@
 export PATH=$PATH:$HOME/bin
-export PATH=$PATH:$HOME/command_line_fu
+export PATH=$PATH:$HOME/command_line_fu/bin
 export PATH=$PATH:$HOME/command_line_fu/private
 
 # These must come first
