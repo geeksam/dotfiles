@@ -1,7 +1,5 @@
 # Git autocompletion
 source ~/command_line_fu/git-completion.bash
-source ~/command_line_fu/rake-completion.sh
-source ~/command_line_fu/cap-completion.sh
 
 
 # Open gem source in TextMate
