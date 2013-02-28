@@ -1,6 +1,6 @@
 # Environment-tweaking
-alias cmd-fu='e ~/command_line_fu/'
-alias    rsc='source ~/.bash_profile; source ~/command_line_fu/bashrc'
+alias dotfiles='e ~/dotfiles/'
+alias rsc='source ~/.bash_profile; source ~/dotfiles/bashrc'
 
 # Shortcut for editing/reloading /etc/hosts
 alias edit_hosts="mate /private/etc/hosts"
