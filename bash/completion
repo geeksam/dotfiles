@@ -1,5 +1,5 @@
 # Git autocompletion
-source ~/dotfiles/git-completion.bash
+source ~/dotfiles/bash/git-completion.bash
 
 
 # Open gem source in TextMate
