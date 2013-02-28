@@ -1,6 +1,7 @@
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/command_line_fu/bin
 export PATH=$PATH:$HOME/command_line_fu/private
+export PATH=$PATH:$HOME/command_line_fu/private/bin
 
 # These must come first
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
