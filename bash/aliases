@@ -17,6 +17,8 @@ function hack {
     cd ~/work/"$1"
   elif [ -e ~/fun/"$1" ]; then
     cd ~/fun/"$1"
+  elif [ -e ~/talks/"$1" ]; then
+    cd ~/talks/"$1"
   fi
 }
 
