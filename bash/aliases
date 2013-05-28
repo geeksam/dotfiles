@@ -71,4 +71,4 @@ alias    sp='./script/plugin'
 
 # Bundler
 alias  b='bundle'
-alias be='bundle exec'
+alias bx='bundle exec'
