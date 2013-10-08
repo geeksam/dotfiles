@@ -1,0 +1,18 @@
+" line break without breaking words
+set wrap
+set linebreak
+set nolist  " list disables linebreak
+
+" Colors
+set t_Co=256 " 256 colors
+set background=dark
+colorscheme herald
+
+" Hashrocket, no 'jj'
+imap hh =>
+
+" Fonts for MacVIM
+if has("gui_running")
+  set guioptions=-t
+  set guifont=Inconsolata:h20
+endif
