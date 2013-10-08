@@ -74,3 +74,4 @@ alias    sp='./script/plugin'
 # Bundler
 alias  b='bundle'
 alias bx='bundle exec'
+alias bi='(bundle check || bundle install --local || bundle install)'
