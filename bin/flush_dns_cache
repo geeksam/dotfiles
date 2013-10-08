@@ -1,4 +1,3 @@
 #!/usr/bin/env sh
 dscacheutil -flushcache
-sudo dscacheutil -flushcache
 sudo killall -9 mDNSResponder
