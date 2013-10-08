@@ -55,3 +55,6 @@
 [submodule "vimconfig/vim/bundle/ZoomWin"]
 	path = vimconfig/vim/bundle/ZoomWin
 	url = https://github.com/vim-scripts/ZoomWin.git
+[submodule "vimconfig/vim/bundle/tabular"]
+	path = vimconfig/vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
