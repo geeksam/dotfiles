@@ -1,10 +1,12 @@
 #!/usr/bin/env ruby
+which_ruby = ARGV.shift || 'ruby-1.9.3-p448'
+local_dir  = File.basename(Dir.pwd)
 
-which_ruby = ARGV.shift || 'ruby-1.8.7-p302'
+def write_file(basename, contents)
+  File.open(File.join(Dir.pwd, basename), 'w') do |f|
+    f.puts contents
+  end
+end
 
-contents = <<EOF
-rvm use #{which_ruby}@#{File.basename(Dir.pwd)} --create --install
-bundle check
-EOF
-
-File.open(File.join(Dir.pwd, '.rvmrc'), 'w') { |f| f << contents }
+write_file '.ruby-version', which_ruby
+write_file '.ruby-gemset',  local_dir
