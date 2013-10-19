@@ -1,3 +1,6 @@
+" disable mouse (it interferes with my terminal selections)
+set mouse=
+
 " line break without breaking words
 set wrap
 set linebreak
