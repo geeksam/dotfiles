@@ -8,8 +8,8 @@ else
 fi
 
 # Open vim in the target directory
-tmux send-keys "hack $1; clear; vim" C-m
+tmux send-keys "cd $1; clear; vim" C-m
 
 # Open a second window also in the target directory
 tmux new-window -n "$1"
-tmux send-keys "hack $1; clear" C-m
+tmux send-keys "cd $1; clear" C-m

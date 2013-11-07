@@ -12,15 +12,11 @@ alias holler='growlnotify -t "Dude!" -m "That thing you asked for is done."; say
 
 # Look for a project directory and cd into it
 function hack {
-  # I'd DRY this up if I knew more about bash, but this is good enough
-  if [ -e ~/work/"$1" ]; then
-    cd ~/work/"$1"
-  elif [ -e ~/fun/"$1" ]; then
-    cd ~/fun/"$1"
-  elif [ -e ~/talks/"$1" ]; then
-    cd ~/talks/"$1"
-  fi
+  echo ">>> hey, dummy, just use 'cd' <<<"
 }
+
+# Reduce typing when using the 'cd' command
+CDPATH=".:~:~/work:~/fun:~/talks"
 
 # Command-line fu
 alias   e='mate'
