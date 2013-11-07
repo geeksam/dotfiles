@@ -11,7 +11,7 @@ set t_Co=256 " 256 colors
 set background=dark
 colorscheme herald
 
-" Hashrocket, no 'jj'
+" Hashrocket
 imap hh =>
 
 " Fonts for MacVIM
