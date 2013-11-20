@@ -28,7 +28,7 @@ endif
 "  * l0c1 is a format specifier that says
 "    "left, then zero spaces, then [delimiter], then 1 space"
 "    See: https://raw.github.com/godlygeek/tabular/master/doc/Tabular.txt
-if exists(":Tabularize")
+" if exists(":Tabularize")
   nmap <Leader>ah :Tabularize /=><CR>
   vmap <Leader>ah :Tabularize /=><CR>
   nmap <Leader>a= :Tabularize /=[>]?<CR>
@@ -37,5 +37,5 @@ if exists(":Tabularize")
   vmap <Leader>a: :Tabularize /:\zs/l0c1<CR>
   nmap <Leader>a, :Tabularize /,\zs/l0c1<CR>
   vmap <Leader>a, :Tabularize /,\zs/l0c1<CR>
-endif
+" endif
 
