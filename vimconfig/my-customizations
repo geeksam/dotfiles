@@ -14,6 +14,9 @@ colorscheme herald
 " Hashrocket
 imap hh =>
 
+" Edit the current directory
+nmap <Leader>e. :e %:h<CR>
+
 " Fonts for MacVIM
 if has("gui_running")
   set guioptions=-t
