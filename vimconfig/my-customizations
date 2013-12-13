@@ -1,3 +1,7 @@
+" Split using similar keys to the ones I have in tmux
+:noremap <leader>\| :vsp<cr> " Quick access to vertical splits
+:noremap <leader>- :split<cr> " Quick access to horizontal splits
+
 " disable mouse (it interferes with my terminal selections)
 set mouse=
 
