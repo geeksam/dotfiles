@@ -51,7 +51,6 @@ alias gg+='git log --oneline --abbrev-commit --all --graph --decorate --color'
 alias  gg='gg+ | head -n `expr $LINES / 2`'
 alias  gs='git status -bs'
 alias gst='git status'
-alias gsv='git svn';        complete -o default -o nospace -F _git_svn gsv
 
 # Faster, pussycat! Test! Test!
 alias rtf='rake test:fast'
