@@ -15,9 +15,6 @@ set t_Co=256 " 256 colors
 set background=dark
 colorscheme herald
 
-" Hashrocket
-imap hh =>
-
 " Edit the current directory
 nmap <Leader>e. :e %:h<CR>
 
