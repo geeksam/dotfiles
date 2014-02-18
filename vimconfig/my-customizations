@@ -21,8 +21,11 @@ nmap <Leader>e. :e %:h<CR>
 " Fonts for MacVIM
 if has("gui_running")
   set guioptions=-t
-  set guifont=Inconsolata:h20
+  set guifont=Monaco:h16
 endif
+
+" Reflow paragraph
+nmap C-q gqip
 
 " Tabularize
 "  NOTES:
