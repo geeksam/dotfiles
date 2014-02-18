@@ -76,4 +76,5 @@ alias    sp='./script/plugin'
 # Bundler
 alias  b='bundle'
 alias bx='bundle exec'
-alias bi='(bundle check || bundle install --local || bundle install)'
+alias bi='(bundle check || bundle install --local --jobs=4 || bundle install --local || bundle install --jobs=4 || bundle install)'
+# ^ older versions of bundler didn't have the --jobs flag; fall back to non-concurrent versions
