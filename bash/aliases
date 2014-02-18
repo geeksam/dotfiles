@@ -52,9 +52,11 @@ alias  gg='gg+ | head -n `expr $LINES / 2`'
 alias  gs='git status -bs'
 alias gst='git status'
 
-# upstream/upmaster management
-alias upstream_sync='git checkout upmaster && git pull --rebase && git rebase upmaster master'
-alias push_upstream='git checkout upmaster && git merge --ff-only master && git push && git checkout master && git push'
+# upstream/upmaster management; these assume the following remote refs:
+# * origin   ---> my fork
+# * upstream ---> the canonical shared repo
+alias guppy='git checkout upmaster && git pull --rebase && git rebase upmaster master'
+alias trout='git checkout upmaster && git merge --ff-only master && git push upstream upmaster && git checkout master && git push origin master'
 
 # Faster, pussycat! Test! Test!
 alias rtf='rake test:fast'
