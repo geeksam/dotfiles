@@ -56,7 +56,7 @@ alias gst='git status'
 # * origin   ---> my fork
 # * upstream ---> the canonical shared repo
 alias guppy='git checkout upmaster && git pull --rebase && git rebase upmaster master'
-alias trout='git checkout upmaster && git merge --ff-only master && git push upstream upmaster && git checkout master && git push origin master'
+alias trout='git checkout upmaster && git merge --ff-only master && git push && git checkout master && git push'
 
 # Faster, pussycat! Test! Test!
 alias rtf='rake test:fast'
