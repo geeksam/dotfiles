@@ -15,10 +15,5 @@ def exec_cmd(cmd)
   exec cmd
 end
 
-# Find the Rake test loader
-gem_dir          = run_cmd('rvm gemset dir')  # only works if you're running RVM, obviously
-rake_test_loader = run_cmd("find #{gem_dir} -name 'rake_test_loader.rb'")
-rake_test_loader = '"%s"' % rake_test_loader unless rake_test_loader =~ /^\S*$/
-
 # Run it
-exec_cmd 'ruby -I"lib:test" %s %s' % [rake_test_loader, ARGV.join(' ')]
+exec_cmd 'ruby -I".:lib:test" -e "%s"' % [ARGV.map {|arg| "require '#{arg}'" }.join('; ')]
