@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+# Some programmers have long names
+NICKNAMES = {
+  'samlivingston-gray' => 'samlg',
+  'tomkiefhaber'       => 'tomk',
+}
+
+def in_wemux_session?
+  tmux_session = `tmux display-message -p '#S'`.strip
+  tmux_session == 'wemux'
+end
+
+def short_user_list
+  list = `wemux status_users`.strip.split(/\s+/)
+  nicknames = list.map {|name| NICKNAMES[name] || name[0...6] }
+  nicknames.join(', ')
+end
+
+puts short_user_list if in_wemux_session?

@@ -1,0 +1,20 @@
+# Status Bar Items
+bind C-q set -g status-left "" \; set -g status-right ""
+
+# Actually, go back to 0-based window indexing so I always have
+# window #0 for miscellaneous environment yak-shaving...
+set -g base-index 0
+
+# Maximize and restore a pane. Only needed for 1.7 and lower.
+# START:max
+unbind >
+bind > new-window -d -n tmp \; swap-pane -s tmp.1 \; select-window -t tmp
+# END:max
+#
+# START:restore
+unbind <
+bind < last-window \; swap-pane -s tmp.1 \; kill-window -t tmp
+# END:restore
+
+
+set -g status-right " #[fg=green]#(wemux_user_list) #[fg=yellow]%R"
