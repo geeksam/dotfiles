@@ -25,7 +25,8 @@ if has("gui_running")
 endif
 
 " Reflow paragraph
-nmap C-q gqip
+nmap <Leader>r gqip
+vmap <Leader>r gq
 
 " Tabularize
 "  NOTES:
