@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+panes = `tmux list-panes`
+active_pane = panes.lines.detect {|line| line =~ /\(active\)/ }
+
+if active_pane && active_pane =~ /(\[\d+x\d+\])/
+  puts $1
+else
+  puts '???'
+end

@@ -1,5 +1,7 @@
 # Status Bar Items
-bind C-q set -g status-left "" \; set -g status-right ""
+bind C-q set -g status-left "" \; set -g status-right ""  # clear status bar for screencasting
+
+set -g status-left "#[fg=green]Session: #S #[fg=yellow]W#I #[fg=green]P#P #(pane_size)"
 
 # Actually, go back to 0-based window indexing so I always have
 # window #0 for miscellaneous environment yak-shaving...
