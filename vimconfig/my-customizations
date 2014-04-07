@@ -1,6 +1,10 @@
 " If I want spell checking, vim, I'll ask you for it.
 autocmd FileType text :set nospell
 
+" If I want help, vim, I'll :h you for it.
+nmap <F1> :echo<CR>
+imap <F1> <Esc>
+
 " Split using similar keys to the ones I have in tmux
 :noremap <leader>\| :vsp<cr> " Quick access to vertical splits
 :noremap <leader>- :split<cr> " Quick access to horizontal splits
