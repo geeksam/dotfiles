@@ -1,4 +1,0 @@
-#!/usr/bin/env ruby
-db_name = "platypus_%s" % ['cucumber', ARGV.first].compact.join('_')
-%x{dropdb -U projectdx #{db_name}}
-%x{createdb -U projectdx -T platypus_test #{db_name}}
