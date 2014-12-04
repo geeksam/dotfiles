@@ -10,11 +10,6 @@ alias reload_hosts="dscacheutil -flushcache"
 alias holler='growlnotify -t "Dude!" -m "That thing you asked for is done."; say process finished'
 # to get pass/fail, consider replacing this with a function: http://blog.larsstrand.org/article.php?story=BashPromptWithExitStatus
 
-# Look for a project directory and cd into it
-function hack {
-  echo ">>> hey, dummy, just use 'cd' <<<"
-}
-
 # Reduce typing when using the 'cd' command
 CDPATH=".:~:~/work:~/fun:~/talks"
 
