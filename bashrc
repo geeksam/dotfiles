@@ -8,10 +8,10 @@ if [ -f ~/dotfiles/bash/private_aliases ]; then
 fi
 source ~/dotfiles/bash/completion
 source ~/dotfiles/bash/history_sharing
-source ~/dotfiles/bash/ree_gc_settings
+source ~/dotfiles/bash/ruby-fu
 
 # Prompt
-alias  long_prompt="export PS1=\"\n[ \@ :: \\w\\\$(__git_ps1 ' :: %s') :: rvm: (\\\$(~/.rvm/bin/rvm-prompt)) ]\n$ \""
+alias  long_prompt="export PS1=\"\n[ \@ :: \\w\\\$(__git_ps1 ' :: %s') ]\n$ \""
 alias short_prompt="export PS1=\"\n[ \\w\\\$(__git_ps1 ' :: %s') ]\n$ \""
 alias  tiny_prompt="export PS1=\"$ \""
 long_prompt
