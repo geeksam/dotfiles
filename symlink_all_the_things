@@ -1,0 +1,6 @@
+# TODO: http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
+ln -s ~/dotfiles/bashrc          ~/.bash_profile
+ln -s ~/dotfiles/tmux.conf       ~/.tmux.conf
+ln -s ~/dotfiles/tmux.conf.local ~/.tmux.conf.local
+ln -s ~/dotfiles/vimconfig/vimrc ~/.vimrc
+ln -s ~/dotfiles/vimconfig/vim   ~/.vim
