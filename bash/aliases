@@ -70,8 +70,9 @@ alias    sd='./script/destroy'
 alias    sp='./script/plugin'
 
 # Bundler
-alias  b='bundle'
-alias be='bundle exec'
-alias bx='bundle exec'
-alias bi='(bundle check || bundle install --local --jobs=4 || bundle install --local || bundle install --jobs=4 || bundle install)'
+alias     b='bundle'
+alias    be='bundle exec'
+alias    bx='bundle exec'
+alias    bi='(bundle check || bundle install --local --jobs=4 || bundle install --local || bundle install --jobs=4 || bundle install)'
+alias brake='bundle exec rake'
 # ^ older versions of bundler didn't have the --jobs flag; fall back to non-concurrent versions
