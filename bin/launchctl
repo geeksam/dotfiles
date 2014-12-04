@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+def inside_tmux?
+  ENV['TERM'] =~ /screen/ && ENV['TMUX'] =~ /\S/
+end
+
+def nope
+  puts <<-EOF
+
+  !!! Can't do this from inside tmux:
+  $   launchctl #{ARGV.join(' ')}
+
+  EOF
+end
+
+def invoke_the_real_launchctl
+  launchctl_candidates = `which -a launchctl`.split(/\s+/)
+  launchctl_candidates.reject! {|bin| bin == __FILE__ }
+  args = [launchctl_candidates.first] + ARGV
+  cmd = args.join(' ')
+  exec cmd
+end
+
+
+
+if inside_tmux?
+  nope
+else
+  invoke_the_real_launchctl
+end
