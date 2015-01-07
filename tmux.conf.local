@@ -20,3 +20,6 @@ bind < last-window \; swap-pane -s tmp.1 \; kill-window -t tmp
 
 
 set -g status-right " #[fg=green]#(wemux_user_list) #[fg=yellow]%R"
+
+
+set -g status-interval 5
