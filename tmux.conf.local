@@ -19,6 +19,10 @@ bind < last-window \; swap-pane -s tmp.1 \; kill-window -t tmp
 # END:restore
 
 
+# splits should start in the same directory as the pane being split from
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
+
 set -g status-right " #[fg=green]#(wemux_user_list) #[fg=yellow]%R"
 
 
