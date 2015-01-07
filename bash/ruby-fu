@@ -8,3 +8,4 @@ export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 # chruby
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
+chruby 2.1
