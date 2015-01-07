@@ -2,8 +2,8 @@
 
 require 'rubygems'
 
-def specs_from_dep(dependency)
-  Gem.source_index.find_name(dependency.name, dependency.requirement)
+def spec_for_dep(dependency)
+  Gem::Specification.find_by_name(dependency.name, dependency.requirement)
 end
 
 def sorted_deps(spec)
@@ -14,36 +14,39 @@ def indent(depth)
   ' ' * 4 * depth
 end
 
-def print_dep_tree(parent_dep, dep_type, depth = 0)
-  if depth.zero?
-    @visited_deps = []
-    puts "#{dep_type.to_s.upcase} dependencies:\n\n"
-  end
+def print_dep_tree(root, dep = root, depth = 0)
+  @visited_deps ||= Hash.new { |h,k| h[k] = [] }
+
+  return unless dep.type == :runtime
+  return if @visited_deps[root].include?(dep)
+  @visited_deps[root] << dep
   
-  return unless parent_dep.type == dep_type
-  return if @visited_deps.include?(parent_dep)
-  @visited_deps << parent_dep
-  
-  specs_from_dep(parent_dep).each do |parent_spec|
-    puts "%s%s %s  (%s)" % [indent(depth), parent_spec.name, parent_spec.version, parent_dep.requirement.as_list.join(', ')]
-    sorted_deps(parent_spec).each do |child_dep|
-      print_dep_tree(child_dep, dep_type, depth + 1)
-    end
+  spec = spec_for_dep(dep)
+  puts "%s%s %s  (%s)" % [
+    indent(depth), spec.name, spec.version,
+    dep.requirement.as_list.join(', '),
+  ]
+  sorted_deps(spec).each do |child|
+    print_dep_tree(root, child, depth + 1)
   end
+  puts '', '' if depth.zero?
 end
 
 
 
 ## Behold my super-sophisticated argument parser!!!1!
 
+def print_help
+  puts "gem_dep_tree gemname [version]"
+  exit
+end
+
 # first arg: gem name
-gem_name    = ARGV.shift
-# last arg: runtime or development
-dep_type    = (ARGV.pop || :runtime).to_sym
-# what's left: version
+gem_name    = ARGV.shift or print_help
+# next arg: version
 gem_version = ARGV.shift
 
 
 
 root = Gem::Dependency.new(gem_name, gem_version)
-print_dep_tree root, dep_type.to_sym
+print_dep_tree root
