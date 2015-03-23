@@ -37,16 +37,16 @@ alias  ........='cd ../../../../../../..'
 alias .........='cd ../../../../../../../..'
 
 # git
-alias    g='git';            complete -o default -o nospace -F _git g
-alias   gb='git branch';     complete -o default -o nospace -F _git_branch gb
-alias  gco='git checkout';   complete -o default -o nospace -F _git_checkout gco
-alias  gcp='git cherry-pick'
-alias   gd='git diff --color'; complete -o default -o nospace -F _git_diff gd
-alias  gg+='git log --oneline --abbrev-commit --all --graph --decorate --color'
-alias   gg='gg+ | head -n `expr $LINES / 2`'
-alias   gs='git status -bs'
-alias  gst='git status'
-alias gwip='git reset --soft HEAD^ && git reset HEAD .'
+alias     g='git';            complete -o default -o nospace -F _git g
+alias    gb='git branch';     complete -o default -o nospace -F _git_branch gb
+alias   gco='git checkout';   complete -o default -o nospace -F _git_checkout gco
+alias   gcp='git cherry-pick'
+alias    gd='git diff --color'; complete -o default -o nospace -F _git_diff gd
+alias   gg+='git log --oneline --abbrev-commit --all --graph --decorate --color'
+alias    gg='gg+ | head -n `expr $LINES / 2`'
+alias    gs='git status -bs'
+alias   gst='git status'
+alias  gwip='git reset --soft HEAD^ && git reset HEAD .'
 alias gpfwl='git push --force-with-lease'
 
 # upstream/upmaster management; these assume the following remote refs:
