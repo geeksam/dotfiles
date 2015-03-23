@@ -47,6 +47,7 @@ alias   gg='gg+ | head -n `expr $LINES / 2`'
 alias   gs='git status -bs'
 alias  gst='git status'
 alias gwip='git reset --soft HEAD^ && git reset HEAD .'
+alias gpfwl='git push --force-with-lease'
 
 # upstream/upmaster management; these assume the following remote refs:
 # * origin   ---> my fork
