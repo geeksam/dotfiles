@@ -41,8 +41,10 @@ vmap <Leader>r gq
   vmap <Leader>a# :Tabularize/#<CR>
   nmap <Leader>ah :Tabularize/=><CR>
   vmap <Leader>ah :Tabularize/=><CR>
-  nmap <Leader>a= :Tabularize/=<CR>
-  vmap <Leader>a= :Tabularize/=<CR>
+  " lolvim: the sequence "\@!" apparently means "zero of the thing I just said"
+  nmap <Leader>a= :Tabularize/=>\@!<CR>
+  vmap <Leader>a= :Tabularize/=>\@!<CR>
+
   nmap <Leader>a; :Tabularize/;<CR>
   vmap <Leader>a; :Tabularize/;<CR>
 
