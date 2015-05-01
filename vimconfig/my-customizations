@@ -36,28 +36,26 @@ nmap <Leader>r gqip
 vmap <Leader>r gq
 
 " Tabularize
-if exists(":Tabularize")
-  nmap <Leader>a# :Tabularize/#<CR>
-  vmap <Leader>a# :Tabularize/#<CR>
-  nmap <Leader>ah :Tabularize/=><CR>
-  vmap <Leader>ah :Tabularize/=><CR>
-  " lolvim: the sequence "\@!" apparently means "zero of the thing I just said"
-  nmap <Leader>a= :Tabularize/=>\@!<CR>
-  vmap <Leader>a= :Tabularize/=>\@!<CR>
+nmap <Leader>a# :Tabularize/#<CR>
+vmap <Leader>a# :Tabularize/#<CR>
+nmap <Leader>ah :Tabularize/=><CR>
+vmap <Leader>ah :Tabularize/=><CR>
+" lolvim: the sequence "\@!" apparently means "zero of the thing I just said"
+nmap <Leader>a= :Tabularize/=>\@!<CR>
+vmap <Leader>a= :Tabularize/=>\@!<CR>
 
-  nmap <Leader>a; :Tabularize/;<CR>
-  vmap <Leader>a; :Tabularize/;<CR>
+nmap <Leader>a; :Tabularize/;<CR>
+vmap <Leader>a; :Tabularize/;<CR>
 
-  " NOTES:
-  " * \zs is basically a zero-width lookbehind assertion;
-  "   it eats spaces before the comma/colon/whatever.
-  "   See: http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-  " * l0c1 is a format specifier that says
-  "   "left, then zero spaces, then [delimiter], then 1 space"
-  "   See: https://raw.github.com/godlygeek/tabular/master/doc/Tabular.txt
-  nmap <Leader>a: :Tabularize/:\zs/l0c1<CR>
-  vmap <Leader>a: :Tabularize/:\zs/l0c1<CR>
-  nmap <Leader>a, :Tabularize/,\zs/l0c1<CR>
-  vmap <Leader>a, :Tabularize/,\zs/l0c1<CR>
-endif
+" NOTES:
+" * \zs is basically a zero-width lookbehind assertion;
+"   it eats spaces before the comma/colon/whatever.
+"   See: http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+" * l0c1 is a format specifier that says
+"   "left, then zero spaces, then [delimiter], then 1 space"
+"   See: https://raw.github.com/godlygeek/tabular/master/doc/Tabular.txt
+nmap <Leader>a: :Tabularize/:\zs/l0c1<CR>
+vmap <Leader>a: :Tabularize/:\zs/l0c1<CR>
+nmap <Leader>a, :Tabularize/,\zs/l0c1<CR>
+vmap <Leader>a, :Tabularize/,\zs/l0c1<CR>
 
