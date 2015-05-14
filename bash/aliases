@@ -11,7 +11,7 @@ alias holler="osascript -e 'display notification \"That thing you asked for is d
 # to get pass/fail, consider replacing this with a function: http://blog.larsstrand.org/article.php?story=BashPromptWithExitStatus
 
 # Reduce typing when using the 'cd' command
-CDPATH=".:~:~/work:~/fun:~/talks"
+CDPATH=".:~:~/work:~/fun:~/talks:~/Dropbox/notes"
 
 # Command-line fu
 alias   e='mate'
