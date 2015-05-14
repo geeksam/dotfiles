@@ -1,9 +1,8 @@
 #!/usr/bin/env ruby
 
-# Some programmers have long names
+# Some programmers have long names. Shorten them.
 NICKNAMES = {
-  'samlivingston-gray' => 'samlg',
-  'tomkiefhaber'       => 'tomk',
+  # 'yukihiromatsumoto' => 'matz', # as for instance
 }
 
 def in_wemux_session?
@@ -12,9 +11,9 @@ def in_wemux_session?
 end
 
 def short_user_list
-  list = `wemux status_users`.strip.split(/\s+/)
-  nicknames = list.map {|name| NICKNAMES[name] || name[0...6] }
-  nicknames.join(', ')
+  list = ( `wemux status_users` ).strip.split(/\s+/).reject {|s| s =~ /^\s*$/ }
+  nicknames = list.map {|name| NICKNAMES[name] || name[0, 6] }
+  nicknames.join(', ').gsub(/,,+/, ',')
 end
 
 puts short_user_list if in_wemux_session?
