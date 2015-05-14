@@ -26,4 +26,4 @@ bind - split-window -v -c "#{pane_current_path}"
 set -g status-right " #[fg=green]#(wemux_user_list) #[fg=yellow]%R"
 
 
-set -g status-interval 5
+set -g status-interval 3
