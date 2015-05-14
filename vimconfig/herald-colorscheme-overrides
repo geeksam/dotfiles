@@ -1,0 +1,14 @@
+" I like the 'herald' color scheme, but the color it uses
+" for comments is too dim.  Let's brighten it up a little...
+
+
+if has("gui_running")
+	hi Comment        guibg=#1F1F1F guifg=#808080 gui=none
+elseif &t_Co == 256
+	hi Comment        ctermbg=234  ctermfg=244   cterm=none
+elseif &t_Co == 16
+  hi Comment        ctermbg=8  ctermfg=7  cterm=none
+elseif &t_Co == 8
+  hi Comment        ctermbg=8  ctermfg=7  cterm=none
+endif
+

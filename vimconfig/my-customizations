@@ -21,6 +21,7 @@ set nolist  " list disables linebreak
 set t_Co=256 " 256 colors
 set background=dark
 colorscheme herald
+source ~/dotfiles/vimconfig/herald-colorscheme-overrides
 
 " Edit the current directory
 nmap <Leader>e. :e %:h<CR>
