@@ -40,7 +40,6 @@ target_dir = ARGV[0] || '.'
 
 subdirs = Dir
   .entries(target_dir)
-  .lazy
   .reject {|e| e =~ /^\.\.$/ }
   .map {|e| File.join(target_dir, e) }
   .select {|e| File.directory?(e) }
