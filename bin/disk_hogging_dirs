@@ -1,0 +1,52 @@
+#!/usr/bin/env ruby
+
+require 'shellwords'
+
+module Exponents
+  B = 1
+  K = 1_024
+  M = K * K
+  G = M * K
+end
+
+class Subdir
+  attr_reader :dirname
+  def initialize(dirname)
+    @dirname = dirname.strip
+  end
+
+  def size
+    @size ||= calculate_size
+  end
+
+  def human_size
+    @human_size ||= `du -sh #{Shellwords.escape(dirname)}`.strip.split(/\t/).first
+  end
+
+  def to_s
+    '%4s  %s' % [human_size, dirname.gsub('./', '')]
+  end
+
+  private
+
+  def calculate_size
+    num, scale = */(.*)(.)$/.match(human_size).captures
+    exp= Exponents.const_get(scale)
+    (num.to_f * exp).to_i
+  end
+end
+
+target_dir = ARGV[0] || '.'
+
+subdirs = Dir
+  .entries(target_dir)
+  .lazy
+  .reject {|e| e =~ /^\.\.$/ }
+  .map {|e| File.join(target_dir, e) }
+  .select {|e| File.directory?(e) }
+  .map {|e| Subdir.new(e) }
+  .sort_by(&:size)
+  .reverse
+  .take(11) # Spinal Tap reference, or fencepost adjustment factor? YOU DECIDE.
+
+puts subdirs
