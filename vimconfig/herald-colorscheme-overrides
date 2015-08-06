@@ -3,9 +3,9 @@
 
 
 if has("gui_running")
-	hi Comment        guibg=#1F1F1F guifg=#808080 gui=none
+	hi Comment        guibg=#1F1F1F guifg=#909090 gui=none
 elseif &t_Co == 256
-	hi Comment        ctermbg=234  ctermfg=244   cterm=none
+	hi Comment        ctermbg=234  ctermfg=248   cterm=none
 elseif &t_Co == 16
   hi Comment        ctermbg=8  ctermfg=7  cterm=none
 elseif &t_Co == 8
