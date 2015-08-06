@@ -1,6 +1,12 @@
 " If I want spell checking, vim, I'll ask you for it.
 autocmd FileType text :set nospell
 
+" Troll pair partners by disabling arrow keys in insert mode :D
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
 " The Silver Searcher
 if executable('ag')
 
