@@ -70,6 +70,8 @@ vmap <Leader>a= :Tabularize/=>\@!<CR>
 
 nmap <Leader>a; :Tabularize/;<CR>
 vmap <Leader>a; :Tabularize/;<CR>
+nmap <Leader>a{ :Tabularize/{<CR>:Tabularize/}<CR>
+vmap <Leader>a{ :Tabularize/{<CR>:Tabularize/}<CR>
 
 " NOTES:
 " * \zs is basically a zero-width lookbehind assertion;
@@ -78,11 +80,14 @@ vmap <Leader>a; :Tabularize/;<CR>
 " * l0c1 is a format specifier that says
 "   "left, then zero spaces, then [delimiter], then 1 space"
 "   See: https://raw.github.com/godlygeek/tabular/master/doc/Tabular.txt
-nmap <Leader>a: :Tabularize/:\zs/l0c1<CR>
-vmap <Leader>a: :Tabularize/:\zs/l0c1<CR>
+nmap <Leader>a: :Tabularize/:\zs /l0c0<CR>
+vmap <Leader>a: :Tabularize/:\zs /l0c0<CR>
 nmap <Leader>a, :Tabularize/,\zs/l0c1<CR>
 vmap <Leader>a, :Tabularize/,\zs/l0c1<CR>
-
+nmap <Leader>a( :Tabularize/(\zs/l0c1<CR>:Tabularize/)/l1c0<CR>
+vmap <Leader>a( :Tabularize/(\zs/l0c1<CR>:Tabularize/)/l1c0<CR>
+nmap <Leader>a[ :Tabularize/[\zs/l0c1<CR>:Tabularize/]/l1c0<CR>
+vmap <Leader>a[ :Tabularize/[\zs/l0c1<CR>:Tabularize/]/l1c0<CR>
 
 " Trailing whitespace sucks.
 "" Show it:
