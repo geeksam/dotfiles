@@ -27,3 +27,8 @@ set -g status-right " #[fg=green]#(wemux_user_list) #[fg=yellow]%R"
 
 
 set -g status-interval 3
+
+
+# Bind 's' to hide status bar; bind 'S' to show it
+bind s set -g status off
+bind S set -g status on
