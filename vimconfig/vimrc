@@ -286,7 +286,7 @@ set background=dark
 colorscheme herald
 
   " I like the 'herald' color scheme, but the color it uses
-  " for comments is too dim.  Let's brighten it up a little...
+  " for comments is too dim.  Brighten it up a little...
   if has("gui_running")
     hi Comment        guibg=#1F1F1F guifg=#909090 gui=none
   elseif &t_Co == 256
@@ -295,6 +295,29 @@ colorscheme herald
     hi Comment        ctermbg=8     ctermfg=7     cterm=none
   elseif &t_Co == 8
     hi Comment        ctermbg=8     ctermfg=7     cterm=none
+  endif
+
+  " Also, make the background a shade darker (terminal only)
+  if &t_Co == 256
+    hi NonText        ctermbg=233
+    hi Normal         ctermbg=233
+    hi Comment        ctermbg=233
+    hi Constant       ctermbg=233
+    hi String         ctermbg=233
+    hi Error          ctermbg=233
+    hi Identifier     ctermbg=233
+    hi Function       ctermbg=233
+    hi Ignore         ctermbg=233
+    hi MatchParen     ctermbg=214
+    hi PreProc        ctermbg=233
+    hi Special        ctermbg=233
+    hi Todo           ctermbg=233
+    hi Underlined     ctermbg=233
+    hi Statement      ctermbg=233
+    hi Operator       ctermbg=233
+    hi Delimiter      ctermbg=233
+    hi Type           ctermbg=233
+    hi Exception      ctermbg=233
   endif
 
 
