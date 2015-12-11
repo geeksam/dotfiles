@@ -133,7 +133,7 @@ set si "Smart indet
 " ===== Moving around, tabs and buffers =====
 
 "Quickly open a scratch buffer
-map <leader>q :e ~/buffer<cr>
+map <leader>q :enew<cr>
 
 " Smart way to move btw. windows
 map <C-j> <C-W>j
