@@ -96,7 +96,6 @@ set equalalways " Vertical and horizontal splits default to equal sizes when cre
 set splitbelow splitright
 :noremap <leader>v :vsplit<cr>
 :noremap <leader>h :split<cr>
-:noremap <leader>w :wincmd w<cr>
 
 
 " ===== Colors =====
