@@ -299,25 +299,37 @@ colorscheme herald
 
   " Also, make the background a shade darker (terminal only)
   if &t_Co == 256
-    hi NonText        ctermbg=233
-    hi Normal         ctermbg=233
-    hi Comment        ctermbg=233
-    hi Constant       ctermbg=233
-    hi String         ctermbg=233
-    hi Error          ctermbg=233
-    hi Identifier     ctermbg=233
-    hi Function       ctermbg=233
-    hi Ignore         ctermbg=233
-    hi MatchParen     ctermbg=214
-    hi PreProc        ctermbg=233
-    hi Special        ctermbg=233
-    hi Todo           ctermbg=233
-    hi Underlined     ctermbg=233
-    hi Statement      ctermbg=233
-    hi Operator       ctermbg=233
-    hi Delimiter      ctermbg=233
-    hi Type           ctermbg=233
-    hi Exception      ctermbg=233
+    hi Normal                  ctermbg=233
+
+    hi Comment                 ctermbg=233
+    hi Constant                ctermbg=233
+    hi Delimiter               ctermbg=233
+    hi DiffDelete              ctermbg=233
+    hi Error                   ctermbg=233
+    hi Exception               ctermbg=233
+    hi Folded                  ctermbg=233
+    hi FoldColumn              ctermbg=233
+    hi Function                ctermbg=233
+    hi Identifier              ctermbg=233
+    hi Ignore                  ctermbg=233
+    hi NonText                 ctermbg=233
+    hi Operator                ctermbg=233
+    hi PreProc                 ctermbg=233
+    hi Special                 ctermbg=233
+    hi SpecialKey              ctermbg=233
+    hi Statement               ctermbg=233
+    hi String                  ctermbg=233
+    hi Todo                    ctermbg=233
+    hi Type                    ctermbg=233
+    hi Underlined              ctermbg=233
+    hi VertSplit               ctermbg=233
+    hi htmlBold                ctermbg=233
+    hi htmlBoldItalic          ctermbg=233
+    hi htmlBoldUnderline       ctermbg=233
+    hi htmlBoldUnderlineItalic ctermbg=233
+    hi htmlItalic              ctermbg=233
+    hi htmlUnderline           ctermbg=233
+    hi htmlUnderlineItalic     ctermbg=233
   endif
 
 
