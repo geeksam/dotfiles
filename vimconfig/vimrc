@@ -333,12 +333,6 @@ colorscheme herald
   endif
 
 
-" Use relative line numbering
-:noremap <leader># :set relativenumber<cr>
-:noremap <leader>3 :set norelativenumber<cr>
-set relativenumber
-
-
 " Quickly toggle wordwrap
 :noremap <leader>W :set wrap<cr>
 :noremap <leader>w :set nowrap<cr>
