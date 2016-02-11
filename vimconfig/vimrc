@@ -1,9 +1,51 @@
 " Initially swiped from the .vimrc in ls-pair
 
+" ===== Plugins via vim-plug =====
+
+    " Documentation on Plug:  https://github.com/junegunn/vim-plug
+    call plug#begin('~/.vim/plugged')
+
+    " Make sure you use single quotes
+
+    Plug 'scrooloose/nerdtree'                        " NERDtree.  Yep.
+    Plug 'git@github.com:rking/ag.vim.git'            " use the Silver Searcher from within vim with :Ag
+    Plug 'git@github.com:jlanzarotta/bufexplorer.git' " Buffer Explorer, quite useful
+    Plug 'git@github.com:godlygeek/tabular.git'       " Tabularize:  vertical alignment goodness
+    Plug 'git@github.com:tomtom/tcomment_vim.git'     " Ctrl+dash 2x to comment (and a bunch of other stuff I never use)
+    Plug 'git@github.com:flazz/vim-colorschemes.git'  " loads o' colorschemes
+    Plug 'git://github.com/tpope/vim-surround.git'    " surrounding characters (ludicrously useful)
+    Plug 'git@github.com:ctrlpvim/ctrlp.vim.git'      " Fast fuzzy finder
+
+    " Plugins I used to have:
+    " x The-NERD-tree
+    " - ZoomWin
+    " x ack-vim (superseded by ag)
+    " x bufexplorer
+    " x ctrlp
+    " - gundo
+    " - snipmate
+    " x tabular
+    " x tcomment_vim
+    " - vim-bundler
+    " - vim-colors-solarized
+    " x vim-colorschemes
+    " - vim-cucumber
+    " - vim-fugitive
+    " - vim-markdown
+    " - vim-rails
+    " - vim-rake
+    " - vim-repeat
+    " x vim-surround
+    " - vim-textobj-rubyblock
+    " - vim-textobj-user
+
+    " Add plugins to &runtimepath
+    call plug#end()
+
 " ===== General =====
 
 " No reason to limit ourselves to vi compatibility
-set nocompatible
+    set nocompatible
 
 " Enable extended % matching
 runtime macros/matchit.vim
@@ -15,42 +57,42 @@ autocmd! bufwritepost .vimrc source ~/.vimrc
 let mapleader = ","
 let g:mapleader = ","
 
-" Basic setup for pathogen
-call pathogen#infect()
-syntax on
-filetype plugin indent on
+" " Basic setup for pathogen
+" call pathogen#infect()
+" syntax on
+" filetype plugin indent on
 
 " Remember command line entries
 set history=300
 
 " Reload files when they are changed by another process.
 set autoread
-augroup checktime
-    au!
-    if !has("gui_running")
-        "silent! necessary otherwise throws errors when using command
-        "line window.
-        autocmd BufEnter        * silent! checktime
-        autocmd CursorHold      * silent! checktime
-        autocmd CursorHoldI     * silent! checktime
-        "these two _may_ slow things down. Remove if they do.
-        autocmd CursorMoved     * silent! checktime
-        autocmd CursorMovedI    * silent! checktime
-    endif
-augroup END
-
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
-" Also don't do it when the mark is in the first line, that is the default
-" position when opening a file.
-autocmd BufReadPost *
-  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
-
-" Maintain some setup between sessions
-set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
+" augroup checktime
+"     au!
+"     if !has("gui_running")
+"         "silent! necessary otherwise throws errors when using command
+"         "line window.
+"         autocmd BufEnter        * silent! checktime
+"         autocmd CursorHold      * silent! checktime
+"         autocmd CursorHoldI     * silent! checktime
+"         "these two _may_ slow things down. Remove if they do.
+"         autocmd CursorMoved     * silent! checktime
+"         autocmd CursorMovedI    * silent! checktime
+"     endif
+" augroup END
+" 
+" " When editing a file, always jump to the last known cursor position.
+" " Don't do it when the position is invalid or when inside an event handler
+" " (happens when dropping a file on gvim).
+" " Also don't do it when the mark is in the first line, that is the default
+" " position when opening a file.
+" autocmd BufReadPost *
+"   \ if line("'\"") > 1 && line("'\"") <= line("$") |
+"   \   exe "normal! g`\"" |
+"   \ endif
+" 
+" " Maintain some setup between sessions
+" set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
 
 
@@ -114,7 +156,7 @@ set ffs=unix,dos,mac "Default file types
 
 " ===== Files and backups =====
 
-" Turn backup off, since most stuff is in SVN, git anyway...
+" Turn backup off, since most stuff is in git anyway...
 set nobackup
 set nowb
 set noswapfile
@@ -135,53 +177,46 @@ set si "Smart indet
 "Quickly open a scratch buffer
 map <leader>q :enew<cr>
 
-" Smart way to move btw. windows
+" Lazy way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Close the current buffer
-map <leader>bd :Bclose<cr>
-
-" Close all the buffers
-map <leader>ba :1,300 bd!<cr>
-
+" " Close the current buffer
+" map <leader>bd :Bclose<cr>
+" 
 " Show buffer list (also mapped to "<leader>be", but this is easier to type
 map <leader>bb :BufExplorer<cr>
 
-" When pressing <leader>cd switch to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>
-
-
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-  let l:currentBufNum = bufnr("%")
-  let l:alternateBufNum = bufnr("#")
-
-  if buflisted(l:alternateBufNum)
-    buffer #
-  else
-    bnext
-  endif
-
-  if bufnr("%") == l:currentBufNum
-    new
-  endif
-
-  if buflisted(l:currentBufNum)
-    execute("bdelete! ".l:currentBufNum)
-  endif
-endfunction
-
-" Specify the behavior when switching between buffers 
-try
-  set switchbuf=usetab
-  set stal=1
-catch
-endtry
-
-
+" command! Bclose call <SID>BufcloseCloseIt()
+" function! <SID>BufcloseCloseIt()
+"   let l:currentBufNum = bufnr("%")
+"   let l:alternateBufNum = bufnr("#")
+" 
+"   if buflisted(l:alternateBufNum)
+"     buffer #
+"   else
+"     bnext
+"   endif
+" 
+"   if bufnr("%") == l:currentBufNum
+"     new
+"   endif
+" 
+"   if buflisted(l:currentBufNum)
+"     execute("bdelete! ".l:currentBufNum)
+"   endif
+" endfunction
+" 
+" " Specify the behavior when switching between buffers 
+" try
+"   set switchbuf=usetab
+"   set stal=1
+" catch
+" endtry
+" 
+" 
 " ===== Statusline =====
 
 " Never hide the statusline
@@ -195,13 +230,6 @@ function! CurDir()
   let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
   return curdir
 endfunction
-
-
-" ===== Cope - for showing and navigating "errors" =====
-
-map <leader>cc :botright cope<cr>
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
 
 
 " ===== Text files =====
@@ -221,10 +249,6 @@ compiler ruby         " Enable compiler support for ruby
 autocmd FileType ruby :set foldmethod=syntax
 autocmd FileType ruby :set foldlevel=1
 
-" ===== Plugin config =====
-nnoremap <F5> :GundoToggle<CR>
-map <leader>d :NERDTree<CR>
-
 
 " ===== Sam's Customizations =====
 
@@ -235,18 +259,21 @@ autocmd FileType text :set nospell
 nmap <F1> :echo<CR>
 imap <F1> <Esc>
 
-" Troll pair partners by disabling arrow keys in insert mode :D
-" imap <up> <nop>
-" imap <down> <nop>
-" imap <left> <nop>
-" imap <right> <nop>
-imap <up> <up>
-imap <down> <down>
-imap <left> <left>
-imap <right> <right>
-
+" " Troll pair partners by disabling arrow keys in insert mode :D
+" " imap <up> <nop>
+" " imap <down> <nop>
+" " imap <left> <nop>
+" " imap <right> <nop>
+" imap <up> <up>
+" imap <down> <down>
+" imap <left> <left>
+" imap <right> <right>
+" 
 " The Silver Searcher
 if executable('ag')
+
+  " Pretend we're still using Ack for muscle memory / pair partners
+  " :command Ack Ag
 
   " from https://github.com/ggreer/the_silver_searcher
   let g:ackprg = 'ag --vimgrep'
@@ -254,8 +281,8 @@ if executable('ag')
   " The rest of this section swiped from
   " https://robots.thoughtbot.com/faster-grepping-in-vim
 
-" " Use ag instead of grep
-" set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag instead of grep
+  set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -395,4 +422,5 @@ autocmd BufWinLeave * call clearmatches()
 
 "" Nuke it with F6:
 :nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
 
