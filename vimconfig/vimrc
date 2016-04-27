@@ -22,6 +22,15 @@
     Plug 'git@github.com:wesQ3/vim-windowswap.git'      " <Leader>ww in each of two windows to swap them
     Plug 'git@github.com:AndrewRadev/splitjoin.vim.git' " convert between one-line to multiline constructs
     Plug 'git@github.com:vim-scripts/ZoomWin.git'       " 'C-w o' toggles between splits and a single pane
+    Plug 'git@github.com:tpope/vim-fugitive.git'        " Fugitive. You know, for Git!
+    Plug 'git@github.com:elixir-lang/vim-elixir.git'    " Fugitive. You know, for Git!
+    Plug 'git@github.com:airblade/vim-gitgutter.git'    " show git status on individual lines/hunks
+
+    " " TextMate-style snippets
+    " disabling these until I can figure out why pressing Tab inserts '<Plug>snipMateNextOrTrigger'
+    " Plug 'git@github.com:garbas/vim-snipmate.git'
+    " Plug 'git@github.com:MarcWeber/vim-addon-mw-utils.git' " dependency of vim-snipmate
+    " Plug 'git@github.com:tomtom/tlib_vim.git'              " dependency of vim-snipmate
 
     " Tool-specific plugins...
 
@@ -29,25 +38,14 @@
     Plug 'git@github.com:tpope/vim-rails.git'
 
     " Plugins I used to have:
-    " x The-NERD-tree
-    " x ZoomWin
-    " x ack-vim (superseded by ag)
-    " x bufexplorer
-    " x ctrlp
     " - gundo
     " - snipmate
-    " x tabular
-    " x tcomment_vim
     " - vim-bundler
     " - vim-colors-solarized
-    " x vim-colorschemes
     " - vim-cucumber
     " - vim-fugitive
     " - vim-markdown
-    " x vim-rails
     " - vim-rake
-    " - vim-repeat
-    " x vim-surround
     " - vim-textobj-rubyblock
     " - vim-textobj-user
 
