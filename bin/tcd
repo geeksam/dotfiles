@@ -1,15 +1,26 @@
-#/bin/bash
+#!/usr/bin/env ruby
 
-# Use window #1 or create a new one for vim
-if [ `tmux display-message -p '#I'` == '1' ]; then
-  tmux rename-window "$1 vim"
-else
-  tmux new-window -n "$1 vim"
-fi
+target_dir, window, * = *ARGV
+window ||= 1
+window = window.to_i
 
-# Open vim in the target directory
-tmux send-keys "cd $1; clear; vim" C-m
+def run(cmd, debug = false)
+  puts cmd if debug
+  out = `#{cmd}`
+  if $?.exitstatus.zero?
+    puts out if debug
+  else
+    msg = [
+      "Command failed: #{cmd}",
+      "Exit status: #{$?.exitstatus}",
+      "stdout: #{out}",
+    ]
+    fail msg.join("\n")
+  end
+end
 
-# Open a second window also in the target directory
-tmux new-window -n "$1"
-tmux send-keys "cd $1; clear" C-m
+run %Q( tmux new-window -t #{window    } -n   "#{target_dir} vim" )
+run %Q( tmux send-keys  -t #{window    }.1 "cd #{target_dir}; clear; vim" C-m )
+
+run %Q( tmux new-window -t #{window + 1} -n   "#{target_dir}" )
+run %Q( tmux send-keys  -t #{window + 1}.1 "cd #{target_dir}; clear" C-m )
