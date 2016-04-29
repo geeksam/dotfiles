@@ -7,24 +7,25 @@
 
     " Make sure you use single quotes
 
-    Plug 'scrooloose/nerdtree'                          " NERDtree.  Yep.
-    Plug 'git@github.com:rking/ag.vim.git'              " use the Silver Searcher from within vim with :Ag
-    Plug 'git@github.com:jlanzarotta/bufexplorer.git'   " Buffer Explorer, quite useful
-    Plug 'git@github.com:godlygeek/tabular.git'         " Tabularize:  vertical alignment goodness
-    Plug 'git@github.com:tomtom/tcomment_vim.git'       " Ctrl+dash 2x to comment (and a bunch of other stuff I never use)
-    Plug 'git@github.com:flazz/vim-colorschemes.git'    " loads o' colorschemes
-    Plug 'git@github.com:tpope/vim-surround.git'        " surrounding characters (ludicrously useful)
-    Plug 'git@github.com:tpope/vim-repeat.git'          " repeat plugin actions (e.g., from vim-surround)
-    Plug 'git@github.com:ctrlpvim/ctrlp.vim.git'        " Fast fuzzy finder
-    Plug 'git@github.com:danro/rename.vim.git'          " Easy renames
-    Plug 'git@github.com:tpope/vim-endwise.git'         " Automatically enter closing tokens (e.g., 'end' in Ruby)
-    Plug 'git@github.com:scrooloose/syntastic.git'      " Syntax warnings
-    Plug 'git@github.com:wesQ3/vim-windowswap.git'      " <Leader>ww in each of two windows to swap them
-    Plug 'git@github.com:AndrewRadev/splitjoin.vim.git' " convert between one-line to multiline constructs
-    Plug 'git@github.com:vim-scripts/ZoomWin.git'       " 'C-w o' toggles between splits and a single pane
-    Plug 'git@github.com:tpope/vim-fugitive.git'        " Fugitive. You know, for Git!
-    Plug 'git@github.com:elixir-lang/vim-elixir.git'    " Fugitive. You know, for Git!
-    Plug 'git@github.com:airblade/vim-gitgutter.git'    " show git status on individual lines/hunks
+    Plug 'scrooloose/nerdtree'                                " NERDtree.  Yep.
+    Plug 'git@github.com:rking/ag.vim.git'                    " use the Silver Searcher from within vim with :Ag
+    Plug 'git@github.com:jlanzarotta/bufexplorer.git'         " Buffer Explorer, quite useful
+    Plug 'git@github.com:godlygeek/tabular.git'               " Tabularize:  vertical alignment goodness
+    Plug 'git@github.com:tomtom/tcomment_vim.git'             " Ctrl+dash 2x to comment (and a bunch of other stuff I never use)
+    Plug 'git@github.com:flazz/vim-colorschemes.git'          " loads o' colorschemes
+    Plug 'git@github.com:tpope/vim-surround.git'              " surrounding characters (ludicrously useful)
+    Plug 'git@github.com:tpope/vim-repeat.git'                " repeat plugin actions (e.g., from vim-surround)
+    Plug 'git@github.com:ctrlpvim/ctrlp.vim.git'              " Fast fuzzy finder
+    Plug 'git@github.com:danro/rename.vim.git'                " Easy renames
+    Plug 'git@github.com:tpope/vim-endwise.git'               " Automatically enter closing tokens (e.g., 'end' in Ruby)
+    Plug 'git@github.com:scrooloose/syntastic.git'            " Syntax warnings
+    Plug 'git@github.com:wesQ3/vim-windowswap.git'            " <Leader>ww in each of two windows to swap them
+    Plug 'git@github.com:AndrewRadev/splitjoin.vim.git'       " convert between one-line to multiline constructs
+    Plug 'git@github.com:vim-scripts/ZoomWin.git'             " 'C-w o' toggles between splits and a single pane
+    Plug 'git@github.com:tpope/vim-fugitive.git'              " Fugitive. You know, for Git!
+    Plug 'git@github.com:elixir-lang/vim-elixir.git'          " Fugitive. You know, for Git!
+    Plug 'git@github.com:airblade/vim-gitgutter.git'          " show git status on individual lines/hunks
+    Plug 'git@github.com:nathanaelkane/vim-indent-guides.git' " show git status on individual lines/hunks
 
     " " TextMate-style snippets
     " disabling these until I can figure out why pressing Tab inserts '<Plug>snipMateNextOrTrigger'
@@ -395,6 +396,14 @@ vmap <Leader>r gq
 " SplitJoin
 nmap <Leader>sl :SplitjoinSplit<CR>
 nmap <Leader>jl :SplitjoinJoin<CR>
+
+" Indent Guides
+let g:indent_guides_auto_colors = 0
+if has("gui_running") || &t_Co == 256
+  hi IndentGuidesOdd  ctermbg=234
+  hi IndentGuidesEven ctermbg=235
+endif
+autocmd FileType text :IndentGuidesEnable
 
 " Tabularize
 nmap <Leader>a# :Tabularize/#<CR>
