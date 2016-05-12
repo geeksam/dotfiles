@@ -62,6 +62,5 @@ alias r='bundle exec rails'
 alias     b='bundle'
 alias    be='bundle exec'
 alias    bx='bundle exec'
-alias    bi='(bundle check || bundle install --jobs=2)'
+alias    bi='(bundle check || bundle install --jobs=4)'
 alias brake='bundle exec rake'
-# ^ older versions of bundler didn't have the --jobs flag; fall back to non-concurrent versions
