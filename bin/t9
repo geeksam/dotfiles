@@ -1,8 +1,7 @@
 #/bin/bash
 
-# Switch to window 9, or create one named 'ssh'
+# Switch to window 9, or create one named 'ssh=
 tmux select-window -t9 || (
-  tmux new-window -n "ssh";
-  tmux move-window -t9;
-  tmux send-keys "cd; clear" C-m;
+  tmux new-window -t9 -n "ssh";
+  tmux send-keys  -t9 "cd; clear" C-m;
 )
