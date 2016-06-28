@@ -23,9 +23,9 @@
     Plug 'git@github.com:AndrewRadev/splitjoin.vim.git'       " convert between one-line to multiline constructs
     Plug 'git@github.com:vim-scripts/ZoomWin.git'             " 'C-w o' toggles between splits and a single pane
     Plug 'git@github.com:tpope/vim-fugitive.git'              " Fugitive. You know, for Git!
-    Plug 'git@github.com:elixir-lang/vim-elixir.git'          " Fugitive. You know, for Git!
+    Plug 'git@github.com:elixir-lang/vim-elixir.git'          " presumably something to do with Elixir syntax...
     Plug 'git@github.com:airblade/vim-gitgutter.git'          " show git status on individual lines/hunks
-    Plug 'git@github.com:nathanaelkane/vim-indent-guides.git' " show git status on individual lines/hunks
+    Plug 'git@github.com:nathanaelkane/vim-indent-guides.git' " stripe indent levels with alternating colors
 
     " " TextMate-style snippets
     " disabling these until I can figure out why pressing Tab inserts '<Plug>snipMateNextOrTrigger'
