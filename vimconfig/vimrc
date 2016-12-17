@@ -141,6 +141,7 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 map <Enter> o<ESC>
 
 " sometimes the Escape key is too far away
+" and in THE FUTURE, it might not even be a physical key. COURAGE
 imap jj <Esc>
 
 set showcmd " Defaults to on for vim anyway, but just in case
