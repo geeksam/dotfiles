@@ -46,12 +46,6 @@ alias   gst='git status'
 alias  gwip='git reset --soft HEAD^ && git reset HEAD .'
 alias gpfwl='git push --force-with-lease'
 
-# upstream/upmaster management; these assume the following remote refs:
-# * origin   ---> my fork
-# * upstream ---> the canonical shared repo
-alias guppy='git checkout upmaster && git pull --rebase && git rebase upmaster master'
-alias trout='git checkout upmaster && git merge --ff-only master && git push && git checkout master && git push'
-
 # Faster, pussycat! Test! Test!
 alias rtf='rake test:fast'
 
