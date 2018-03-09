@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+require 'json'
+
+if ARGV.empty?
+  json_string = $stdin.read
+else
+  json_filename = ARGV.first
+  json_string = File.read(json_filename)
+end
+
+data = JSON.parse(json_string)
+prettified_json = JSON.pretty_generate(data)
+
+puts prettified_json
