@@ -27,6 +27,7 @@
     Plug 'git@github.com:airblade/vim-gitgutter.git'          " show git status on individual lines/hunks
     Plug 'git@github.com:nathanaelkane/vim-indent-guides.git' " stripe indent levels with alternating colors
     Plug 'git@github.com:Konfekt/FastFold.git'                " hopefully, keep vim from slowing down when editing complex files...
+    Plug 'git@github.com:vim-ruby/vim-ruby.git'               " Recent-ish Ruby syntax highlighting
 
     " " TextMate-style snippets
     " disabling these until I can figure out why pressing Tab inserts '<Plug>snipMateNextOrTrigger'
