@@ -32,3 +32,7 @@ set -g status-interval 3
 # Bind 's' to hide status bar; bind 'S' to show it
 bind s set -g status off
 bind S set -g status on
+
+
+# Bind ^K to clear the scrollback buffer
+bind C-k clear-history
