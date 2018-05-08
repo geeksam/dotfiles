@@ -31,9 +31,11 @@
 
     " " TextMate-style snippets
     " disabling these until I can figure out why pressing Tab inserts '<Plug>snipMateNextOrTrigger'
-    " Plug 'git@github.com:garbas/vim-snipmate.git'
-    " Plug 'git@github.com:MarcWeber/vim-addon-mw-utils.git' " dependency of vim-snipmate
-    " Plug 'git@github.com:tomtom/tlib_vim.git'              " dependency of vim-snipmate
+    Plug 'git@github.com:garbas/vim-snipmate.git'
+    Plug 'git@github.com:MarcWeber/vim-addon-mw-utils.git' " dependency of vim-snipmate
+    Plug 'git@github.com:tomtom/tlib_vim.git'              " dependency of vim-snipmate
+    filetype plugin on " apparently snipMate needs this
+    Plug 'git@github.com:honza/vim-snippets.git'           " a bunch of premade snippets
 
     " Tool-specific plugins...
 
