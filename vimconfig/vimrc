@@ -426,6 +426,13 @@ vmap <Leader>a; :Tabularize/;<CR>
 nmap <Leader>a{ :Tabularize/{<CR>:Tabularize/}<CR>
 vmap <Leader>a{ :Tabularize/{<CR>:Tabularize/}<CR>
 
+" Elixir!
+nmap <Leader>ado :Tabularize/do:<CR>
+vmap <Leader>ado :Tabularize/do:<CR>
+nmap <Leader>awh :Tabularize/when<CR>
+vmap <Leader>awh :Tabularize/when<CR>
+
+
 " NOTES:
 " * \zs is basically a zero-width lookbehind assertion;
 "   it eats spaces before the comma/colon/whatever.
