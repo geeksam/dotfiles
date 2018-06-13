@@ -1,3 +1,16 @@
+# Swiped from https://gist.github.com/brianloveswords/7534169715b5750a892cddcf54c2aa0e
+#
+# Dependencies
+#   ffmpeg
+#     macOS: brew install ffmpeg
+#     Ubuntu/Debian: apt install ffmpeg
+#
+# Usage
+#   `video-url-from-tweet <url>`    : takes a tweet URL and returns the MP4 embedded in that tweet, or fails if no video is found.
+#   `video-from-tweet <url>`        : returns the raw data of the video that is embedded in the tweet
+#   `video-to-gif <input> <output>` : converts a video to a GIF
+#   `gif-from-tweet <url> <output>` : takes a tweet URL and an output filename and saves the MP4 embedded in that tweet as a GIF.
+
 video-url-from-tweet() {
     if [ "$1" ]; then
         url=$1
