@@ -64,7 +64,7 @@
 set nomodeline
 
 " No reason to limit ourselves to vi compatibility
-    set nocompatible
+set nocompatible
 
 " Enable extended % matching
 runtime macros/matchit.vim
