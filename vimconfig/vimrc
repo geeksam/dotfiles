@@ -60,6 +60,9 @@
 
 " ===== General =====
 
+" Modelines: more trouble than they're worth
+set nomodeline
+
 " No reason to limit ourselves to vi compatibility
     set nocompatible
 
