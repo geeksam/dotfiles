@@ -27,9 +27,10 @@
     Plug 'git@github.com:nathanaelkane/vim-indent-guides.git' " stripe indent levels with alternating colors
     Plug 'git@github.com:Konfekt/FastFold.git'                " hopefully, keep vim from slowing down when editing complex files...
     Plug 'git@github.com:vim-ruby/vim-ruby.git'               " Recent-ish Ruby syntax highlighting
+    Plug 'git@github.com:nelstrom/vim-textobj-rubyblock.git'  " spiffy nav inside/around Ruby blocks
+    Plug 'git@github.com:kana/vim-textobj-user.git'           " dependency of vim-textobj-rubyblock
 
-    " " TextMate-style snippets
-    " disabling these until I can figure out why pressing Tab inserts '<Plug>snipMateNextOrTrigger'
+    " TextMate-style snippets
     Plug 'git@github.com:garbas/vim-snipmate.git'
     Plug 'git@github.com:MarcWeber/vim-addon-mw-utils.git' " dependency of vim-snipmate
     Plug 'git@github.com:tomtom/tlib_vim.git'              " dependency of vim-snipmate
@@ -37,13 +38,11 @@
     Plug 'git@github.com:honza/vim-snippets.git'           " a bunch of premade snippets
 
     " Tool-specific plugins...
-
     Plug 'git@github.com:kchmck/vim-coffee-script.git'
     Plug 'git@github.com:tpope/vim-rails.git'
 
     " Plugins I used to have:
     " - gundo
-    " - snipmate
     " - vim-bundler
     " - vim-colors-solarized
     " - vim-cucumber
