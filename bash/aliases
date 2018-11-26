@@ -52,6 +52,10 @@ alias rtf='rake test:fast'
 # Rails
 alias r='bundle exec rails'
 
+# RSpec
+alias spec_ordered='bundle exec rspec --order defined'
+alias spec_random='bundle exec rspec --order random'
+
 # Bundler
 alias     b='bundle'
 alias    be='bundle exec'
