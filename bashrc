@@ -9,7 +9,6 @@ fi
 source ~/dotfiles/bash/completion
 source ~/dotfiles/bash/history_sharing
 source ~/dotfiles/bash/ruby-fu
-source ~/dotfiles/bash/node-fu
 source ~/dotfiles/bash/twitter-gif-tools.bash
 
 # Prompt (see http://ezprompt.net for hints)
