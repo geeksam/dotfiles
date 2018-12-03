@@ -10,6 +10,7 @@ source ~/dotfiles/bash/completion
 source ~/dotfiles/bash/history_sharing
 source ~/dotfiles/bash/ruby-fu
 source ~/dotfiles/bash/twitter-gif-tools.bash
+source ~/dotfiles/bash/github-collab.bash
 
 # Prompt (see http://ezprompt.net for hints)
 alias  long_prompt="export PS1=\"\n\[\e[30;102m\][ \@ :: \\w\\\$(__git_ps1 ' :: %s') ]\[\e[m\]\n$ \""
