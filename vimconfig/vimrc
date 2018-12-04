@@ -148,6 +148,7 @@ map <Enter> o<ESC>
 " sometimes the Escape key is too far away
 " and in THE FUTURE, it might not even be a physical key. COURAGE
 imap jj <Esc>
+imap kk <Esc>
 
 set showcmd " Defaults to on for vim anyway, but just in case
 set nowrap
