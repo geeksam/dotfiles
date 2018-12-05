@@ -19,9 +19,9 @@ alias lal='ls -alhG'
 alias  ls='ls -hG'
 alias  df='df -h'
 alias  du='du -h'
-alias  cp='cp -i'
-alias  mv='mv -i'
-alias  rm='rm -i'
+alias  cp='cp -i' # paranoia
+alias  mv='mv -i' # paranoia
+alias  rm='rm -i' # paranoia
 
 # Lazy ancestor directory ziggurat of doom
 alias        ..='cd ..'
@@ -54,7 +54,7 @@ alias r='bundle exec rails'
 
 # RSpec
 alias spec_ordered='bundle exec rspec --order defined'
-alias spec_random='bundle exec rspec --order random'
+alias  spec_random='bundle exec rspec --order random'
 
 # Bundler
 alias     b='bundle'
