@@ -5,8 +5,8 @@ export PATH=$HOME/dotfiles/private:$PATH
 export PATH=$HOME/dotfiles/private/bin:$PATH
 
 # These must come first
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Reduce typing when using the 'cd' command
-CDPATH=".:~:~/work:~/fun:~/talks:~/Dropbox/notes"
+CDPATH=".:~:~/work:~/geeksam"
 
