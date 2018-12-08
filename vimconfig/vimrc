@@ -283,16 +283,6 @@ autocmd FileType text :set nospell
 nmap <F1> :echo<CR>
 imap <F1> <Esc>
 
-" " Troll pair partners by disabling arrow keys in insert mode :D
-" " imap <up> <nop>
-" " imap <down> <nop>
-" " imap <left> <nop>
-" " imap <right> <nop>
-" imap <up> <up>
-" imap <down> <down>
-" imap <left> <left>
-" imap <right> <right>
-" 
 " The Silver Searcher
 if executable('ag')
 
