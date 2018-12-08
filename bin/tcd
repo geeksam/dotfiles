@@ -1,51 +1,10 @@
 #!/usr/bin/env ruby
+require_relative 'tmux_utils'
 
-target_dir, _window, * = *ARGV
-# window ||= 1
-# window = window.to_i
+w1, w2 = next_n_adjacent_windows(2)
 
-def next_two_adjacent_windows
-  windows = `tmux list-windows`.lines.map(&:to_i)
+target_dir = ARGV.first
+label      = File.basename(target_dir)
 
-  # Start from the beginning (if I have [1,2,9], give me [3,4])
-  windows.each_cons(2) do |i,j|
-    if j-i >= 2
-      return i+1, i+2
-    end
-  end
-
-  # If that failed, and there's room, put the next two at the end
-  if (i = windows.max) < 9
-    return i+1, i+2
-  end
-
-  # Out of single-digit windows? Silly human. Take a break.
-  puts <<-EOF
-    Unable to locate two adjacent windows. (In use: #{windows.inspect})
-    Reminder: humans don't multitask well. Step away from the computer.
-  EOF
-  exit
-end
-
-def run(cmd, debug = false)
-  puts cmd if debug
-  out = `#{cmd}`
-  if $?.exitstatus.zero?
-    puts out if debug
-  else
-    msg = [
-      "Command failed: #{cmd}",
-      "Exit status: #{$?.exitstatus}",
-      "stdout: #{out}",
-    ]
-    fail msg.join("\n")
-  end
-end
-
-w1, w2 = next_two_adjacent_windows
-
-run %Q( tmux new-window -t #{w1} -n   "#{target_dir} vim" )
-run %Q( tmux send-keys  -t #{w1}.1 "cd #{target_dir}; clear; vim" C-m )
-
-run %Q( tmux new-window -t #{w2} -n   "#{target_dir}" )
-run %Q( tmux send-keys  -t #{w2}.1 "cd #{target_dir}; clear" C-m )
+tmux_new_window w1, target_dir, "#{label} vim", "vim"
+tmux_new_window w2, target_dir, label
