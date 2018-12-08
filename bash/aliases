@@ -58,3 +58,6 @@ alias    be='bundle exec'
 alias    bx='bundle exec'
 alias    bi='(bundle check || bundle install --jobs=4)'
 alias brake='bundle exec rake'
+
+# Docker
+alias dc='docker-compose'
