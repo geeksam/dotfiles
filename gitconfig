@@ -1,0 +1,5 @@
+[user]
+	email = geeksam@gmail.com
+	name = Sam Livingston-Gray
+[branch]
+	autosetuprebase = always
