@@ -44,13 +44,8 @@
     " Plugins I used to have:
     " - gundo
     " - vim-bundler
-    " - vim-colors-solarized
     " - vim-cucumber
-    " - vim-fugitive
     " - vim-markdown
-    " - vim-rake
-    " - vim-textobj-rubyblock
-    " - vim-textobj-user
 
     " Check here for some more to try out:
     " https://need.computer/2016/01/21/22-vim-plugins-every-ruby-developer-should-use.html
