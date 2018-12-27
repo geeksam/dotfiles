@@ -1,7 +1,6 @@
 # Put my own bin dirs first
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/dotfiles/bin:$PATH
-export PATH=$HOME/dotfiles/private:$PATH
 export PATH=$HOME/dotfiles/private/bin:$PATH
 
 # These must come first
