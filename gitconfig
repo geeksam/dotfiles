@@ -3,3 +3,5 @@
 	name = Sam Livingston-Gray
 [branch]
 	autosetuprebase = always
+[core]
+	excludesfile = ~/.gitignore_global
