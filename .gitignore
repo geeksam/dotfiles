@@ -1,6 +1,6 @@
 .DS_Store
 private/*
 bash/private_aliases
-vimconfig/vim/.netrwhist
-vimconfig/vim/plugged
-vimconfig/vim/vim
+vim/.netrwhist
+vim/plugged
+vim/vim

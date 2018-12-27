@@ -6,5 +6,5 @@ ln -fs ~/dotfiles/gitignore_global ~/.gitignore_global
 ln -fs ~/dotfiles/inputrc          ~/.inputrc
 ln -fs ~/dotfiles/tmux.conf        ~/.tmux.conf
 ln -fs ~/dotfiles/tmux.conf.local  ~/.tmux.conf.local
-ln -fs ~/dotfiles/vimconfig/vimrc  ~/.vimrc
-ln -fs ~/dotfiles/vimconfig/vim    ~/.vim
+ln -fs ~/dotfiles/vimrc            ~/.vimrc
+ln -fs ~/dotfiles/vim              ~/.vim
