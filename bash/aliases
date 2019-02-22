@@ -61,3 +61,6 @@ alias brake='bundle exec rake'
 
 # Docker
 alias dc='docker-compose'
+
+# SSH agent
+alias reagent='(pgrep ssh-agent | xargs kill) && eval $(ssh-agent) && ssh-add'
