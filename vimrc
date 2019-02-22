@@ -144,11 +144,10 @@ map <Enter> o<ESC>
 " sometimes the Escape key is too far away
 " and in THE FUTURE, it might not even be a physical key. COURAGE
 imap jj <Esc>
-imap kk <Esc>
 
 set showcmd " Defaults to on for vim anyway, but just in case
 set nowrap
-set linebreak " Wrap at word
+set linebreak " Wrap at word (display only; 'textwidth' affects physical insertion of EOL characters)
 
 " Make dealing with split windows a little easier
 set equalalways " Vertical and horizontal splits default to equal sizes when created
@@ -361,7 +360,13 @@ colorscheme herald
 :noremap <leader>W :set wrap<cr>
 :noremap <leader>w :set nowrap<cr>
 set nowrap
+set linebreak " Wrap at characters in `breakat`
+              " (display-only setting; `textwidth` affects physical insertion of EOL characters)
 
+" Quickly toggle linebreak
+:noremap <leader>L :set textwidth=80<cr>
+:noremap <leader>l :set textwidth=0<cr>
+set textwidth=0 " Default to 'stop \'helping\' me, vim'
 
 " Edit the current directory
 nmap <Leader>e. :e %:h<CR>
