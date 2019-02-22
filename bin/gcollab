@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+begin
+  require_relative "../private/gcollab-seekrit" rescue nil
+rescue LoadError
+  SEEKRIT_COLLABORATORS = {}
+end
+
+COLLABORATORS = SEEKRIT_COLLABORATORS.merge(
+  sam: "Sam Livingston-Gray <geeksam@gmail.com>",
+)
+
+def table(tbl, indent: 4)
+  left_pad = " " * indent
+  max_widths = tbl.to_a.transpose.map {|col| col.map {|cell| cell.to_s.length }.max }
+  templates = max_widths.map {|w| "%-#{w}s" }
+  tbl.map { |row|
+    formatted_cells = row.zip(templates).map { |cell, template| template % cell }
+    formatted_row = formatted_cells.join(" | ")
+    left_pad + formatted_row
+  }
+end
+
+collaborator = COLLABORATORS.fetch( ARGV.first.to_sym ) do |key|
+  puts
+  puts "Who is this #{key.inspect} of whom you speak?  I know only:"
+  puts table(COLLABORATORS.to_a.sort)
+  puts
+  exit
+end
+
+to_copy = "Co-authored by: #{collaborator}"
+
+`echo "#{to_copy}" | pbcopy` # all Rubyists use MacOS ;P
+puts "#{to_copy} copied"

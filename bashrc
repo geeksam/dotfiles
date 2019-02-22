@@ -10,7 +10,6 @@ source ~/dotfiles/bash/completion
 source ~/dotfiles/bash/history_sharing
 source ~/dotfiles/bash/ruby-fu
 source ~/dotfiles/bash/twitter-gif-tools.bash
-source ~/dotfiles/bash/github-collab.bash
 
 # Notification for long-running processes
 function _sys_notify_status() {
