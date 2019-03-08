@@ -29,7 +29,7 @@ collaborator = COLLABORATORS.fetch( ARGV.first.to_sym ) do |key|
   exit
 end
 
-to_copy = "Co-authored by: #{collaborator}"
+to_copy = "Co-authored-by: #{collaborator}"
 
 `echo "#{to_copy}" | pbcopy` # all Rubyists use MacOS ;P
 puts "#{to_copy} copied"
