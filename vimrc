@@ -96,7 +96,7 @@ set autoread
 "         autocmd CursorMovedI    * silent! checktime
 "     endif
 " augroup END
-" 
+"
 " " When editing a file, always jump to the last known cursor position.
 " " Don't do it when the position is invalid or when inside an event handler
 " " (happens when dropping a file on gvim).
@@ -106,7 +106,7 @@ set autoread
 "   \ if line("'\"") > 1 && line("'\"") <= line("$") |
 "   \   exe "normal! g`\"" |
 "   \ endif
-" 
+"
 " " Maintain some setup between sessions
 " set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
@@ -202,7 +202,7 @@ map <C-l> <C-W>l
 
 " " Close the current buffer
 " map <leader>bd :Bclose<cr>
-" 
+"
 " Show buffer list (also mapped to "<leader>be", but this is easier to type
 map <leader>bb :BufExplorer<cr>
 
@@ -213,30 +213,30 @@ map <leader>nn :NERDTree<cr>
 " function! <SID>BufcloseCloseIt()
 "   let l:currentBufNum = bufnr("%")
 "   let l:alternateBufNum = bufnr("#")
-" 
+"
 "   if buflisted(l:alternateBufNum)
 "     buffer #
 "   else
 "     bnext
 "   endif
-" 
+"
 "   if bufnr("%") == l:currentBufNum
 "     new
 "   endif
-" 
+"
 "   if buflisted(l:currentBufNum)
 "     execute("bdelete! ".l:currentBufNum)
 "   endif
 " endfunction
-" 
-" " Specify the behavior when switching between buffers 
+"
+" " Specify the behavior when switching between buffers
 " try
 "   set switchbuf=usetab
 "   set stal=1
 " catch
 " endtry
-" 
-" 
+"
+"
 " ===== Statusline =====
 
 " Never hide the statusline
