@@ -30,6 +30,7 @@
     Plug 'git@github.com:vim-ruby/vim-ruby.git'               " Recent-ish Ruby syntax highlighting
     Plug 'git@github.com:nelstrom/vim-textobj-rubyblock.git'  " spiffy nav inside/around Ruby blocks
     Plug 'git@github.com:kana/vim-textobj-user.git'           " dependency of vim-textobj-rubyblock
+    Plug 'git@github.com:manu-mannattil/vim-longlines'        " Navigate long lines while word wrapping is on
 
     " TextMate-style snippets
     Plug 'git@github.com:garbas/vim-snipmate.git'
