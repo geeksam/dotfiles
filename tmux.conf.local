@@ -1,37 +1,24 @@
-# Status Bar Items
-bind C-q set -g status-left "" \; set -g status-right ""  # clear status bar for screencasting
-
-set -g status-left "#[fg=green]Session: #S #[fg=yellow]W#I #[fg=green]P#P #(pane_size)"
-
-# Actually, go back to 0-based window indexing so I always have
-# window #0 for miscellaneous environment yak-shaving...
+# I prefer 0-based window indexing so I always have window #0 for dotfile
+# hacking and other miscellaneous yak shaving...
 set -g base-index 0
 
-# Maximize and restore a pane. Only needed for 1.7 and lower.
-# START:max
-unbind >
-bind > new-window -d -n tmp \; swap-pane -s tmp.1 \; select-window -t tmp
-# END:max
-#
-# START:restore
-unbind <
-bind < last-window \; swap-pane -s tmp.1 \; kill-window -t tmp
-# END:restore
 
 
-# splits should start in the same directory as the pane being split from
+# Splits should start in the same directory as the pane being split from
+# (Note that this doesn't help with chruby, but it's at least a start...)
 bind | split-window -h -c "#{pane_current_path}"
 bind - split-window -v -c "#{pane_current_path}"
 
-set -g status-right " #[fg=green]#(wemux_user_list) #[fg=yellow]%R"
 
 
+# Status bar customization
 set -g status-interval 3
+set -g status-left "#[fg=green]Session: #S #[fg=yellow]W#I #[fg=green]P#P #(pane_size)"
+set -g status-right " #[fg=green]#(wemux_user_list) #[fg=yellow]%R"
+bind C-q set -g status-left "" \; set -g status-right ""  # clear status bar for screencasting
+bind s   set -g status off # hide status bar entirely
+bind S   set -g status on  # show status bar
 
-
-# Bind 's' to hide status bar; bind 'S' to show it
-bind s set -g status off
-bind S set -g status on
 
 
 # Bind ^K to clear the scrollback buffer
