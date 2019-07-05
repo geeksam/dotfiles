@@ -3,5 +3,6 @@
 	name = Sam Livingston-Gray
 [branch]
 	autosetuprebase = always
+  sort=-committerdate
 [core]
 	excludesfile = ~/.gitignore_global
