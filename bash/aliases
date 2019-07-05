@@ -52,14 +52,16 @@ alias  merge='git merge --no-ff'   ; complete -o default -o nospace -F _git_bran
 alias gnuke_merged_branches='git nuke-merged-branches'
 
 # Faster, pussycat! Test! Test!
-alias rtf='rake test:fast'
+alias rtf='rake test:fast' # Haven't used this for years, but the comment is too funny to delete
 
 # Rails
 alias r='bundle exec rails'
 
 # RSpec
+alias cspec='clear ; bundle exec rspec'
+alias spec='bundle exec rspec'
 alias spec_ordered='bundle exec rspec --order defined'
-alias  spec_random='bundle exec rspec --order random'
+alias spec_random='bundle exec rspec --order random'
 
 # Bundler
 alias     b='bundle'
@@ -72,4 +74,6 @@ alias brake='bundle exec rake'
 alias dc='docker-compose'
 
 # SSH agent
-alias reagent='(pgrep ssh-agent | xargs kill) && eval $(ssh-agent) && ssh-add'
+alias   agent='eval $(ssh-agent) && ssh-add'
+alias deagent='pgrep ssh-agent | xargs kill'
+alias reagent='deagent && agent'
