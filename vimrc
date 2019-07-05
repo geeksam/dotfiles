@@ -313,8 +313,10 @@ colorscheme herald
   " for comments is too dim.  Brighten it up a little...
   if has("gui_running")
     hi Comment        guibg=#1F1F1F guifg=#909090 gui=none
+    hi Folded         guibg=#001336 guifg=#005fff gui=none
   elseif &t_Co == 256
     hi Comment        ctermbg=234   ctermfg=248   cterm=none
+    hi Folded         ctermbg=234   ctermfg=27    cterm=none
   elseif &t_Co == 16
     hi Comment        ctermbg=8     ctermfg=7     cterm=none
   elseif &t_Co == 8
