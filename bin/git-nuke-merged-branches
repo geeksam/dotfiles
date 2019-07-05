@@ -1,0 +1,4 @@
+git branch --merged \
+  | egrep -v '^\* ' \
+  | xargs -I % \
+  sh -c 'echo; git branch -d %; git push -q origin :% &> /dev/null && echo "removed remote branch %" || echo "% did not exist on remote"'
