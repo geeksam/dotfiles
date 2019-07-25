@@ -1,0 +1,8 @@
+# `asdf` CLI tool for managing multiple versions of tools (e.g., Ruby)
+if [ -f /usr/local/opt/asdf/asdf.sh ]
+then
+  . /usr/local/opt/asdf/asdf.sh
+  . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+else
+  echo It seems the `asdf` version manager has not been installed...
+fi

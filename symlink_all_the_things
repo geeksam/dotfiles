@@ -1,9 +1,11 @@
+ln -fs ~/dotfiles/asdfrc           ~/.asdfrc
 ln -fs ~/dotfiles/bashrc           ~/.bashrc
 ln -fs ~/dotfiles/bash_profile     ~/.bash_profile # http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
 ln -fs ~/dotfiles/gemrc            ~/.gemrc
 ln -fs ~/dotfiles/gitconfig        ~/.gitconfig
 ln -fs ~/dotfiles/gitignore_global ~/.gitignore_global
 ln -fs ~/dotfiles/inputrc          ~/.inputrc
+ln -fs ~/dotfiles/tool-versions    ~/.tool-versions
 ln -fs ~/dotfiles/tmux.conf        ~/.tmux.conf
 ln -fs ~/dotfiles/tmux.conf.local  ~/.tmux.conf.local
 ln -fs ~/dotfiles/vimrc            ~/.vimrc

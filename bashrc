@@ -6,9 +6,9 @@ source ~/dotfiles/bash/aliases
 if [ -f ~/dotfiles/private/aliases.bash ]; then
 	source ~/dotfiles/private/aliases.bash
 fi
+source ~/dotfiles/bash/asdf
 source ~/dotfiles/bash/completion
 source ~/dotfiles/bash/history_sharing
-source ~/dotfiles/bash/ruby-fu
 source ~/dotfiles/bash/twitter-gif-tools.bash
 
 # Notification for long-running processes
