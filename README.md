@@ -9,11 +9,13 @@ These are my dotfiles.  There are many like them, but these ones are mine.
 * Set up shell helpers, aliases, config files, and so on:
   * `./symlink_all_the_things`
 * Make sure homebrew is installed:  https://brew.sh/
-* Install `asdf` and use it to manage Ruby versions:
-  * `brew install asdf`
-  * `brew install openssl libyaml libffi` (required by the `asdf-ruby` plugin; note that this may cause some Ruby Woes below)
-  * `asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git`
 * Launch vim and run `:PlugInstall`
+* Install some Ruby version manager:
+  * RVM: http://rvm.io/
+  * asdf:
+    * `brew install asdf`
+    * `brew install openssl libyaml libffi` (required by the `asdf-ruby` plugin; note that this may cause some Ruby Woes below)
+    * `asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git`
 
 ## Ruby Woes
 
