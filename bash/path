@@ -7,5 +7,5 @@ export PATH=$HOME/dotfiles/private/bin:$PATH
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Reduce typing when using the 'cd' command
-CDPATH=".:~:~/work:~/personal"
+CDPATH=".:~:~/work:~/github:~/personal"
 
