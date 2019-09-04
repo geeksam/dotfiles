@@ -9,6 +9,7 @@ These are my dotfiles.  There are many like them, but these ones are mine.
 * Set up shell helpers, aliases, config files, and so on:
   * `./symlink_all_the_things`
 * Make sure homebrew is installed:  https://brew.sh/
+* `brew install macvim` to get a reasonable version of Vim
 * Launch vim and run `:PlugInstall`
 * Install some Ruby version manager:
   * RVM: http://rvm.io/
