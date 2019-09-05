@@ -13,6 +13,7 @@ These are my dotfiles.  There are many like them, but these ones are mine.
 * Launch vim and run `:PlugInstall`
 * Install some Ruby version manager:
   * RVM: http://rvm.io/
+  * rbenv: https://github.com/rbenv/rbenv
   * asdf:
     * `brew install asdf`
     * `brew install openssl libyaml libffi` (required by the `asdf-ruby` plugin; note that this may cause some Ruby Woes below)
