@@ -56,6 +56,7 @@ alias rtf='rake test:fast' # Haven't used this for years, but the comment is too
 
 # Rails
 alias r='bundle exec rails'
+alias t='bundle exec ruby -Itest'
 
 # RSpec
 alias cspec='clear ; bundle exec rspec'
