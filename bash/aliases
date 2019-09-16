@@ -51,6 +51,12 @@ alias  merge='git merge --no-ff'   ; complete -o default -o nospace -F _git_bran
 # git custom commands (these will live in ~/bin/git-*)
 alias gnuke_merged_branches='git nuke-merged-branches'
 
+# upstream/upmaster management; these assume the following remote refs:
+# * origin   ---> my fork
+# * upstream ---> the canonical shared repo
+alias guppy='git checkout upmaster && git pull --rebase && git rebase upmaster master'
+alias trout='git checkout upmaster && git merge --ff-only master && git push && git checkout master && git push'
+
 # Faster, pussycat! Test! Test!
 alias rtf='rake test:fast' # Haven't used this for years, but the comment is too funny to delete
 
