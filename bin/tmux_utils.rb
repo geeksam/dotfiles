@@ -45,6 +45,15 @@ def tmux_send_keys(cmd, window, pane=1)
   tmux_run %Q( send-keys -t #{window}.#{pane} "#{cmd}" C-m )
 end
 
+def echo(s, window)
+  tmux_send_keys "echo #{s}", window
+end
+
+def tmux_select(window, pane = nil)
+  tmux_run "select-window -t #{window}"
+  tmux_run "select-pane -t #{pane}" if pane
+end
+
 def tmux_new_window(window, target_dir, label, *cmds)
   # Create and name the window
   label ||= File.basename(target_dir)
@@ -60,13 +69,14 @@ def tmux_new_window(window, target_dir, label, *cmds)
 end
 
 # tmux's idea of 'vertical' and 'horizontal' are backward from vim's >.<
-def tmux_split(along)
+def tmux_split(along:, percent: 50)
   flag =
     case along.to_sym
     when :| ; "-h"
     when :- ; "-v"
     end
-  cmd = %q( split-window %s -c "#{pane_current_path}" ) % flag
+  cmd = %q( split-window %s -p %d ) % [ flag, percent ]
+
   tmux_run cmd
 end
 
