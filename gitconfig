@@ -5,3 +5,5 @@
   sort=-committerdate
 [core]
 	excludesfile = ~/.gitignore_global
+[diff]
+	noprefix = true
