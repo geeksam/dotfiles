@@ -313,18 +313,23 @@ set t_Co=256 " 256 colors
 set background=dark
 colorscheme herald
 
-  " I like the 'herald' color scheme, but the color it uses
-  " for comments is too dim.  Brighten it up a little...
+  " I like the 'herald' color scheme, but some of its color combos are unreadable...
   if has("gui_running")
     hi Comment        guibg=#1F1F1F guifg=#909090 gui=none
     hi Folded         guibg=#001336 guifg=#005fff gui=none
+    hi TabLine        guibg=#141414 guifg=#8A8A8A gui=none
+    hi StatusLine     guibg=#0000d7 guifg=#bcbcbc gui=none
+    hi StatusLineNC   guibg=#262626 guifg=#8a8a8a gui=none
   elseif &t_Co == 256
-    hi Comment        ctermbg=234   ctermfg=248   cterm=none
-    hi Folded         ctermbg=234   ctermfg=27    cterm=none
+    hi Comment        ctermbg=234  ctermfg=248   cterm=none
+    hi Folded         ctermbg=234  ctermfg=27    cterm=none
+    hi TabLine        ctermbg=233  ctermfg=245   cterm=none
+    hi StatusLine     ctermbg=20   ctermfg=250   cterm=none
+    hi StatusLineNC   ctermbg=235  ctermfg=245   cterm=none
   elseif &t_Co == 16
-    hi Comment        ctermbg=8     ctermfg=7     cterm=none
+    hi Comment        ctermbg=8 ctermfg=7 cterm=none
   elseif &t_Co == 8
-    hi Comment        ctermbg=8     ctermfg=7     cterm=none
+    hi Comment        ctermbg=8 ctermfg=7 cterm=none
   endif
 
   " Also, make the background a shade darker (terminal only)
