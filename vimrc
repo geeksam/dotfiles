@@ -16,7 +16,7 @@
     Plug 'git@github.com:flazz/vim-colorschemes.git'          " loads o' colorschemes
     Plug 'git@github.com:tpope/vim-surround.git'              " surrounding characters (ludicrously useful)
     Plug 'git@github.com:tpope/vim-repeat.git'                " repeat plugin actions (e.g., from vim-surround)
-    Plug 'git@github.com:ctrlpvim/ctrlp.vim.git'              " Fast fuzzy finder
+    Plug 'git@github.com:junegunn/fzf.vim.git'                " use 'fzf' in vim #(NOTE: `brew install fzf`)
     Plug 'git@github.com:danro/rename.vim.git'                " Easy renames
     Plug 'git@github.com:tpope/vim-endwise.git'               " Automatically enter closing tokens (e.g., 'end' in Ruby)
     Plug 'git@github.com:scrooloose/syntastic.git'            " Syntax warnings
@@ -54,6 +54,11 @@
 
     " Add plugins to &runtimepath
     call plug#end()
+
+" ===== Plugin config =====
+
+set rtp+=/usr/local/opt/fzf
+map <C-p> :FZF<Enter>
 
 " ===== General =====
 
