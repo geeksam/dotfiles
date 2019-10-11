@@ -156,7 +156,9 @@ set linebreak " Wrap at word (display only; 'textwidth' affects physical inserti
 
 " Make dealing with split windows a little easier
 set equalalways " Vertical and horizontal splits default to equal sizes when created
+:noremap <leader>v :vsplit<cr>
 :noremap <leader>\| :vsplit<cr>
+:noremap <leader>h :split<cr>
 :noremap <leader>- :split<cr>
 
 
