@@ -7,6 +7,7 @@ if [ -f ~/dotfiles/private/aliases.bash ]; then
 	source ~/dotfiles/private/aliases.bash
 fi
 source ~/dotfiles/bash/ruby-fu
+source ~/dotfiles/bash/python-fu
 source ~/dotfiles/bash/completion
 source ~/dotfiles/bash/history_sharing
 source ~/dotfiles/bash/twitter-gif-tools.bash
