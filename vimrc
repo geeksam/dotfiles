@@ -58,6 +58,7 @@
 
 set rtp+=/usr/local/opt/fzf
 map <C-p> :FZF<Enter>
+let g:NERDTreeNodeDelimiter = "\u00a0" " Hide unsightly `^G` prefixes on filenames
 
 " ===== General =====
 
