@@ -4,3 +4,4 @@ bash/private_aliases
 vim/.netrwhist
 vim/plugged
 vim/vim
+vim/black/*
