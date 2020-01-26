@@ -5,51 +5,52 @@
     " Documentation on Plug:  https://github.com/junegunn/vim-plug
     call plug#begin('~/.vim/plugged')
 
-    " Make sure you use single quotes
-
-    Plug 'scrooloose/nerdtree'                                " NERDtree.  Yep.
-    Plug 'git@github.com:rking/ag.vim.git'                    " use the Silver Searcher from within vim with :Ag
-    Plug 'git@github.com:jremmen/vim-ripgrep.git'             " use the Silver Searcher from within vim with :Ag
-    Plug 'git@github.com:jlanzarotta/bufexplorer.git'         " Buffer Explorer, quite useful
-    Plug 'git@github.com:godlygeek/tabular.git'               " Tabularize:  vertical alignment goodness
-    Plug 'git@github.com:tomtom/tcomment_vim.git'             " Ctrl+dash 2x to comment (and a bunch of other stuff I never use)
-    Plug 'git@github.com:flazz/vim-colorschemes.git'          " loads o' colorschemes
-    Plug 'git@github.com:tpope/vim-surround.git'              " surrounding characters (ludicrously useful)
-    Plug 'git@github.com:tpope/vim-repeat.git'                " repeat plugin actions (e.g., from vim-surround)
-    Plug 'git@github.com:junegunn/fzf.vim.git'                " use 'fzf' in vim #(NOTE: `brew install fzf`)
-    Plug 'git@github.com:danro/rename.vim.git'                " Easy renames
-    Plug 'git@github.com:tpope/vim-endwise.git'               " Automatically enter closing tokens (e.g., 'end' in Ruby)
-    Plug 'git@github.com:scrooloose/syntastic.git'            " Syntax warnings
-    Plug 'git@github.com:wesQ3/vim-windowswap.git'            " <Leader>ww in each of two windows to swap them
-    Plug 'git@github.com:AndrewRadev/splitjoin.vim.git'       " convert between one-line to multiline constructs
-    Plug 'git@github.com:vim-scripts/ZoomWin.git'             " 'C-w o' toggles between splits and a single pane
-    Plug 'git@github.com:tpope/vim-fugitive.git'              " Fugitive. You know, for Git!
-    Plug 'git@github.com:elixir-lang/vim-elixir.git'          " presumably something to do with Elixir syntax...
-    Plug 'git@github.com:Konfekt/FastFold.git'                " hopefully, keep vim from slowing down when editing complex files...
-    Plug 'git@github.com:vim-ruby/vim-ruby.git'               " Recent-ish Ruby syntax highlighting
-    Plug 'git@github.com:nelstrom/vim-textobj-rubyblock.git'  " spiffy nav inside/around Ruby blocks
-    Plug 'git@github.com:kana/vim-textobj-user.git'           " dependency of vim-textobj-rubyblock
-    Plug 'git@github.com:manu-mannattil/vim-longlines'        " Navigate long lines while word wrapping is on
+    # Miscellaneous useful stuff
+    Plug 'scrooloose/nerdtree'          " file navigation
+    Plug 'rking/ag.vim'                 " use the Silver Searcher in vim
+    Plug 'jremmen/vim-ripgrep'          " use RipGrep in vim
+    Plug 'jlanzarotta/bufexplorer'      " Buffer Explorer, quite useful
+    Plug 'godlygeek/tabular'            " Tabularize:  vertical alignment goodness
+    Plug 'tomtom/tcomment_vim'          " Ctrl+dash 2x to comment (and a bunch of other stuff I never use)
+    Plug 'flazz/vim-colorschemes'       " loads o' colorschemes
+    Plug 'tpope/vim-surround'           " surrounding characters (ludicrously useful)
+    Plug 'tpope/vim-repeat'             " repeat plugin actions (e.g., from vim-surround)
+    Plug 'junegunn/fzf.vim'             " use 'fzf' in vim (NOTE: `brew install fzf`)
+    Plug 'danro/rename.vim'             " Easy renames
+    Plug 'wesQ3/vim-windowswap'         " <Leader>ww in each of two windows to swap them
+    Plug 'AndrewRadev/splitjoin.vim'    " convert between one-line to multiline constructs
+    Plug 'vim-scripts/ZoomWin'          " 'C-w o' toggles between splits and a single pane
+    Plug 'tpope/vim-fugitive'           " Fugitive. You know, for Git!
+    Plug 'Konfekt/FastFold'             " hopefully, keep vim from slowing down when editing complex files...
+    Plug 'manu-mannattil/vim-longlines' " Navigate long lines while word wrapping is on
 
     " TextMate-style snippets
-    Plug 'git@github.com:garbas/vim-snipmate.git'
-    Plug 'git@github.com:MarcWeber/vim-addon-mw-utils.git' " dependency of vim-snipmate
-    Plug 'git@github.com:tomtom/tlib_vim.git'              " dependency of vim-snipmate
+    Plug 'garbas/vim-snipmate'
+    Plug 'MarcWeber/vim-addon-mw-utils' " dependency of vim-snipmate
+    Plug 'tomtom/tlib_vim'              " dependency of vim-snipmate
     filetype plugin on " apparently snipMate needs this
-    Plug 'git@github.com:honza/vim-snippets.git'           " a bunch of premade snippets
+    Plug 'honza/vim-snippets'           " a bunch of premade snippets
 
-    " Tool-specific plugins...
-    Plug 'git@github.com:kchmck/vim-coffee-script.git'
-    Plug 'git@github.com:tpope/vim-rails.git'
+    " This is a dependency of at least one other text object plugin
+    Plug 'kana/vim-textobj-user'
+
+    " Ruby, Ruby, Ruby!
+    Plug 'tpope/vim-rails'                " pretty much what it says on the tin
+    Plug 'tpope/vim-endwise'              " Automatically enter closing tokens (e.g., 'end' in Ruby)
+    Plug 'vim-ruby/vim-ruby'              " Recent-ish Ruby syntax highlighting
+    Plug 'nelstrom/vim-textobj-rubyblock' " spiffy nav inside/around Ruby blocks
+    Plug 'kchmck/vim-coffee-script'       " pretty much what it says on the tin
+
+    " Python, Python, Python!
+    Plug 'psf/black'            " autoformatting
+    Plug 'gryf/pylint-vim'      " linting
+    Plug 'davidhalter/jedi-vim' " autocomplete (and probably some other stuff?)
 
     " Plugins I used to have:
     " - gundo
     " - vim-bundler
     " - vim-cucumber
     " - vim-markdown
-
-    " Check here for some more to try out:
-    " https://need.computer/2016/01/21/22-vim-plugins-every-ruby-developer-should-use.html
 
     " Add plugins to &runtimepath
     call plug#end()
@@ -59,6 +60,7 @@
 set rtp+=/usr/local/opt/fzf
 map <C-p> :FZF<Enter>
 let g:NERDTreeNodeDelimiter = "\u00a0" " Hide unsightly `^G` prefixes on filenames
+let g:jedi#popup_on_dot = 0 " can still use C-<space> to open intellisense-like autocompletion
 
 " ===== General =====
 
