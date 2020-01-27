@@ -5,7 +5,7 @@
     " Documentation on Plug:  https://github.com/junegunn/vim-plug
     call plug#begin('~/.vim/plugged')
 
-    # Miscellaneous useful stuff
+    " Miscellaneous useful stuff
     Plug 'scrooloose/nerdtree'          " file navigation
     Plug 'rking/ag.vim'                 " use the Silver Searcher in vim
     Plug 'jremmen/vim-ripgrep'          " use RipGrep in vim
