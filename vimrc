@@ -65,6 +65,8 @@ let g:NERDTreeNodeDelimiter = "\u00a0" " Hide unsightly `^G` prefixes on filenam
 let g:pymode_rope = 0
 let g:jedi#popup_on_dot = 0 " can still use C-<space> to open intellisense-like autocompletion
 
+let NERDTreeIgnore = ['\.pyc$']
+
 " ===== General =====
 
 " Modelines: more trouble than they're worth
