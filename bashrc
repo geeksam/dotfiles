@@ -3,8 +3,8 @@ export EDITOR='vim'
 # Include stuff
 source ~/dotfiles/bash/path
 source ~/dotfiles/bash/aliases
-if [ -f ~/dotfiles/private/aliases.bash ]; then
-	source ~/dotfiles/private/aliases.bash
+if [ -f ~/dotfiles/private/bashrc ]; then
+	source ~/dotfiles/private/bashrc
 fi
 source ~/dotfiles/bash/ruby-fu
 source ~/dotfiles/bash/python-fu
