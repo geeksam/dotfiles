@@ -23,6 +23,9 @@
     Plug 'tpope/vim-fugitive'           " Fugitive. You know, for Git!
     Plug 'Konfekt/FastFold'             " hopefully, keep vim from slowing down when editing complex files...
     Plug 'manu-mannattil/vim-longlines' " Navigate long lines while word wrapping is on
+    Plug 'vim-syntastic/syntastic'      " multi-language syntax tools
+
+    " TODO: look into 'sjl/gundo' for undo tree superpowers
 
     " TextMate-style snippets
     Plug 'garbas/vim-snipmate'
@@ -41,16 +44,12 @@
     Plug 'nelstrom/vim-textobj-rubyblock' " spiffy nav inside/around Ruby blocks
     Plug 'kchmck/vim-coffee-script'       " pretty much what it says on the tin
 
-    " Python, Python, Python!
-    Plug 'psf/black'            " autoformatting
-    Plug 'gryf/pylint-vim'      " linting
-    Plug 'davidhalter/jedi-vim' " autocomplete (and probably some other stuff?)
-
-    " Plugins I used to have:
-    " - gundo
-    " - vim-bundler
-    " - vim-cucumber
-    " - vim-markdown
+    " Python, Python, Python.  *shakes head*
+    Plug 'psf/black'                     " autoformatting
+    Plug 'davidhalter/jedi-vim'          " autocomplete (and probably some other stuff?)
+    Plug 'jeetsukumaran/vim-pythonsense' " text objects for Python
+    Plug 'python-mode/python-mode'       " a combination of several other plugins I guess?
+    Plug 'lambdalisue/vim-pyenv'         " make Vim use pyenv-managed Python
 
     " Add plugins to &runtimepath
     call plug#end()
@@ -60,6 +59,10 @@
 set rtp+=/usr/local/opt/fzf
 map <C-p> :FZF<Enter>
 let g:NERDTreeNodeDelimiter = "\u00a0" " Hide unsightly `^G` prefixes on filenames
+
+" OK seriously, I don't want *any* autocompletion popping up in Python just
+" because I typed a freaking dot, okay?  GET OUT OF MY FACE, VIM
+let g:pymode_rope = 0
 let g:jedi#popup_on_dot = 0 " can still use C-<space> to open intellisense-like autocompletion
 
 " ===== General =====
