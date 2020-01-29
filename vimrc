@@ -50,6 +50,10 @@
     Plug 'jeetsukumaran/vim-pythonsense' " text objects for Python
     Plug 'python-mode/python-mode'       " a combination of several other plugins I guess?
     Plug 'lambdalisue/vim-pyenv'         " make Vim use pyenv-managed Python
+    Plug 'fisadev/vim-isort'             " sort import statements (sigh)
+
+    " TODO: check out other possibly useful Python plugins at:
+    " https://codeinthehole.com/tips/vim-text-objects/
 
     " Add plugins to &runtimepath
     call plug#end()
