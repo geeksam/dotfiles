@@ -220,8 +220,8 @@ map <C-l> <C-W>l
 " Show buffer list (also mapped to "<leader>be", but this is easier to type
 map <leader>bb :BufExplorer<cr>
 
-" Show NERDTree pane
-map <leader>nn :NERDTree<cr>
+" Show/hide NERDTree pane
+map <leader>nn :NERDTreeToggle<cr>
 
 " command! Bclose call <SID>BufcloseCloseIt()
 " function! <SID>BufcloseCloseIt()
@@ -266,6 +266,9 @@ function! CurDir()
 endfunction
 
 
+" ===== All files =====
+autocmd FileType * :set colorcolumn=0 " Never bother me with concepts like 'right margins' ;P
+
 " ===== Text files =====
 
 autocmd FileType text setlocal textwidth=72
@@ -282,7 +285,6 @@ autocmd FileType html :set spl=en_us spell
 compiler ruby         " Enable compiler support for ruby
 autocmd FileType ruby :set foldmethod=syntax
 autocmd FileType ruby :set foldlevel=1
-
 
 " ===== Sam's Customizations =====
 
@@ -323,6 +325,10 @@ set t_Co=256 " 256 colors
 set background=dark
 colorscheme herald
 
+  " ===================================================================
+  " ===== COLOR CHEAT SHEET: https://jonasjacek.github.io/colors/ =====
+  " ===================================================================
+
   " I like the 'herald' color scheme, but some of its color combos are unreadable...
   if has("gui_running")
     hi Comment        guibg=#1F1F1F guifg=#909090 gui=none
@@ -336,6 +342,7 @@ colorscheme herald
     hi TabLine        ctermbg=233  ctermfg=245   cterm=none
     hi StatusLine     ctermbg=20   ctermfg=250   cterm=none
     hi StatusLineNC   ctermbg=235  ctermfg=245   cterm=none
+    hi ColorColumn    ctermbg=235   ctermfg=none   cterm=none
   elseif &t_Co == 16
     hi Comment        ctermbg=8 ctermfg=7 cterm=none
   elseif &t_Co == 8
