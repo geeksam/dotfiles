@@ -1,0 +1,9 @@
+#!/bin/bash
+
+CONTEXT=$(kubectx -c)
+NAMESPACE=$(kubens -c)
+
+echo
+echo "k8s context:   ${CONTEXT}"
+echo "k8s namespace: ${NAMESPACE}"
+echo
