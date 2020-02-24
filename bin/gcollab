@@ -21,7 +21,14 @@ def table(tbl, indent: 4)
   }
 end
 
-collaborator = COLLABORATORS.fetch( ARGV.first.to_sym ) do |key|
+begin
+  name = ARGV.first.to_sym
+rescue NoMethodError
+  puts "\n\n\n\tgcollab with whom, pray tell?\n\n\n"
+  exit
+end
+
+collaborator = COLLABORATORS.fetch( name ) do |key|
   puts
   puts "Who is this #{key.inspect} of whom you speak?  I know only:"
   puts table(COLLABORATORS.to_a.sort)
