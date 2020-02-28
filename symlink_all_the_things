@@ -3,6 +3,7 @@ ln -fs ~/dotfiles/bash_profile     ~/.bash_profile # http://www.joshstaiger.org/
 ln -fs ~/dotfiles/gemrc            ~/.gemrc
 ln -fs ~/dotfiles/gitconfig        ~/.gitconfig
 ln -fs ~/dotfiles/gitignore_global ~/.gitignore_global
+ln -fs ~/dotfiles/irbrc            ~/.irbrc
 ln -fs ~/dotfiles/inputrc          ~/.inputrc
 ln -fs ~/dotfiles/tool-versions    ~/.tool-versions
 ln -fs ~/dotfiles/tmux.conf        ~/.tmux.conf
