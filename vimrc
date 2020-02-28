@@ -171,6 +171,9 @@ set equalalways " Vertical and horizontal splits default to equal sizes when cre
 :noremap <leader>v :vsplit<cr>
 :noremap <leader>h :split<cr>
 
+" Syntax highlighting can be slow on some large files.  Be more patient.
+set redrawtime=5000
+
 
 " ===== Colors =====
 set t_Co=256
