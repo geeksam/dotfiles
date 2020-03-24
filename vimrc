@@ -24,6 +24,7 @@
     Plug 'Konfekt/FastFold'             " hopefully, keep vim from slowing down when editing complex files...
     Plug 'manu-mannattil/vim-longlines' " Navigate long lines while word wrapping is on
     Plug 'vim-syntastic/syntastic'      " multi-language syntax tools
+    Plug 'simnalamburt/vim-mundo'       " visualize the undo/redo tree for great power
 
     " TODO: look into 'sjl/gundo' for undo tree superpowers
 
@@ -60,7 +61,7 @@
 
 " ===== Plugin config =====
 
-set rtp+=/usr/local/opt/fzf
+set runtimepath+=/usr/local/opt/fzf
 map <C-p> :FZF<Enter>
 let g:NERDTreeNodeDelimiter = "\u00a0" " Hide unsightly `^G` prefixes on filenames
 
@@ -70,6 +71,12 @@ let g:pymode_rope = 0
 let g:jedi#popup_on_dot = 0 " can still use C-<space> to open intellisense-like autocompletion
 
 let NERDTreeIgnore = ['\.pyc$']
+
+" undo tree config
+nnoremap <C-u> :MundoToggle<CR>
+let g:mundo_preview_bottom = 1
+let g:mundo_help = 1
+
 
 " ===== General =====
 
@@ -426,8 +433,6 @@ endif
 autocmd FileType text :IndentGuidesEnable
 
 " Tabularize
-nmap <Leader>a# :Tabularize/#<CR>
-vmap <Leader>a# :Tabularize/#<CR>
 nmap <Leader>ah :Tabularize/=><CR>
 vmap <Leader>ah :Tabularize/=><CR>
 " lolvim: the sequence "\@!" apparently means "zero of the thing I just said"
@@ -447,12 +452,21 @@ vmap <Leader>awh :Tabularize/when<CR>
 
 
 " NOTES:
-" * \zs is basically a zero-width lookbehind assertion;
-"   it eats spaces before the comma/colon/whatever.
-"   See: http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+" * Per http://vimcasts.org/episodes/aligning-text-with-tabular-vim/, the \zs
+"   atom excludes the [previous] character from the search match.  Similarly,
+"   `\ze` should exclude the following char.
+" * Per other resources,
+"   * `\zs` marks the *s*tart of 'the passage to be operated on', and
+"   * `\ze` marks the *e*nd of same
+" * `\zs` is used here like a zero-width lookbehind assertion to
+"   eat spaces before the comma/colon/whatever.
+" * `\ze` can also be used here like a zero-width lookahead.
 " * l0c1 is a format specifier that says
 "   "left, then zero spaces, then [delimiter], then 1 space"
 "   See: https://raw.github.com/godlygeek/tabular/master/doc/Tabular.txt
+" TODO: this can probably be replaced with just \s, in at least some cases?
+nmap <Leader>a# :Tabularize/ # /l0c0<CR>
+vmap <Leader>a# :Tabularize/ # /l0c0<CR>
 nmap <Leader>a: :Tabularize/:\zs /l0c0<CR>
 vmap <Leader>a: :Tabularize/:\zs /l0c0<CR>
 nmap <Leader>a, :Tabularize/,\zs/l0c1<CR>
@@ -463,6 +477,9 @@ nmap <Leader>a( :Tabularize/(\zs/l0c1<CR>:Tabularize/)/l1c0<CR>
 vmap <Leader>a( :Tabularize/(\zs/l0c1<CR>:Tabularize/)/l1c0<CR>
 nmap <Leader>a[ :Tabularize/[\zs/l0c1<CR>:Tabularize/]/l1c0<CR>
 vmap <Leader>a[ :Tabularize/[\zs/l0c1<CR>:Tabularize/]/l1c0<CR>
+nmap <Leader>a{ :Tabularize/\s{/l0c1<CR>:Tabularize/}\s/l1c0<CR>
+vmap <Leader>a{ :Tabularize/\s{/l0c1<CR>:Tabularize/}\s/l1c0<CR>
+
 
 " Trailing whitespace sucks.
 "" Show it:
