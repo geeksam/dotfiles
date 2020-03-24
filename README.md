@@ -10,6 +10,8 @@ These are my dotfiles.  There are many like them, but these ones are mine.
   * `./symlink_all_the_things`
 * Make sure homebrew is installed:  https://brew.sh/
 * `brew install macvim` to get a reasonable version of Vim
+* `brew install thefuck` because it's funny *and* useful
+* `brew install bat`
 * Launch vim and run `:PlugInstall`
 * Install some Ruby version manager (probably rbenv):
   * RVM: http://rvm.io/

@@ -8,6 +8,8 @@ if [ -f ~/dotfiles/private/bashrc ]; then
 fi
 source ~/dotfiles/bash/ruby-fu
 source ~/dotfiles/bash/python-fu
+source ~/dotfiles/bash/kubernetes-fu
+source ~/dotfiles/bash/misc-fu
 source ~/dotfiles/bash/completion
 source ~/dotfiles/bash/history_sharing
 source ~/dotfiles/bash/twitter-gif-tools.bash
@@ -27,8 +29,8 @@ function holler() {
 }
 
 # Prompt (see http://ezprompt.net for hints)
-alias  long_prompt="export PS1=\"\n\[\e[30;102m\][ \@ :: \\w\\\$(__git_ps1 ' :: %s') ]\[\e[m\]\n$ \""
-alias short_prompt="export PS1=\"\n\[\e[30;102m\][ \\w\\\$(__git_ps1 ' :: %s') ]\[\e[m\]\n$ \""
+alias  long_prompt="export PS1=\"\n\[\e[30;102m\][ \@ | \\w\\\$(__git_ps1 ' | (git: %s)') ]\[\e[m\]\n$ \""
+alias short_prompt="export PS1=\"\n\[\e[30;102m\][ \\w\\\$(__git_ps1 ' | %s') ]\[\e[m\]\n$ \""
 alias  tiny_prompt="export PS1=\"$ \""
 long_prompt
 

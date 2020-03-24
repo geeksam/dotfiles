@@ -1,3 +1,5 @@
+mkdir -p ~/.config/bat
+ln -fs ~/dotfiles/batfile          ~/.config/bat/config
 ln -fs ~/dotfiles/bashrc           ~/.bashrc
 ln -fs ~/dotfiles/bash_profile     ~/.bash_profile # http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
 ln -fs ~/dotfiles/gemrc            ~/.gemrc
