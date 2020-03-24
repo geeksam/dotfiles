@@ -1,5 +1,6 @@
 [user]
 	name = Sam Livingston-Gray
+	email = geeksam@gmail.com
 [branch]
 	autosetuprebase = always
   sort=-committerdate
