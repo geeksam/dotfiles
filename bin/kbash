@@ -1,0 +1,96 @@
+#!/usr/bin/env ruby
+
+
+##### 'Library' code #####
+
+require 'delegate'
+
+class Pods < DelegateClass(Array)
+  def self.from_kubectl
+    new(`kubectl get pods`)
+  end
+
+  attr_reader :pods
+  def initialize(thing)
+    case thing
+    when Pods
+      # good to go
+    when Array
+      super(thing)
+    when String
+      data = parse(thing)
+      @pods = data.map { |attrs| Pod.new(attrs) }
+      super(@pods)
+    else
+      raise ArgumentError
+    end
+  end
+
+  def fresh_meat
+    select(&:running?).sort_by(&:age).first
+  end
+
+  def matching_name(substring)
+    matches = select { |pod| pod.name.include?(substring) }
+    self.class.new(matches)
+  end
+
+  private
+
+  def parse(output)
+    read = ->(line) { line.split(/\s+/) }
+
+    lines = output.lines
+    keys = read.( lines.shift.downcase ) # eat the first line
+    lines.map { |line|
+      values = read.( line )
+      Hash[ keys.zip(values) ]
+    }
+  end
+end
+
+class Pod
+  def initialize(attrs)
+    @attrs = attrs
+  end
+
+  def name
+    @attrs["name"]
+  end
+
+  def running?
+    @attrs["status"] == "Running"
+  end
+
+  def age
+    @attrs["age"] =~ /^(\d+)(\w)$/
+    num    = $1.to_i
+    suffix = $2
+
+    case suffix
+    when "d" ; num * 86_400
+    when "h" ; num *  3_600
+    when "m" ; num *     60
+    when "s" ; num *      1
+    end
+  end
+end
+
+
+##### 'UI' code #####
+if $stdout.tty? && !defined?(RSpec)
+
+  if ARGV.length != 1
+    raise ArgumentError, "I take exactly one argument"
+  end
+
+  pod = nil
+  until pod do
+    pods = Pods.from_kubectl
+    pod = pods.matching_name(ARGV.first).fresh_meat
+    print "." if pod.nil?
+  end
+
+  puts "Connecting to pod #{pod.name} ..."
+  exec "kubectl exec -ti #{pod.name} bash"
+end
