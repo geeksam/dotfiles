@@ -81,9 +81,10 @@ alias brake='bundle exec rake'
 alias dc='docker-compose'
 
 # Kubernetes (abbreviated "k8s", pronounced "cybernoodles")
-alias kctl="kubectl"
-alias kctx="kubectx"
-alias  kns="kubens"
+alias  kctl="kubectl"
+alias kpods="kubectl get pods"
+alias   kcx="kubectx"
+alias   kns="kubens"
 
 # SSH agent
 alias   agent='eval $(ssh-agent) && ssh-add'
