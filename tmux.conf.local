@@ -12,6 +12,8 @@ bind - split-window -v -c "#{pane_current_path}"
 
 
 # Status bar customization
+# NOTE: looking at this because you accidentally hit C-q, below?
+# PREFIX+:, then type `source ~/.tmux.conf.local`  :)
 set -g status-interval 3
 set -g status-left "#[fg=green]Session: #S #[fg=yellow]W#I #[fg=green]P#P #(pane_size)"
 set -g status-right " #[fg=green]#(wemux_user_list) #[fg=yellow]%R"
