@@ -96,11 +96,6 @@ autocmd! bufwritepost .vimrc source ~/.vimrc
 let mapleader = ","
 let g:mapleader = ","
 
-" " Basic setup for pathogen
-" call pathogen#infect()
-" syntax on
-" filetype plugin indent on
-
 " Remember command line entries
 set history=300
 
@@ -150,11 +145,11 @@ set smartcase                      " Ignore case when searching lowercase
 set hlsearch                       " highlight search
 set incsearch                      " incremental search, search as you type
 map <silent> <leader><cr> :noh<cr> " clear search highlighting
-set magic                          " make regular expressions behave sanely (i.e.           " . " matches any character vs. " \. " )
+set magic                          " make regular expressions behave sanely (i.e. "." matches any character vs. "\." )
 set showmatch                      " Show matching bracets when text indicator is over them
 set noerrorbells                   " No sound on errors
 set novisualbell
-set t_vb=
+set t_vb=                          " visual bell
 set nu                             " print line numbers in gutter
 set numberwidth=4
 
@@ -209,9 +204,8 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
-set tw=72
+set tw=80
 set ai "Auto indent
-set si "Smart indet
 
 " ===== Moving around, tabs and buffers =====
 
@@ -271,7 +265,7 @@ set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
 
 
 function! CurDir()
-  let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
+  let curdir = substitute(getcwd(), '/Users/sam/', "~/", "g")
   return curdir
 endfunction
 
@@ -281,10 +275,10 @@ autocmd FileType * :set colorcolumn=0 " Never bother me with concepts like 'righ
 
 " ===== Text files =====
 
-autocmd FileType text setlocal textwidth=72
+autocmd FileType text setlocal textwidth=80
 autocmd FileType text setlocal nosi
 autocmd FileType text :set spl=en_us spell
-autocmd FileType gitcommit setlocal textwidth=72
+autocmd FileType gitcommit setlocal textwidth=80
 autocmd FileType gitcommit setlocal nosi
 autocmd FileType gitcommit :set spl=en_us spell
 
@@ -292,11 +286,20 @@ autocmd FileType gitcommit :set spl=en_us spell
 autocmd FileType html :set spl=en_us spell
 
 " ===== Ruby files =====
-compiler ruby         " Enable compiler support for ruby
+" compiler ruby         " Enable compiler support for ruby
 autocmd FileType ruby :set foldmethod=syntax
 autocmd FileType ruby :set foldlevel=1
 
 " ===== Sam's Customizations =====
+
+" using foldmethod=syntax can be very very slow, especially in Ruby.
+" Solution: https://vim.fandom.com/wiki/Keep_folds_closed_while_inserting_text
+" > Don't screw up folds when inserting text that might affect them, until
+" > leaving insert mode. Foldmethod is local to the window. Protect against
+" > screwing up folding when switching between windows.
+autocmd InsertEnter * if !exists('w:last_fdm')         | let w:last_fdm=&foldmethod   | setlocal foldmethod=manual | endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm           | endif
+
 
 " If I want spell checking, vim, I'll ask you for it.
 autocmd FileType text :set nospell
@@ -307,15 +310,15 @@ imap <F1> <Esc>
 
 " Setting up CtrlP to use faster options!
 if executable('rg') " ripgrep
-  " let g:ackprg = 'rg --vimgrep'
+  let g:ackprg = 'rg --vimgrep'
   set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
+  " let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  " let g:ctrlp_use_caching = 0
 elseif executable('ag') " The Silver Searcher
-  " let g:ackprg = 'ag --vimgrep' " from https://github.com/ggreer/the_silver_searcher
+  let g:ackprg = 'ag --vimgrep' " from https://github.com/ggreer/the_silver_searcher
   set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  let g:ctrlp_use_caching = 0
+  " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " let g:ctrlp_use_caching = 0
 endif
 
 " Split using similar keys to the ones I have in tmux
@@ -409,6 +412,9 @@ set textwidth=0 " Default to 'stop \'helping\' me, vim'
 
 " Edit the current directory
 nmap <Leader>e. :e %:h<CR>
+" ...the way spacemacs does it
+nmap <Space>ff :e %:h<CR>
+
 
 " Fonts for MacVIM
 if has("gui_running")
