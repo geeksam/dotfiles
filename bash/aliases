@@ -83,7 +83,7 @@ alias dc='docker-compose'
 # Kubernetes (abbreviated "k8s", pronounced "cybernoodles")
 alias  kctl="kubectl"
 alias kpods="kubectl get pods"
-alias   kcx="kubectx"
+alias  kctx="kubectx"
 alias   kns="kubens"
 
 # SSH agent
