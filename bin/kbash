@@ -74,6 +74,10 @@ class Pod
     when "s" ; num *      1
     end
   end
+
+  def human_age
+    @attrs["age"]
+  end
 end
 
 
@@ -91,6 +95,6 @@ if $stdout.tty? && !defined?(RSpec)
     print "." if pod.nil?
   end
 
-  puts "Connecting to pod #{pod.name} ..."
+  puts "Connecting to pod #{pod.name} (age: #{pod.human_age})..."
   exec "kubectl exec -ti #{pod.name} bash"
 end
