@@ -8,3 +8,6 @@
 	excludesfile = ~/.gitignore_global
 [diff]
 	noprefix = true
+[alias]
+	reword = commit --amend -o
+	fixup = commit --amend --no-edit
