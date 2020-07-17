@@ -292,8 +292,11 @@ autocmd FileType gitcommit :set spl=en_us spell
 autocmd FileType html :set spl=en_us spell
 
 " ===== Ruby files =====
-" compiler ruby         " Enable compiler support for ruby
 autocmd FileType ruby :set foldmethod=syntax
+autocmd FileType ruby :set foldlevel=1
+
+" ===== Python files =====
+autocmd FileType python :set foldmethod=indent
 autocmd FileType ruby :set foldlevel=1
 
 " ===== Sam's Customizations =====
