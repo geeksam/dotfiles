@@ -11,3 +11,5 @@
 [alias]
 	reword = commit --amend -o
 	fixup = commit --amend --no-edit
+	ff = merge --ff-only
+	mg = merge --no-ff

@@ -79,6 +79,8 @@ alias brake='bundle exec rake'
 
 # Docker
 alias dc='docker-compose'
+alias dcr='docker-compose run'
+alias dcrsp='docker-compose run --service-ports'
 
 # Kubernetes (abbreviated "k8s", pronounced "cybernoodles")
 alias  kctl="kubectl"
