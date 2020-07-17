@@ -46,12 +46,12 @@
     Plug 'kchmck/vim-coffee-script'       " pretty much what it says on the tin
 
     " Python, Python, Python.  *shakes head*
-    Plug 'psf/black'                     " autoformatting
-    Plug 'davidhalter/jedi-vim'          " autocomplete (and probably some other stuff?)
-    Plug 'jeetsukumaran/vim-pythonsense' " text objects for Python
-    Plug 'python-mode/python-mode'       " a combination of several other plugins I guess?
-    Plug 'lambdalisue/vim-pyenv'         " make Vim use pyenv-managed Python
-    Plug 'fisadev/vim-isort'             " sort import statements (sigh)
+    " Plug 'psf/black'                     " autoformatting
+    " Plug 'davidhalter/jedi-vim'          " autocomplete (and probably some other stuff?)
+    " Plug 'jeetsukumaran/vim-pythonsense' " text objects for Python
+    " Plug 'python-mode/python-mode'       " a combination of several other plugins I guess?
+    " Plug 'lambdalisue/vim-pyenv'         " make Vim use pyenv-managed Python (busted af for no reason I can tell?)
+    " Plug 'fisadev/vim-isort'             " sort import statements (sigh)
 
     " TODO: check out other possibly useful Python plugins at:
     " https://codeinthehole.com/tips/vim-text-objects/
@@ -65,10 +65,16 @@ set runtimepath+=/usr/local/opt/fzf
 map <C-p> :FZF<Enter>
 let g:NERDTreeNodeDelimiter = "\u00a0" " Hide unsightly `^G` prefixes on filenames
 
-" OK seriously, I don't want *any* autocompletion popping up in Python just
-" because I typed a freaking dot, okay?  GET OUT OF MY FACE, VIM
-let g:pymode_rope = 0
-let g:jedi#popup_on_dot = 0 " can still use C-<space> to open intellisense-like autocompletion
+" " OK seriously, I don't want *any* autocompletion popping up in Python just
+" " because I typed a freaking dot, okay?  GET OUT OF MY FACE, VIM
+" let g:pymode_rope = 0
+" let g:jedi#popup_on_dot = 0 " can still use C-<space> to open intellisense-like autocompletion
+"
+" let g:pymode_lint_on_write = 0 " don't lint on save
+" let g:pymode_lint_unmodified = 0 " don't lint on save especially if the file hasn't changed
+" let g:pymode_lint_on_fly = 0 " don't lint while typing
+" let g:pymode_lint = 0 " you know what, just don't lint, period
+" let g:pymode_lint_checkers = [] " don't use any, thanks.  really. stop linting.
 
 let NERDTreeIgnore = ['\.pyc$']
 
