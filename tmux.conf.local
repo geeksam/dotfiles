@@ -25,3 +25,12 @@ bind S   set -g status on  # show status bar
 
 # Bind ^K to clear the scrollback buffer
 bind C-k clear-history
+
+
+
+# tmux 3.1b introduced "lazy resize"; turn it back off
+# (For more, search the CHANGES file from tmux 3.1b for the text
+#  "Support for windows larger than the client":
+#  https://raw.githubusercontent.com/tmux/tmux/3.1b/CHANGES)
+set-option window-size smallest
+
