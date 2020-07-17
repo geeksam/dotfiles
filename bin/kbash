@@ -27,6 +27,7 @@ class Pods < DelegateClass(Array)
   end
 
   def fresh_meat
+    return nil if select(&:in_startup?).any?
     select(&:running?).sort_by(&:age).first
   end
 
@@ -58,12 +59,16 @@ class Pod
     @attrs["name"]
   end
 
+  def in_startup?
+    @attrs["status"] == "ContainerCreating"
+  end
+
   def running?
     @attrs["status"] == "Running"
   end
 
   def age
-    @attrs["age"] =~ /^(\d+)(\w)$/
+    @attrs["age"] =~ /^(\d+)(\w)/
     num    = $1.to_i
     suffix = $2
 

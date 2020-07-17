@@ -10,14 +10,24 @@ load SPEC_DIR.join("../bin/kbash")
 
 RSpec.shared_context "pods" do
   subject(:pods) { Pods.new(get_pods_output) }
+  subject(:pods_during_startup) { Pods.new(get_pods_output_with_container_creating) }
 
   let(:get_pods_output) {
     <<~EOF
       NAME                         READY   STATUS    RESTARTS   AGE
       mumble-api-abc123-j79xl      1/1     Running   0          8d
       mumble-api-abc123-qxcn6      1/1     Running   0          4h
-      mumble-worker-abc123-nhbkn   1/1     Running   0          9m
+      mumble-worker-abc123-nhbkn   1/1     Running   0          3m42s
       mumble-worker-abc123-q5bnx   1/1     Bogus     0          23s
+    EOF
+  }
+  let(:get_pods_output_with_container_creating) {
+    <<~EOF
+      NAME                         READY   STATUS              RESTARTS   AGE
+      mumble-api-abc123-j79xl      1/1     Running             0          8d
+      mumble-api-abc123-qxcn6      1/1     Running             0          4h
+      mumble-worker-abc123-nhbkn   1/1     Running             0          9m
+      mumble-worker-abc123-q5bnx   1/1     ContainerCreating   0          23s
     EOF
   }
 end
@@ -46,6 +56,11 @@ RSpec.describe Pods do
       "mumble-api-abc123-qxcn6",
     ])
   end
+
+  specify "#fresh_meat refuses to return the youngest running matching pod if matching pods include any in 'ContainerCreating' status" do
+    pod = pods_during_startup.fresh_meat
+    expect( pod ).to be nil
+  end
 end
 
 RSpec.describe Pod do
@@ -53,6 +68,10 @@ RSpec.describe Pod do
 
   it "knows if it is running" do
     expect( pods.first ).to be_running
+  end
+
+  it "knows if it is creating containers" do
+    expect( pods_during_startup.last ).to be_in_startup
   end
 
   it "knows its name" do
@@ -68,7 +87,7 @@ RSpec.describe Pod do
     expect( pods.map(&:age) ).to eq([
       8 * 60 * 60 * 24,
       4 * 60 * 60,
-      9 * 60,
+      3 * 60,
       23,
     ])
   end
