@@ -1,10 +1,24 @@
 #!/usr/bin/env ruby
 require_relative 'tmux_utils'
+include TmuxUtils
+
+begin
+  require_relative "../private/tcd-seekrit" rescue nil
+rescue LoadError
+  LABELS_TO_PATHS = {}
+end
+
+case
+when ARGV.empty?
+  puts "path argument required" and exit
+when ARGV.length > 1
+  puts "*one* path at a time, please" and exit
+end
+
+label = ARGV.first
+path = LABELS_TO_PATHS.fetch(label) { label }
 
 w1, w2 = next_n_adjacent_windows(2)
 
-target_dir = ARGV.first
-label      = File.basename(target_dir)
-
-tmux_new_window w1, target_dir, "#{label} vim", "vim"
-tmux_new_window w2, target_dir, label
+tmux_new_window w1, path, "#{label} vim", "vim"
+tmux_new_window w2, path, label
