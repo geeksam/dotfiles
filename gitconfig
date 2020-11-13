@@ -13,3 +13,5 @@
   fixup  = commit --amend --no-edit
   ff     = merge --ff-only
   mg     = merge --no-ff
+  nop    = commit --allow-empty
+  noop   = commit --allow-empty
