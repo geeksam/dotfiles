@@ -21,22 +21,37 @@ def table(tbl, indent: 4)
   }
 end
 
-begin
-  name = ARGV.first.to_sym
-rescue NoMethodError
+if ARGV.empty?
   puts "\n\n\n\tgcollab with whom, pray tell?\n\n\n"
   exit
 end
 
-collaborator = COLLABORATORS.fetch( name ) do |key|
+
+unknown = []
+collabs = []
+
+ARGV.each do |arg|
+  next if arg =~ /^\s*$/
+  name = arg.to_sym
+  if (collab = COLLABORATORS[name])
+    collabs << collab
+  else
+    unknown << name
+  end
+end
+
+if unknown.any?
   puts
-  puts "Who is this #{key.inspect} of whom you speak?  I know only:"
+  unknown.each do |name|
+    puts "Who is this '#{name}' of whom you speak?"
+  end
+  puts "\nI know only:"
   puts table(COLLABORATORS.to_a.sort)
   puts
   exit
 end
 
-to_copy = "Co-authored-by: #{collaborator}"
+to_copy = collabs.map { |collab| "Co-authored-by: #{collab}" }.join("\n")
 
 `echo "#{to_copy}" | pbcopy` # all Rubyists use MacOS ;P
-puts "#{to_copy} copied"
+puts to_copy
