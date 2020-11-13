@@ -508,4 +508,7 @@ autocmd BufWinLeave * call clearmatches()
 "" Nuke it with F6:
 :nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
+" Vim doesn't always cope with display changes well; force full redraw
+nmap <Leader>t :redraw!<CR>
+
 
