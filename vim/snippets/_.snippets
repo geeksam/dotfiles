@@ -147,3 +147,17 @@ snippet rec
 snippet have_rec
 	have_received
 
+snippet mod
+	module ${0:Foo}
+		module ClassMethods
+		end
+
+		module InstanceMethods
+		end
+
+		def self.included(receiver)
+			receiver.extend         ClassMethods
+			receiver.send :include, InstanceMethods
+		end
+	end
+
