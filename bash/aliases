@@ -30,8 +30,10 @@ alias  ........='cd ../../../../../../..'
 alias .........='cd ../../../../../../../..'
 
 # git graph
-alias gg+='git log --oneline --abbrev-commit --all --graph --decorate --color'
-alias gg='gg+ | head -n `expr $LINES / 2`'
+alias  gg+='git log --oneline --abbrev-commit --graph --decorate --color'
+alias gga+='git log --oneline --abbrev-commit --graph --decorate --color --all'
+alias   gg='gg+  | head -n `expr $LINES / 2`'
+alias  gga='gga+ | head -n `expr $LINES / 2`'
 
 # git
 alias commit='git commit -m'
