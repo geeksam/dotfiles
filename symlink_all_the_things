@@ -3,6 +3,7 @@ ln -fs ~/dotfiles/batfile          ~/.config/bat/config
 ln -fs ~/dotfiles/bashrc           ~/.bashrc
 ln -fs ~/dotfiles/bash_profile     ~/.bash_profile # http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
 ln -fs ~/dotfiles/gemrc            ~/.gemrc
+ln -fs ~/dotfiles/gitattributes    ~/.gitattributes
 ln -fs ~/dotfiles/gitconfig        ~/.gitconfig
 ln -fs ~/dotfiles/gitignore_global ~/.gitignore_global
 ln -fs ~/dotfiles/irbrc            ~/.irbrc

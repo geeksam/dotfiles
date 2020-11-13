@@ -6,6 +6,7 @@
   sort=-committerdate
 [core]
 	excludesfile = ~/.gitignore_global
+	attributesfile = /Users/sam/.gitattributes
 [diff]
 	noprefix = true
 [alias]
@@ -15,3 +16,13 @@
   mg     = merge --no-ff
   nop    = commit --allow-empty
   noop   = commit --allow-empty
+
+##### Better `git diff` output (git calls this 'hunk headers' because lolgit)
+
+# Swiped from:  https://gist.github.com/tekin/12500956bd56784728e490d8cef9cb81
+[diff "rspec"]
+  xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
+
+# Swiped from:  https://gist.github.com/ruediger/5647207#gistcomment-2012538
+[diff "ecmascript"]
+        xfuncname = "^((.*function.*)|([ \t]+it\\(.*))$"
