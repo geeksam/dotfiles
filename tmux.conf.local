@@ -32,5 +32,5 @@ bind C-k clear-history
 # (For more, search the CHANGES file from tmux 3.1b for the text
 #  "Support for windows larger than the client":
 #  https://raw.githubusercontent.com/tmux/tmux/3.1b/CHANGES)
-set-option window-size smallest
+set-option -g window-size smallest
 
