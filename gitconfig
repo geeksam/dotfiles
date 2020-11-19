@@ -16,6 +16,7 @@
   mg     = merge --no-ff
   nop    = commit --allow-empty
   noop   = commit --allow-empty
+  whoami = blame
 
 ##### Better `git diff` output (git calls this 'hunk headers' because lolgit)
 
