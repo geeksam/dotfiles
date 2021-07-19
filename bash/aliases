@@ -79,6 +79,9 @@ alias    bx='bundle exec'
 alias    bi='(bundle check || bundle install --jobs=4)'
 alias brake='bundle exec rake'
 
+# Pyenv
+alias    px='pyenv exec'
+
 # Docker
 alias dc='docker-compose'
 alias dcr='docker-compose run'

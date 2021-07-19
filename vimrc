@@ -47,12 +47,22 @@
     Plug 'kchmck/vim-coffee-script'       " pretty much what it says on the tin
 
     " Python, Python, Python.  *shakes head*
-    " Plug 'psf/black'                     " autoformatting
+    Plug 'tmhedberg/SimpylFold' " Python-specific folding
+                                " NOTE: recommends FastFold, which is already loaded above
+
+
+    " Temporarily commented out because everything is terrible
+    Plug 'psf/black'                     " autoformatting
+    Plug 'jeetsukumaran/vim-pythonsense' " text objects for Python
+
+    " Fails with "requires vim with support for python 3"
     " Plug 'davidhalter/jedi-vim'          " autocomplete (and probably some other stuff?)
-    " Plug 'jeetsukumaran/vim-pythonsense' " text objects for Python
+
+    " vim-isort fails with 'Fatal Python error: config_get_locale_encoding: failed to get the locale encoding: nl_langinfo(CODESET) failed'
+    " Plug 'fisadev/vim-isort'             " sort import statements (sigh)
+
     " Plug 'python-mode/python-mode'       " a combination of several other plugins I guess?
     " Plug 'lambdalisue/vim-pyenv'         " make Vim use pyenv-managed Python (busted af for no reason I can tell?)
-    " Plug 'fisadev/vim-isort'             " sort import statements (sigh)
 
     " TODO: check out other possibly useful Python plugins at:
     " https://codeinthehole.com/tips/vim-text-objects/
@@ -306,12 +316,21 @@ autocmd FileType gitcommit :set spl=en_us spell
 autocmd FileType html :set spl=en_us spell
 
 " ===== Ruby files =====
+autocmd BufNewFile,BufRead Gemfile* set syntax=ruby " support, e.g., `Gemfile-foo`
 autocmd FileType ruby :set foldmethod=syntax
 autocmd FileType ruby :set foldlevel=1
+" TODO: consider swiping the tabstop/softtabstop/etc from Python, below
 
 " ===== Python files =====
 autocmd FileType python :set foldmethod=indent
-autocmd FileType ruby :set foldlevel=1
+autocmd FileType python :set foldlevel=1
+" https://realpython.com/vim-and-python-a-match-made-in-heaven/
+autocmd BufNewFile,BufRead *.py set tabstop=8
+autocmd BufNewFile,BufRead *.py set softtabstop=4
+autocmd BufNewFile,BufRead *.py set shiftwidth=4
+autocmd BufNewFile,BufRead *.py set autoindent
+
+
 
 " ===== Sam's Customizations =====
 
