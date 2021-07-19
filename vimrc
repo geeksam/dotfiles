@@ -166,7 +166,7 @@ set magic                          " make regular expressions behave sanely (i.e
 set showmatch                      " Show matching bracets when text indicator is over them
 set noerrorbells                   " No sound on errors
 set novisualbell
-set t_vb=                          " visual bell
+set t_vb=                          " set the "visual bell" code to nothing
 set nu                             " print line numbers in gutter
 set numberwidth=4
 
