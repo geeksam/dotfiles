@@ -94,3 +94,7 @@ alias   kns="kubens"
 alias   agent='eval $(ssh-agent) && ssh-add'
 alias deagent='pgrep ssh-agent | xargs kill'
 alias reagent='deagent && agent'
+
+# NPM (ugh)
+alias nomdance="rm -rf node_modules && npm install"
+alias yarndance="rm -rf node_modules && yarn install"
