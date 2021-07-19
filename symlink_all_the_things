@@ -13,3 +13,9 @@ ln -fs ~/dotfiles/tmux.conf        ~/.tmux.conf
 ln -fs ~/dotfiles/tmux.conf.local  ~/.tmux.conf.local
 ln -fs ~/dotfiles/vimrc            ~/.vimrc
 ln -fs ~/dotfiles/vim              ~/.vim
+
+
+# NeoVim uses a weird autoload directory
+mkdir -p ~/.local/share/nvim/site/autoload
+ln -fs ~/dotfiles/vim/autoload/plug.vim ~/.local/share/nvim/site/autoload/plug.vim
+
