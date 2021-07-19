@@ -10,7 +10,7 @@
 [diff]
 	noprefix = true
 [alias]
-  reword = commit --amend -o
+  reword = commit --amend --only
   fixup  = commit --amend --no-edit
   ff     = merge --ff-only
   mg     = merge --no-ff
@@ -27,3 +27,5 @@
 # Swiped from:  https://gist.github.com/ruediger/5647207#gistcomment-2012538
 [diff "ecmascript"]
         xfuncname = "^((.*function.*)|([ \t]+it\\(.*))$"
+[init]
+	defaultBranch = main
