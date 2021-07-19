@@ -1,30 +1,31 @@
-" Initially swiped from the .vimrc in ls-pair
-
 " ===== Plugins via vim-plug =====
 
     " Documentation on Plug:  https://github.com/junegunn/vim-plug
     call plug#begin('~/.vim/plugged')
 
     " Miscellaneous useful stuff
-    Plug 'scrooloose/nerdtree'          " file navigation
-    Plug 'rking/ag.vim'                 " use the Silver Searcher in vim
-    Plug 'jremmen/vim-ripgrep'          " use RipGrep in vim
-    Plug 'jlanzarotta/bufexplorer'      " Buffer Explorer, quite useful
-    Plug 'godlygeek/tabular'            " Tabularize:  vertical alignment goodness
-    Plug 'tomtom/tcomment_vim'          " Ctrl+dash 2x to comment (and a bunch of other stuff I never use)
-    Plug 'flazz/vim-colorschemes'       " loads o' colorschemes
-    Plug 'tpope/vim-surround'           " surrounding characters (ludicrously useful)
-    Plug 'tpope/vim-repeat'             " repeat plugin actions (e.g., from vim-surround)
-    Plug 'junegunn/fzf.vim'             " use 'fzf' in vim (NOTE: `brew install fzf`)
-    Plug 'danro/rename.vim'             " Easy renames
-    Plug 'wesQ3/vim-windowswap'         " <Leader>ww in each of two windows to swap them
-    Plug 'AndrewRadev/splitjoin.vim'    " convert between one-line to multiline constructs
-    Plug 'vim-scripts/ZoomWin'          " 'C-w o' toggles between splits and a single pane
-    Plug 'tpope/vim-fugitive'           " Fugitive. You know, for Git!
-    Plug 'Konfekt/FastFold'             " hopefully, keep vim from slowing down when editing complex files...
-    Plug 'manu-mannattil/vim-longlines' " Navigate long lines while word wrapping is on
-    Plug 'vim-syntastic/syntastic'      " multi-language syntax tools
-    Plug 'simnalamburt/vim-mundo'       " visualize the undo/redo tree for great power
+
+    Plug 'scrooloose/nerdtree'             " file navigation
+    Plug 'rking/ag.vim'                    " use the Silver Searcher in vim
+    Plug 'jremmen/vim-ripgrep'             " use RipGrep in vim
+    Plug 'jlanzarotta/bufexplorer'         " Buffer Explorer, quite useful
+    Plug 'godlygeek/tabular'               " Tabularize:  vertical alignment goodness
+    Plug 'tomtom/tcomment_vim'             " Ctrl+dash 2x to comment (and a bunch of other stuff I never use)
+    Plug 'flazz/vim-colorschemes'          " loads o' colorschemes
+    Plug 'tpope/vim-surround'              " surrounding characters (ludicrously useful)
+    Plug 'tpope/vim-repeat'                " repeat plugin actions (e.g., from vim-surround)
+    Plug 'junegunn/fzf.vim'                " use 'fzf' in vim (NOTE: `brew install fzf`)
+    Plug 'danro/rename.vim'                " Easy renames
+    Plug 'wesQ3/vim-windowswap'            " <Leader>ww in each of two windows to swap them
+    Plug 'AndrewRadev/splitjoin.vim'       " convert between one-line to multiline constructs
+    Plug 'vim-scripts/ZoomWin'             " 'C-w o' toggles between splits and a single pane
+    Plug 'tpope/vim-fugitive'              " Fugitive. You know, for Git!
+    Plug 'Konfekt/FastFold'                " hopefully, keep vim from slowing down when editing complex files...
+    Plug 'manu-mannattil/vim-longlines'    " Navigate long lines while word wrapping is on
+    Plug 'vim-syntastic/syntastic'         " multi-language syntax tools
+    Plug 'simnalamburt/vim-mundo'          " visualize the undo/redo tree for great power
+    Plug 'nathanaelkane/vim-indent-guides' " vertical indentation highlighting
+    Plug 'jpalardy/spacehi.vim'            " highlight spaces
 
     " TODO: look into 'sjl/gundo' for undo tree superpowers
 
@@ -159,9 +160,20 @@ set t_vb=                          " visual bell
 set nu                             " print line numbers in gutter
 set numberwidth=4
 
-" show trailing whitespace
-set list
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
+" make hard tabs visible (I want to type "ducking" more often than I want tabs)
+" ditto trailing whitespace
+" this used to be some weird bullshit I didn't understand; now, spacehi.vim does it
+autocmd BufNewFile,BufRead * SpaceHi
+nmap <leader>s :ToggleSpaceHi<cr>
+nmap <leader><Space> :ToggleSpaceHi<cr>
+
+" vim-indent-guides:
+" - always enable
+" - add a binding
+" - color customizations are with the other color settings, below.
+let g:indent_guides_enable_on_vim_startup=1
+nmap <leader>i :IndentGuidesToggle<cr>
 
 " open a new line without entering insert mode
 map <Enter> o<ESC>
@@ -208,10 +220,11 @@ set noswapfile
 
 set expandtab
 set shiftwidth=2
-set tabstop=2
+set tabstop=8
 set softtabstop=2
 set tw=80
 set ai "Auto indent
+
 
 " ===== Moving around, tabs and buffers =====
 
@@ -278,9 +291,10 @@ endfunction
 
 " ===== All files =====
 autocmd FileType * :set colorcolumn=0 " Never bother me with concepts like 'right margins' ;P
+autocmd FileType * :set expandtab     " No tabs ever, tyvm.  To fix: `:retab`
+autocmd FileType * :set fileformat=unix
 
 " ===== Text files =====
-
 autocmd FileType text setlocal textwidth=80
 autocmd FileType text setlocal nosi
 autocmd FileType text :set spl=en_us spell
@@ -353,18 +367,22 @@ colorscheme herald
 
   " I like the 'herald' color scheme, but some of its color combos are unreadable...
   if has("gui_running")
-    hi Comment        guibg=#1F1F1F guifg=#909090 gui=none
-    hi Folded         guibg=#001336 guifg=#005fff gui=none
-    hi TabLine        guibg=#141414 guifg=#8A8A8A gui=none
-    hi StatusLine     guibg=#0000d7 guifg=#bcbcbc gui=none
-    hi StatusLineNC   guibg=#262626 guifg=#8a8a8a gui=none
+    hi Comment          guibg=#1F1F1F guifg=#909090 gui=none
+    hi Folded           guibg=#001336 guifg=#005fff gui=none
+    hi TabLine          guibg=#141414 guifg=#8A8A8A gui=none
+    hi StatusLine       guibg=#0000d7 guifg=#bcbcbc gui=none
+    hi StatusLineNC     guibg=#262626 guifg=#8a8a8a gui=none
+    hi IndentGuidesOdd  guibg=#3a3a3a
+    hi IndentGuidesEven guibg=#444444
   elseif &t_Co == 256
-    hi Comment        ctermbg=234  ctermfg=248   cterm=none
-    hi Folded         ctermbg=234  ctermfg=27    cterm=none
-    hi TabLine        ctermbg=233  ctermfg=245   cterm=none
-    hi StatusLine     ctermbg=20   ctermfg=250   cterm=none
-    hi StatusLineNC   ctermbg=235  ctermfg=245   cterm=none
-    hi ColorColumn    ctermbg=235   ctermfg=none   cterm=none
+    hi ColorColumn      ctermbg=235  ctermfg=none  cterm=none
+    hi Comment          ctermbg=234  ctermfg=248   cterm=none
+    hi Folded           ctermbg=234  ctermfg=27    cterm=none
+    hi TabLine          ctermbg=233  ctermfg=245   cterm=none
+    hi StatusLine       ctermbg=20   ctermfg=250   cterm=none
+    hi StatusLineNC     ctermbg=235  ctermfg=245   cterm=none
+    hi IndentGuidesOdd  ctermbg=237
+    hi IndentGuidesEven ctermbg=236
   elseif &t_Co == 16
     hi Comment        ctermbg=8 ctermfg=7 cterm=none
   elseif &t_Co == 8
@@ -439,14 +457,6 @@ vmap <Leader>r gq
 nmap <Leader>sl :SplitjoinSplit<CR>
 nmap <Leader>jl :SplitjoinJoin<CR>
 
-" Indent Guides
-let g:indent_guides_auto_colors = 0
-if has("gui_running") || &t_Co == 256
-  hi IndentGuidesOdd  ctermbg=234
-  hi IndentGuidesEven ctermbg=235
-endif
-autocmd FileType text :IndentGuidesEnable
-
 " Tabularize
 nmap <Leader>ah :Tabularize/=><CR>
 vmap <Leader>ah :Tabularize/=><CR>
@@ -496,16 +506,8 @@ nmap <Leader>a{ :Tabularize/\s{/l0c1<CR>:Tabularize/}\s/l1c0<CR>
 vmap <Leader>a{ :Tabularize/\s{/l0c1<CR>:Tabularize/}\s/l1c0<CR>
 
 
-" Trailing whitespace sucks.
-"" Show it:
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-
-"" Nuke it with F6:
+" Trailing whitespace sucks. (spacehi.vim makes it visible, or should...)
+" Nuke it with F6:
 :nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Vim doesn't always cope with display changes well; force full redraw
