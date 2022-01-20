@@ -506,8 +506,8 @@ nmap <Leader>a: :Tabularize/:\zs /l0c0<CR>
 vmap <Leader>a: :Tabularize/:\zs /l0c0<CR>
 nmap <Leader>a, :Tabularize/,\zs/l0c1<CR>
 vmap <Leader>a, :Tabularize/,\zs/l0c1<CR>
-nmap <Leader>ato :Tabularize/).to\(_not\)\?<CR>:Tabularize/expect(<CR>
-vmap <Leader>ato :Tabularize/).to\(_not\)\?<CR>:Tabularize/expect(<CR>
+nmap <Leader>ato :Tabularize/).to\(_not\)\?<CR>:Tabularize/expect(<CR>:Tabularize/change<CR>
+vmap <Leader>ato :Tabularize/).to\(_not\)\?<CR>:Tabularize/expect(<CR>:Tabularize/change<CR>
 nmap <Leader>a( :Tabularize/(\zs/l0c1<CR>:Tabularize/)/l1c0<CR>
 vmap <Leader>a( :Tabularize/(\zs/l0c1<CR>:Tabularize/)/l1c0<CR>
 nmap <Leader>a[ :Tabularize/[\zs/l0c1<CR>:Tabularize/]/l1c0<CR>
