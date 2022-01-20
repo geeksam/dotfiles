@@ -178,11 +178,15 @@ autocmd BufNewFile,BufRead * SpaceHi
 nmap <leader>s :ToggleSpaceHi<cr>
 nmap <leader><Space> :ToggleSpaceHi<cr>
 
+" IDK why, but these colors keep getting reset or something?  Vim is weird.
+autocmd WinEnter * hi IndentGuidesOdd ctermbg=237
+autocmd WinEnter * hi IndentGuidesEven ctermbg=236
+
 " vim-indent-guides:
 " - always enable
 " - add a binding
 " - color customizations are with the other color settings, below.
-let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_enable_on_vim_startup=0
 nmap <leader>i :IndentGuidesToggle<cr>
 
 " open a new line without entering insert mode
@@ -400,8 +404,8 @@ colorscheme herald
     hi TabLine          ctermbg=233  ctermfg=245   cterm=none
     hi StatusLine       ctermbg=20   ctermfg=250   cterm=none
     hi StatusLineNC     ctermbg=235  ctermfg=245   cterm=none
-    hi IndentGuidesOdd  ctermbg=237
-    hi IndentGuidesEven ctermbg=236
+    hi IndentGuidesOdd  ctermbg=237  ctermfg=15    cterm=none
+    hi IndentGuidesEven ctermbg=236  ctermfg=15    cterm=none
   elseif &t_Co == 16
     hi Comment        ctermbg=8 ctermfg=7 cterm=none
   elseif &t_Co == 8
