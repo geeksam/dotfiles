@@ -329,6 +329,7 @@ autocmd FileType ruby :set foldlevel=1
 autocmd FileType python :set foldmethod=indent
 autocmd FileType python :set foldlevel=1
 " https://realpython.com/vim-and-python-a-match-made-in-heaven/
+autocmd BufNewFile,BufRead *.py set expandtab
 autocmd BufNewFile,BufRead *.py set tabstop=8
 autocmd BufNewFile,BufRead *.py set softtabstop=4
 autocmd BufNewFile,BufRead *.py set shiftwidth=4
