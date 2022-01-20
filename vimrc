@@ -354,19 +354,6 @@ autocmd FileType text :set nospell
 nmap <F1> :echo<CR>
 imap <F1> <Esc>
 
-" Setting up CtrlP to use faster options!
-if executable('rg') " ripgrep
-  let g:ackprg = 'rg --vimgrep'
-  set grepprg=rg\ --color=never
-  " let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  " let g:ctrlp_use_caching = 0
-elseif executable('ag') " The Silver Searcher
-  let g:ackprg = 'ag --vimgrep' " from https://github.com/ggreer/the_silver_searcher
-  set grepprg=ag\ --nogroup\ --nocolor
-  " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  " let g:ctrlp_use_caching = 0
-endif
-
 " Split using similar keys to the ones I have in tmux
 :noremap <leader>\| :vsp<cr> " Quick access to vertical splits
 :noremap <leader>- :split<cr> " Quick access to horizontal splits
