@@ -89,9 +89,10 @@ alias dcrsp='docker-compose run --service-ports'
 
 # Kubernetes (abbreviated "k8s", pronounced "cybernoodles")
 alias  kctl="kubectl"
-alias kpods="kubectl get pods"
 alias  kctx="kubectx"
 alias   kns="kubens"
+alias klogs="kubectl logs"
+alias kpods="kubectl get pods"
 
 # SSH agent
 alias   agent='eval $(ssh-agent) && ssh-add'
