@@ -59,6 +59,24 @@ module TmuxUtils
     tmux_send_keys "echo #{s}", window
   end
 
+  def window_numbers
+    `tmux list-windows`.lines.map { |line| line.split(":", 2).first.to_i }
+  end
+
+  # TODO: make this less janky (yeah, right)
+  def last_window_number
+    `tmux last-window` # ugh
+    n = TmuxUtils.active_window_number
+    `tmux last-window` # ugh
+    n
+  end
+
+  def active_window_number
+    active_line = `tmux list-windows`.lines.detect { |line| line =~ / \(active\)/ }
+    raise 'wtf' if active_line.nil?
+    active_line.split(":", 2).first.to_i
+  end
+
   def tmux_select(window, pane = nil)
     tmux_run "select-window -t #{window}"
     tmux_run "select-pane -t #{pane}" if pane
@@ -76,6 +94,18 @@ module TmuxUtils
     cmds.each do |cmd|
       tmux_send_keys cmd, window
     end
+  end
+
+  SWAP_OFFSET = 100
+  def swap_windows(a, b)
+    move_window = ->(aa, bb) {
+      tmux_run %Q( move-window -s #{aa} -t #{bb} )
+    }
+
+    x = a + SWAP_OFFSET
+    move_window.( a, x )
+    move_window.( b, a )
+    move_window.( x, b )
   end
 
   # tmux's idea of 'vertical' and 'horizontal' are backward from vim's >.<

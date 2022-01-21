@@ -1,0 +1,105 @@
+#!/usr/bin/env ruby
+require_relative 'tmux_utils'
+include TmuxUtils
+
+
+
+def nope_out(msg = nil)
+  puts <<~EOF
+
+    Usage:
+
+      tswap pair[, pairs]* [--dry-run]
+
+    Where `pair` is two (existing) window numbers separated by a slash.
+    So, to swap windows 1 and 2 with windows 4 and 5:
+
+      tswap 1/4 2/5
+
+  EOF
+
+  if msg
+    puts
+    msg.lines.each do |line|
+      puts ">>> #{line.strip}"
+    end
+    puts
+  end
+
+  exit
+end
+
+nope_out if ARGV.empty?
+
+
+
+# Handle the --dry-run flag
+if ( i = ARGV.index { |arg| arg =~ /^--dry-run$/ } )
+  $dry_run = true
+  ARGV.delete_at i
+end
+
+
+
+# Parse each arg into a pair of integers
+pairs = ARGV.map { |arg|
+  args = arg.split("/")
+  if args.length != 2 || args.any? { |e| e =~ /\D/ }
+    nope_out("malformed arg: #{arg.inspect}")
+  end
+  args.map(&:to_i)
+}
+
+
+
+# Don't even try to keep track of multiple moves for the same window
+nums = pairs.flatten
+if nums.length != nums.uniq.length
+  nope_out "You've given the same window number more than once.\nDon't be clever."
+end
+
+
+
+# Make sure all window numbers actually exist
+bogus_nums = nums.uniq - TmuxUtils.window_numbers
+if bogus_nums.length > 0
+  nope_out "Nice try, but at least one of those windows doesn't actually exist"
+end
+
+
+
+# Moving a window switches you to that window (ugh).
+# Remember the active and last window numbers...
+orig_nums = {
+  active: TmuxUtils.active_window_number,
+  last:   TmuxUtils.last_window_number, # don't ask
+}
+puts "Started on #{orig_nums[:active]} (last: #{orig_nums[:last]})" if $dry_run
+
+
+
+# Swap some windows, baby
+new_nums = orig_nums.dup # scope hack
+pairs.map(&:sort).each do |pair|
+  a, b = pair.sort
+
+  # If we swap either the active or last windows,
+  # make sure we track where they land
+  new_nums[:active] = b if orig_nums[:active] == a
+  new_nums[:active] = a if orig_nums[:active] == b
+  new_nums[:last]   = b if orig_nums[:last]   == a
+  new_nums[:last]   = a if orig_nums[:last]   == b
+
+  if $dry_run
+    puts "Swapping #{a}, #{b}"
+  else
+    TmuxUtils.swap_windows a, b
+  end
+end
+
+if $dry_run
+  puts "Landing on #{new_nums[:active]} (last: #{new_nums[:last]})"
+else
+  TmuxUtils.tmux_select new_nums[:last]
+  TmuxUtils.tmux_select new_nums[:active]
+end
