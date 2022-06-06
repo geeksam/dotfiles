@@ -60,7 +60,7 @@ module TmuxUtils
   end
 
   def window_numbers
-    `tmux list-windows`.lines.map { |line| line.split(":", 2).first.to_i }
+    `tmux list-windows`.lines.map { |line| line.split(":", 2).first.to_i }.sort
   end
 
   # TODO: make this less janky (yeah, right)
@@ -98,14 +98,14 @@ module TmuxUtils
 
   SWAP_OFFSET = 100
   def swap_windows(a, b)
-    move_window = ->(aa, bb) {
-      tmux_run %Q( move-window -s #{aa} -t #{bb} )
-    }
-
     x = a + SWAP_OFFSET
-    move_window.( a, x )
-    move_window.( b, a )
-    move_window.( x, b )
+    move_window from: a, to: x
+    move_window from: b, to: a
+    move_window from: x, to: b
+  end
+
+  def move_window(from:, to:)
+    tmux_run %Q( move-window -s #{from} -t #{to} )
   end
 
   # tmux's idea of 'vertical' and 'horizontal' are backward from vim's >.<

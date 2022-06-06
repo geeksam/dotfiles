@@ -70,25 +70,25 @@ end
 
 # Moving a window switches you to that window (ugh).
 # Remember the active and last window numbers...
-orig_nums = {
+orig_state = {
   active: TmuxUtils.active_window_number,
   last:   TmuxUtils.last_window_number, # don't ask
 }
-puts "Started on #{orig_nums[:active]} (last: #{orig_nums[:last]})" if $dry_run
+puts "Started on #{orig_state[:active]} (last: #{orig_state[:last]})" if $dry_run
 
 
 
 # Swap some windows, baby
-new_nums = orig_nums.dup # scope hack
+new_state = orig_state.dup # scope hack
 pairs.map(&:sort).each do |pair|
   a, b = pair.sort
 
   # If we swap either the active or last windows,
   # make sure we track where they land
-  new_nums[:active] = b if orig_nums[:active] == a
-  new_nums[:active] = a if orig_nums[:active] == b
-  new_nums[:last]   = b if orig_nums[:last]   == a
-  new_nums[:last]   = a if orig_nums[:last]   == b
+  new_state[:active] = b if orig_state[:active] == a
+  new_state[:active] = a if orig_state[:active] == b
+  new_state[:last]   = b if orig_state[:last]   == a
+  new_state[:last]   = a if orig_state[:last]   == b
 
   if $dry_run
     puts "Swapping #{a}, #{b}"
@@ -98,8 +98,8 @@ pairs.map(&:sort).each do |pair|
 end
 
 if $dry_run
-  puts "Landing on #{new_nums[:active]} (last: #{new_nums[:last]})"
+  puts "Landing on #{new_state[:active]} (last: #{new_state[:last]})"
 else
-  TmuxUtils.tmux_select new_nums[:last]
-  TmuxUtils.tmux_select new_nums[:active]
+  TmuxUtils.tmux_select new_state[:last]
+  TmuxUtils.tmux_select new_state[:active]
 end

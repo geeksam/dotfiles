@@ -1,0 +1,77 @@
+#!/usr/bin/env ruby
+require_relative 'tmux_utils'
+
+nums = TmuxUtils.window_numbers
+
+
+
+# Self care: tell me when I'm doing too many things
+if nums.max > 9
+  puts <<-EOF
+    You have windows past #9.
+    Either fix this yourself or go update #{__FILE__}.
+
+    Reminder: humans don't multitask well.
+  EOF
+  exit
+end
+
+
+
+# Handle the --dry-run flag
+if ( i = ARGV.index { |arg| arg =~ /^--dry-run$/ } )
+  $dry_run = true
+  ARGV.delete_at i
+end
+
+
+
+# Keep track of where we started
+orig_state = {
+  active: TmuxUtils.active_window_number,
+  last:   TmuxUtils.last_window_number, # don't ask
+}
+new_state = orig_state.dup
+
+
+# Personal convention:
+# - window #0 is for misc work, so we start at #1.
+# - window #9 is for ssh, so we stop at #8.  (See ./t9)
+nums -= [ 0, 9 ]
+(1..8).each do |i|
+  break if nums.empty?
+
+  n = nums.shift
+
+  if n == i
+    puts "  #{n} stays put"
+    next
+  end
+
+  msg = "  #{n} --> #{i}"
+
+  # keep track of active/last as we go
+  %i[ active last ].each do |state|
+    if n == orig_state[state]
+      new_state[state] = i
+      msg << " (#{state})"
+    end
+  end
+
+
+  # Move the window
+  if $dry_run
+    puts msg
+  else
+    TmuxUtils.move_window from: n, to: i
+  end
+
+end
+
+if $dry_run
+  # :nothingtodohere:
+else
+  # restore active/last state
+  TmuxUtils.tmux_select new_state[:last]
+  TmuxUtils.tmux_select new_state[:active]
+end
