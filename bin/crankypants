@@ -1,0 +1,97 @@
+#!/usr/bin/env ruby
+
+# NOTE: I wrote this script sometime in the 2010s.  (No, I will not get more
+# specific than that.)  This isn't something I actually use, but I just ran
+# across it in an old backup, and I'm preserving it here because, well, it's
+# fucking hilarious.  -SLG
+
+require "pathname"
+require "csv"
+require "awesome_print"
+
+EXPECTED_WORKING_DIR = "/Users/sam/no_such_dir"
+unless Dir.pwd == EXPECTED_WORKING_DIR
+  raise "NOPE.  I only run inside #{EXPECTED_WORKING_DIR}"
+end
+
+puts "MAKE SURE 'docker-compose up' IS RUNNING!" # TODO: maybe figure out how to parse the output of `docker-compose ps` ?
+
+COMMANDS = [
+  %q( docker-compose build app ),
+  %q( docker-compose run app bash -c "rails db:reset" ),
+].map(&:strip!)
+
+here = Pathname.new( File.dirname(__FILE__) )
+bullshit_log = here.join("../bullshit.csv")
+
+def elapsed_time(since:)
+  ( Time.now - since ).floor
+end
+
+SECOND = 1            ; SECONDS = SECOND
+MINUTE = 60 * SECONDS ; MINUTES = MINUTE
+HOUR   = 60 * MINUTES ; HOURS   = HOUR
+DAY    = 24 * HOURS   ; DAYS    = DAY
+def duration_in_words(seconds)
+  segments = []
+  add_segment = ->(n, singular) {
+    next if n.zero?
+    unit = n.to_i == 1 ? singular : singular + "s"
+    segments << "#{n} #{unit}"
+  }
+
+  s = seconds.floor
+  d, s = s.divmod( DAY )    ; add_segment.( d, "day" )
+  h, s = s.divmod( HOUR )   ; add_segment.( h, "hour" )
+  m, s = s.divmod( MINUTE ) ; add_segment.( m, "minute" )
+                            ; add_segment.( s, "second" )
+
+  segments << "less than a second" if segments.empty?
+
+  segments.join(", ")
+end
+
+
+
+# START THE MOTHERFUCKING CLOCK
+start_time = Time.now
+
+# DO SOME BULLSHIT
+timings = []
+COMMANDS.each do |command|
+  puts "<<<<< $ #{command}\n\n"
+  cmd_start = Time.now
+  system command
+  timings << [ command, elapsed_time( since: cmd_start ) ]
+  puts "\n>>>>>"
+end
+
+# HOLY MOTHERFORKING SHIRTBALLS IT'S OVER
+elapsed = elapsed_time( since: start_time )
+
+# HOLD A GODDAMN GRUDGE
+HEADERS = %w[ start_time elapsed commands ]
+grand_fucking_total = 0
+CSV.open(bullshit_log, "a+", headers: true) do |csv|
+  # Make sure there's a header row
+  csv.read
+  csv << HEADERS if csv.headers == true
+
+  # Append this session's data
+  csv << [ start_time, elapsed, COMMANDS.join(" ; ") ]
+
+  # Go back and read the whole thing
+  csv.rewind
+  csv.each do |row|
+    grand_fucking_total += row["elapsed"].to_i
+  end
+end
+
+
+
+puts "\nSWEET CHRISTMAS.  That took #{duration_in_words(elapsed)} of your life you'll never get back."
+puts "\nHere's the breakdown:"
+ap Hash[ timings.map {|cmd, sec| [ cmd, duration_in_words(sec) ] } ]
+puts "\nBUT WAIT!  Your lifetime total is:  💩 #{duration_in_words(grand_fucking_total)} 💩 "
+
+`say SWEET CHRISTMAS` # Make some noise, because I've probably forgotten all about this
