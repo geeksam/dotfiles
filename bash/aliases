@@ -42,34 +42,19 @@ alias     gb='git branch'          ; complete -o default -o nospace -F _git_bran
 alias    gco='git checkout'        ; complete -o default -o nospace -F _git_checkout gco
 alias    gcp='git cherry-pick'
 alias     gd='git diff --color'    ; complete -o default -o nospace -F _git_diff gd
-alias    gff='git merge --ff-only' ; complete -o default -o nospace -F _git_branch gff
-alias   gnff='git merge --no-ff'   ; complete -o default -o nospace -F _git_branch gnff
 alias  gpfwl='git push --force-with-lease'
 alias     gs='git status -bs'
 alias    gst='git status'
 alias   gwip='git reset --soft HEAD^ && git reset HEAD .'
-alias  merge='git merge --no-ff'   ; complete -o default -o nospace -F _git_branch merge
 
 # git custom commands (these will live in ~/bin/git-*)
 alias gnuke_merged_branches='git nuke-merged-branches'
 
-# Upstream 'master' branch management.  Assumes these local tracking branches exist:
-# * upmaster ---> tracks `upstream/master`, where `upstream` is a remote reference to the canonical shared repo
-# * master   ---> tracks `origin/master`, where `origin` is a remote reference to my fork of `upstream`
-alias guppy='git checkout upmaster && git pull --rebase && git rebase upmaster master && git push'
-# alias trout='git checkout upmaster && git merge --ff-only master && git push && git checkout master && git push'
-
-# Faster, pussycat! Test! Test!
-alias rtf='rake test:fast' # Haven't used this for years, but the comment is too funny to delete
-
 # Rails
 alias r='bundle exec rails'
-alias t='bundle exec ruby -Itest'
 
 # RSpec
-alias cspec='clear ; bundle exec rspec'
-alias spec='bundle exec rspec'
-alias spec_ordered='bundle exec rspec --order defined'
+alias spec='bundle exec rspec --order defined'
 alias spec_random='bundle exec rspec --order random'
 
 # Bundler
