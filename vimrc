@@ -76,6 +76,9 @@ set runtimepath+=/usr/local/opt/fzf
 map <C-p> :FZF<Enter>
 let g:NERDTreeNodeDelimiter = "\u00a0" " Hide unsightly `^G` prefixes on filenames
 
+" My snippets are old; use the legacy snippet parser for now
+let g:snipMate = { 'snippet_version' : 0 }
+
 " " OK seriously, I don't want *any* autocompletion popping up in Python just
 " " because I typed a freaking dot, okay?  GET OUT OF MY FACE, VIM
 " let g:pymode_rope = 0
@@ -86,6 +89,15 @@ let g:NERDTreeNodeDelimiter = "\u00a0" " Hide unsightly `^G` prefixes on filenam
 " let g:pymode_lint_on_fly = 0 " don't lint while typing
 " let g:pymode_lint = 0 " you know what, just don't lint, period
 " let g:pymode_lint_checkers = [] " don't use any, thanks.  really. stop linting.
+
+" maybe this will get syntastic to stfu on `:w`?
+let g:syntastic_python_checkers = ['pylint']
+
+" stop syntastic from complaining about trailing ` ; nil` in stuff I intend to
+" paste into Rails console
+let g:syntastic_quiet_messages = {
+  \ 'regex': 'useless use of nil in void context' }
+
 
 let NERDTreeIgnore = ['\.pyc$']
 
@@ -306,12 +318,13 @@ endfunction
 " ===== All files =====
 autocmd FileType * :set colorcolumn=0 " Never bother me with concepts like 'right margins' ;P
 autocmd FileType * :set expandtab     " No tabs ever, tyvm.  To fix: `:retab`
-autocmd FileType * :set fileformat=unix
+" autocmd FileType * :set fileformat=unix
 
 " ===== Text files =====
 autocmd FileType text setlocal textwidth=80
 autocmd FileType text setlocal nosi
 autocmd FileType text :set spl=en_us spell
+autocmd FileType text :set fileformat=unix
 autocmd FileType gitcommit setlocal textwidth=80
 autocmd FileType gitcommit setlocal nosi
 autocmd FileType gitcommit :set spl=en_us spell
@@ -323,6 +336,9 @@ autocmd FileType html :set spl=en_us spell
 autocmd BufNewFile,BufRead Gemfile* set syntax=ruby " support, e.g., `Gemfile-foo`
 autocmd FileType ruby :set foldmethod=syntax
 autocmd FileType ruby :set foldlevel=1
+autocmd FileType ruby :set fileformat=unix
+autocmd FileType ruby :set expandtab
+autocmd FileType ruby :set tabstop=13
 " TODO: consider swiping the tabstop/softtabstop/etc from Python, below
 
 " ===== Python files =====
@@ -334,6 +350,12 @@ autocmd BufNewFile,BufRead *.py set tabstop=8
 autocmd BufNewFile,BufRead *.py set softtabstop=4
 autocmd BufNewFile,BufRead *.py set shiftwidth=4
 autocmd BufNewFile,BufRead *.py set autoindent
+
+" ===== Go files =====
+autocmd BufNewFile,BufRead *.go :NoSpaceHi
+autocmd FileType go :set tabstop=4
+autocmd FileType go :set shiftwidth=4
+autocmd FileType go :set fileformat=unix
 
 
 
@@ -507,6 +529,8 @@ nmap <Leader>a: :Tabularize/:\zs /l0c0<CR>
 vmap <Leader>a: :Tabularize/:\zs /l0c0<CR>
 nmap <Leader>a, :Tabularize/,\zs/l0c1<CR>
 vmap <Leader>a, :Tabularize/,\zs/l0c1<CR>
+nmap <Leader>a\| :Tabularize/\s\|/l0c1<CR>
+vmap <Leader>a\| :Tabularize/\s\|/l0c1<CR>
 nmap <Leader>ato :Tabularize/).to\(_not\)\?<CR>:Tabularize/expect(<CR>:Tabularize/change<CR>
 vmap <Leader>ato :Tabularize/).to\(_not\)\?<CR>:Tabularize/expect(<CR>:Tabularize/change<CR>
 nmap <Leader>a( :Tabularize/(\zs/l0c1<CR>:Tabularize/)/l1c0<CR>
