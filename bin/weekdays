@@ -1,0 +1,59 @@
+#!/usr/bin/env ruby
+
+require 'date'
+
+MONTH_NAMES = %w[ jan feb mar apr may jun jul aug sep oct nov dec ]
+DAY_NAMES = %w[ Sun Mon Tue Wed Thu Fri Sat ]
+
+
+
+# Try to be a bit clever about interpreting input.
+#
+# Accepts an optional year (as 4 digit number; e.g., 2050)
+# Accepts an optional month (as number in the range 1-12 or at least the first three letters of the month name).
+# Examples:
+#   '2050'     => January 2050
+#   '12 2050'  => July 2050
+#   '2050 12'  => July 2050
+#   '2050 jul' => July 2050
+#   '7'        => July [current year]
+#   'jul'      => July [current year]
+#   'july'     => July [current year]
+
+
+year, month = nil, nil
+until ARGV.empty?
+  arg = ARGV.shift.strip
+  case (n = arg.to_i)
+  when (2000..2099)
+    year ||= n # ye gods, I hope I'm not still running this then
+  when (1..12)
+    month ||= n
+  when 0
+    i = MONTH_NAMES.index(arg.downcase[0,3])
+    if i.nil?
+      raise ArgumentError, "Not sure what to do with arg #{arg.inspect}"
+    end
+    month ||= i + 1
+  end
+end
+year  ||= Date.today.year
+month ||= Date.today.month
+
+
+
+first = Date.new(year, month, 1)
+last  = first.next_month.prev_day
+month = first..last
+
+
+
+puts
+month.each do |d|
+  day_name = DAY_NAMES[d.wday]
+  puts if day_name == "Sun"
+  next if %w[ Sat Sun ].include?(day_name)
+
+  puts "#{d} #{day_name}"
+end
+puts
