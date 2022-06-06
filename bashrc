@@ -4,7 +4,7 @@ export EDITOR='vim'
 source ~/dotfiles/bash/path
 source ~/dotfiles/bash/aliases
 if [ -f ~/dotfiles/private/bashrc ]; then
-	source ~/dotfiles/private/bashrc
+  source ~/dotfiles/private/bashrc
 fi
 source ~/dotfiles/bash/ruby-fu
 source ~/dotfiles/bash/python-fu
