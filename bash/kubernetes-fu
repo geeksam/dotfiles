@@ -1,3 +1,5 @@
+# k8s context (doesn't seem to work very well though)
+
 __kube_ps1()
 {
   # Get current context

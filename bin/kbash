@@ -101,5 +101,5 @@ if $stdout.tty? && !defined?(RSpec)
   end
 
   puts "Connecting to pod #{pod.name} (age: #{pod.human_age})..."
-  exec "kubectl exec -ti #{pod.name} bash"
+  exec "kubectl exec -ti #{pod.name} -- bash"
 end
