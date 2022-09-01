@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Fusion 360 has an unfortunate tendency to hang on launch.
+# (And by "hang", I mean "please enjoy this Spinning Beach Ball of Death.")
+#
+# This "solution" comes directly from Autodesk:
+# https://knowledge.autodesk.com/support/fusion-360/learn-explore/caas/sfdcarticles/sfdcarticles/Fusion-360-hangs-freezes-on-startup-on-Mac-OS.html
+#
+# Seems excessive to me, but then, the same page lists as a possible cause
+# "Pending Windows updates that are required to be installed"...
+#
+# ...which seems almost reasonable until one notices that this page is
+# specifically about launch issues on MacOS.
+#
+# So, y'know, set appropriate expectations I guess?
+
+rm -f ~/Library/Application\ Support/Autodesk/Neutron\ Platform/Options/NMachineSpecificOptions.xml
+rm -f ~/Library/Application\ Support/Autodesk/Web\ Services/LoginState.xml
