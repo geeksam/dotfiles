@@ -5,7 +5,9 @@ include TmuxUtils
 begin
   require_relative "../private/tcd-seekrit" rescue nil
 rescue LoadError
-  LABELS_TO_PATHS = {}
+  LABELS_TO_PATHS = {
+    # "guspants" => "augustus_monkeypants",
+  }
 end
 
 case
