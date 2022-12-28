@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+=begin
+
+  (note: all tmux sessions below are assumed to be named)
+
+  Features:
+  - START:  create a new tmux session and attach to it
+    - running `tcd [dir]` for each dirname in ARGV
+  - SHARE:  start an upterm session that connects (using --force-command) to an existing tmux session
+  - BOTH:  START + SHARE
+  - WTF:  re-display the connection info for the current upterm session
+  - 
+
+=end
