@@ -1,5 +1,4 @@
 # Environment-tweaking
-alias dotfiles='e ~/dotfiles/'
 alias rsc='source ~/.bash_profile; source ~/dotfiles/bashrc'
 
 # Shortcut for editing/reloading /etc/hosts
@@ -54,14 +53,14 @@ alias gnuke_merged_branches='git nuke-merged-branches'
 alias r='bundle exec rails'
 
 # RSpec
-alias spec='bundle exec rspec --order defined'
-alias spec_random='bundle exec rspec --order random'
+alias spec='time bundle exec rspec --order defined'
+alias spec_random='time bundle exec rspec --order random'
 
 # Bundler
 alias     b='bundle'
 alias    be='bundle exec'
 alias    bx='bundle exec'
-alias    bi='(bundle check || bundle install --jobs=4)'
+alias    bi='bundle install --jobs=4'
 alias brake='bundle exec rake'
 
 # Pyenv
