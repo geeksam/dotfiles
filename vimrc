@@ -527,8 +527,8 @@ nmap <Leader>a# :Tabularize/ # /l0c0<CR>
 vmap <Leader>a# :Tabularize/ # /l0c0<CR>
 nmap <Leader>a: :Tabularize/:\zs /l0c0<CR>
 vmap <Leader>a: :Tabularize/:\zs /l0c0<CR>
-nmap <Leader>a, :Tabularize/,\zs/l0c1<CR>
-vmap <Leader>a, :Tabularize/,\zs/l0c1<CR>
+nmap <Leader>a, :Tabularize/, \zs/l0c1<CR>
+vmap <Leader>a, :Tabularize/, \zs/l0c1<CR>
 nmap <Leader>a\| :Tabularize/\s\|/l0c1<CR>
 vmap <Leader>a\| :Tabularize/\s\|/l0c1<CR>
 nmap <Leader>ato :Tabularize/).to\(_not\)\?<CR>:Tabularize/expect(<CR>:Tabularize/change<CR>
