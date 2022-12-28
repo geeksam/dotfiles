@@ -1,9 +1,6 @@
 unless defined?(Kernel.__breadcrumb__)
   module Kernel
     def __breadcrumb__(obj = nil)
-      if defined?(Rails)
-        return obj unless Rails.env.test? || Rails.env.development?
-      end
       return obj unless $debug
 
       case obj
@@ -15,17 +12,17 @@ unless defined?(Kernel.__breadcrumb__)
       breadcrumb = ">>> #{caller.first}"
       breadcrumb << "\n--> #{msg}" if msg.present?
 
-      if defined?(Rails)
-        Rails.logger.debug breadcrumb
-        puts '', breadcrumb if Rails.env.test?
-      else
-        puts '', breadcrumb
-      end
+      Rails.logger.debug breadcrumb if defined?(Rails)
+      puts '', breadcrumb
 
+    ensure
       return obj
     end
   end
 end
+
+
+IRB.conf[:USE_AUTOCOMPLETE] = false
 
 
 
@@ -37,11 +34,9 @@ local_irbrc = irbrc_candidate_names \
   .map { |e| File.join(Dir.pwd, e) } \
   .detect { |e| File.exist?(e) }
 
-if local_irbrc
-  tilde = ->(filename) { filename.gsub(Dir.home, "~") }
-  global_irc = tilde.(__FILE__)
+if local_irbrc && local_irbrc != __FILE__
   puts
-  puts "##### #{global_irc} detected local IRB config file at #{tilde.(local_irbrc)}.  Loading..."
+  puts "##### #{__FILE__} detected local IRB config file at #{local_irbrc}.  Loading..."
   load local_irbrc
   puts
 end
