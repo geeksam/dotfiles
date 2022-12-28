@@ -13,6 +13,9 @@ ln -fs ~/dotfiles/tmux.conf        ~/.tmux.conf
 ln -fs ~/dotfiles/vimrc            ~/.vimrc
 ln -fs ~/dotfiles/vim              ~/.vim
 
+# getting to icloud files from the terminal is super annoying without this
+ln -fs ~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents ~/icloud
+
 
 # NeoVim uses a weird autoload directory
 mkdir -p ~/.local/share/nvim/site/autoload
