@@ -6,7 +6,6 @@ source ~/dotfiles/bash/aliases
 if [ -f ~/dotfiles/private/bashrc ]; then
   source ~/dotfiles/private/bashrc
 fi
-source ~/dotfiles/bash/twitter-gif-tools.bash
 source ~/dotfiles/bash/git-completion.bash
 source ~/dotfiles/bash/git-prompt.sh
 source ~/dotfiles/bash/history_sharing.bash
