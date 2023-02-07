@@ -11,6 +11,7 @@ source ~/dotfiles/bash/git-prompt.sh
 source ~/dotfiles/bash/history_sharing.bash
 source ~/dotfiles/bash/js-fu.bash
 source ~/dotfiles/bash/kubernetes-fu.bash
+source ~/dotfiles/bash/macos_notifications.bash
 source ~/dotfiles/bash/misc-fu.bash
 source ~/dotfiles/bash/ruby-fu.bash
 
