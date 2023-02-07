@@ -35,26 +35,22 @@ alias   gg='gg+  | head -n `expr $LINES / 2`'
 alias  gga='gga+ | head -n `expr $LINES / 2`'
 
 # git
-alias commit='git commit -m'
-alias      g='git'                 ; complete -o default -o nospace -F _git g
-alias     gb='git branch'          ; complete -o default -o nospace -F _git_branch gb
-alias    gco='git checkout'        ; complete -o default -o nospace -F _git_checkout gco
-alias    gcp='git cherry-pick'
-alias     gd='git diff --color'    ; complete -o default -o nospace -F _git_diff gd
-alias  gpfwl='git push --force-with-lease'
-alias     gs='git status -bs'
-alias    gst='git status'
-alias   gwip='git reset --soft HEAD^ && git reset HEAD .'
-
-# git custom commands (these will live in ~/bin/git-*)
-alias gnuke_merged_branches='git nuke-merged-branches'
+alias     g='git'              ; __git_complete g   git
+alias    gb='git branch'       ; __git_complete gb  git_branch
+alias   gco='git checkout'     ; __git_complete gco git_checkout
+alias   gcp='git cherry-pick'  ; __git_complete gcp git_cherry_pick
+alias    gd='git diff --color' ; __git_complete gd  git_diff
+alias gpfwl='git push --force-with-lease'
+alias    gs='git status -bs'
+alias   gst='git status'
+alias  gwip='git reset --soft HEAD^ && git reset HEAD .'
 
 # Rails
 alias r='bundle exec rails'
 
 # RSpec
-alias spec='time bundle exec rspec --order defined'
-alias spec_random='time bundle exec rspec --order random'
+alias spec='time bundle exec rspec --no-profile --order defined'
+alias spec_random='time bundle exec rspec --no-profile --order random'
 
 # Bundler
 alias     b='bundle'
@@ -63,13 +59,10 @@ alias    bx='bundle exec'
 alias    bi='bundle install --jobs=4'
 alias brake='bundle exec rake'
 
-# Pyenv
-alias    px='pyenv exec'
-
 # Docker
-alias dc='docker-compose'
-alias dcr='docker-compose run'
-alias dcrsp='docker-compose run --service-ports'
+alias dc='docker compose'
+alias dcr='docker compose run'
+alias dcrsp='docker compose run --service-ports'
 
 # Kubernetes (abbreviated "k8s", pronounced "cybernoodles")
 alias  kctl="kubectl"

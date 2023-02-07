@@ -6,14 +6,14 @@ source ~/dotfiles/bash/aliases
 if [ -f ~/dotfiles/private/bashrc ]; then
   source ~/dotfiles/private/bashrc
 fi
-source ~/dotfiles/bash/ruby-fu
-source ~/dotfiles/bash/kubernetes-fu
-source ~/dotfiles/bash/js-fu
-source ~/dotfiles/bash/misc-fu
-source ~/dotfiles/bash/history_sharing
 source ~/dotfiles/bash/twitter-gif-tools.bash
 source ~/dotfiles/bash/git-completion.bash
 source ~/dotfiles/bash/git-prompt.sh
+source ~/dotfiles/bash/history_sharing.bash
+source ~/dotfiles/bash/js-fu.bash
+source ~/dotfiles/bash/kubernetes-fu.bash
+source ~/dotfiles/bash/misc-fu.bash
+source ~/dotfiles/bash/ruby-fu.bash
 
 # Notification for long-running processes
 function _sys_notify_status() {
