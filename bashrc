@@ -7,7 +7,6 @@ if [ -f ~/dotfiles/private/bashrc ]; then
   source ~/dotfiles/private/bashrc
 fi
 source ~/dotfiles/bash/ruby-fu
-source ~/dotfiles/bash/python-fu
 source ~/dotfiles/bash/kubernetes-fu
 source ~/dotfiles/bash/js-fu
 source ~/dotfiles/bash/misc-fu
