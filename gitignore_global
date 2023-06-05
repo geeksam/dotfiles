@@ -1,2 +1,5 @@
 .DS_Store
 vendor/cache/
+tags
+tags.lock
+tags.temp
