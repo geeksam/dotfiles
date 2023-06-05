@@ -2,10 +2,11 @@
 
 __kube_ps1()
 {
-  # Get current context
-	CONTEXT=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
+    # Get current context
+    CONTEXT=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
 
-	if [ -n "$CONTEXT" ]; then
-		echo $CONTEXT
-	fi
+    if [ -n "$CONTEXT" ]; then
+        echo $CONTEXT
+    fi
 }
+
