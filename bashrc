@@ -5,6 +5,8 @@ if [ -f ~/dotfiles/private/bashrc ]; then
   source ~/dotfiles/private/bashrc
 fi
 
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
 source ~/dotfiles/bash/git-completion.bash
 source ~/dotfiles/bash/git-prompt.sh
 source ~/dotfiles/bash/history_sharing.bash
@@ -15,6 +17,16 @@ source ~/dotfiles/bash/misc-fu.bash
 source ~/dotfiles/bash/ruby-fu.bash
 
 source ~/dotfiles/bash/aliases.bash
+
+
+# Homebrew
+# NB: as of 2023, homebrew uses different prefixes on different platforms.
+# This may change again in future.
+# - /usr/local for Intel/Rosetta stuff
+# - /opt/homebrew on Apple CPUs; this may change in future
+# HOMEBREW_PREFIX=$(brew --prefix)
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+
 # Notification for long-running processes
 function _sys_notify_status() {
   local notification_command="display notification \"That thing you asked for is done.\" with title \"$1\""
