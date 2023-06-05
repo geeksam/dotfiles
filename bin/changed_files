@@ -1,0 +1,1 @@
+git status -s | egrep -v '^(D.|.D)' | cut -c 4-

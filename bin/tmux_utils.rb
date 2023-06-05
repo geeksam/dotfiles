@@ -3,6 +3,11 @@
 module TmuxUtils
   extend self
 
+  # just here to make mocking possible, KTHXBYE
+  def exit_status
+    $?.exitstatus
+  end
+
   class OutOfWindows < StandardError ; end
 
   def next_n_adjacent_windows(n)
@@ -38,16 +43,69 @@ module TmuxUtils
       tmux_cmd = "tmux #{cmd}"
       puts tmux_cmd if debug
       out = `#{tmux_cmd}`
-      if $?.exitstatus.zero?
+      status = exit_status
+      if status.zero?
         puts out if debug
       else
         msg = [
           "Command failed: #{tmux_cmd}",
-          "Exit status: #{$?.exitstatus}",
+          "Exit status: #{status}",
           "stdout: #{out}",
         ]
         fail msg.join("\n")
       end
+    end
+  end
+
+  def vim_and_shell(path, label: nil)
+    w1, w2 = next_n_adjacent_windows(2)
+
+    label ||= path
+    tmux_new_window w1, path, "#{label} vim", "vim"
+    tmux_new_window w2, path, label
+  end
+
+  SELF_CARE_MSG = <<-EOF
+    You have windows past #9.
+    Either fix this yourself or go update #{__FILE__}.
+
+    Reminder: humans don't multitask well.
+  EOF
+  def compact_windows(dry_run: false)
+    nums = window_numbers
+
+    # Self care: tell me when I'm doing too many things
+    raise SELF_CARE_MSG if nums.max > 9
+
+    nums -= [ 0, 9 ]
+    (1..8).each do |i|
+      break if nums.empty?
+
+      n = nums.shift
+
+      if n == i
+        puts "  #{n} stays put"
+        next
+      end
+
+      msg = "  #{n} --> #{i}"
+
+      # keep track of active/last as we go
+      %i[ active last ].each do |state|
+        if n == orig_state[state]
+          new_state[state] = i
+          msg << " (#{state})"
+        end
+      end
+
+
+      # Move the window
+      if $dry_run
+        puts msg
+      else
+        TmuxUtils.move_window from: n, to: i
+      end
+
     end
   end
 

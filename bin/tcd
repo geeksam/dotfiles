@@ -12,15 +12,15 @@ end
 
 case
 when ARGV.empty?
-  puts "path argument required" and exit
+  puts "path argument required"
+  puts "custom paths: #{LABELS_TO_PATHS.inspect}"
+  exit
 when ARGV.length > 1
-  puts "*one* path at a time, please" and exit
+  puts "*one* path at a time, please"
+  exit
 end
 
 label = ARGV.first
 path = LABELS_TO_PATHS.fetch(label) { label }
 
-w1, w2 = next_n_adjacent_windows(2)
-
-tmux_new_window w1, path, "#{label} vim", "vim"
-tmux_new_window w2, path, label
+vim_and_shell path, label: label
