@@ -5,27 +5,30 @@
 
     " Miscellaneous useful stuff
 
-    Plug 'scrooloose/nerdtree'             " file navigation
-    Plug 'rking/ag.vim'                    " use the Silver Searcher in vim
-    Plug 'jremmen/vim-ripgrep'             " use RipGrep in vim
-    Plug 'jlanzarotta/bufexplorer'         " Buffer Explorer, quite useful
-    Plug 'godlygeek/tabular'               " Tabularize:  vertical alignment goodness
-    Plug 'tomtom/tcomment_vim'             " Ctrl+dash 2x to comment (and a bunch of other stuff I never use)
-    Plug 'flazz/vim-colorschemes'          " loads o' colorschemes
-    Plug 'tpope/vim-surround'              " surrounding characters (ludicrously useful)
-    Plug 'tpope/vim-repeat'                " repeat plugin actions (e.g., from vim-surround)
-    Plug 'junegunn/fzf.vim'                " use 'fzf' in vim (NOTE: `brew install fzf`)
-    Plug 'danro/rename.vim'                " Easy renames
-    Plug 'wesQ3/vim-windowswap'            " <Leader>ww in each of two windows to swap them
-    Plug 'AndrewRadev/splitjoin.vim'       " convert between one-line to multiline constructs
-    Plug 'vim-scripts/ZoomWin'             " 'C-w o' toggles between splits and a single pane
-    Plug 'tpope/vim-fugitive'              " Fugitive. You know, for Git!
-    Plug 'Konfekt/FastFold'                " hopefully, keep vim from slowing down when editing complex files...
-    Plug 'manu-mannattil/vim-longlines'    " Navigate long lines while word wrapping is on
-    Plug 'vim-syntastic/syntastic'         " multi-language syntax tools
-    Plug 'simnalamburt/vim-mundo'          " visualize the undo/redo tree for great power
-    Plug 'nathanaelkane/vim-indent-guides' " vertical indentation highlighting
-    Plug 'jpalardy/spacehi.vim'            " highlight spaces
+    Plug 'vimwiki/vimwiki'                              " A wiki. In Vim. Whodathunkit?
+    Plug 'scrooloose/nerdtree'                          " file navigation
+    Plug 'rking/ag.vim'                                 " use the Silver Searcher in vim
+    Plug 'jremmen/vim-ripgrep'                          " use RipGrep in vim
+    Plug 'jlanzarotta/bufexplorer'                      " Buffer Explorer, quite useful
+    Plug 'godlygeek/tabular'                            " Tabularize:  vertical alignment goodness
+    Plug 'tomtom/tcomment_vim'                          " Ctrl+dash 2x to comment (and a bunch of other stuff I never use)
+    Plug 'flazz/vim-colorschemes'                       " loads o' colorschemes
+    Plug 'tpope/vim-surround'                           " surrounding characters (ludicrously useful)
+    Plug 'tpope/vim-repeat'                             " repeat plugin actions (e.g., from vim-surround)
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " dependency of fzf.vim
+    Plug 'junegunn/fzf.vim'                             " use 'fzf' in vim (NOTE: `brew install fzf`)
+    Plug 'danro/rename.vim'                             " Easy renames
+    Plug 'wesQ3/vim-windowswap'                         " <Leader>ww in each of two windows to swap them
+    Plug 'AndrewRadev/splitjoin.vim'                    " convert between one-line to multiline constructs
+    Plug 'vim-scripts/ZoomWin'                          " 'C-w o' toggles between splits and a single pane
+    Plug 'tpope/vim-fugitive'                           " Fugitive. You know, for Git!
+    Plug 'Konfekt/FastFold'                             " hopefully, keep vim from slowing down when editing complex files...
+    Plug 'manu-mannattil/vim-longlines'                 " Navigate long lines while word wrapping is on
+    Plug 'vim-syntastic/syntastic'                      " multi-language syntax tools
+    Plug 'simnalamburt/vim-mundo'                       " visualize the undo/redo tree for great power
+    Plug 'nathanaelkane/vim-indent-guides'              " vertical indentation highlighting
+    Plug 'jpalardy/spacehi.vim'                         " highlight spaces
+    Plug 'ludovicchabant/vim-gutentags'                 " manage ctags transparently
 
     " TODO: look into 'sjl/gundo' for undo tree superpowers
 
@@ -46,27 +49,6 @@
     Plug 'nelstrom/vim-textobj-rubyblock' " spiffy nav inside/around Ruby blocks
     Plug 'kchmck/vim-coffee-script'       " pretty much what it says on the tin
 
-    " Python, Python, Python.  *shakes head*
-    Plug 'tmhedberg/SimpylFold' " Python-specific folding
-                                " NOTE: recommends FastFold, which is already loaded above
-
-
-    " Temporarily commented out because everything is terrible
-    Plug 'psf/black'                     " autoformatting
-    Plug 'jeetsukumaran/vim-pythonsense' " text objects for Python
-
-    " Fails with "requires vim with support for python 3"
-    " Plug 'davidhalter/jedi-vim'          " autocomplete (and probably some other stuff?)
-
-    " vim-isort fails with 'Fatal Python error: config_get_locale_encoding: failed to get the locale encoding: nl_langinfo(CODESET) failed'
-    " Plug 'fisadev/vim-isort'             " sort import statements (sigh)
-
-    " Plug 'python-mode/python-mode'       " a combination of several other plugins I guess?
-    " Plug 'lambdalisue/vim-pyenv'         " make Vim use pyenv-managed Python (busted af for no reason I can tell?)
-
-    " TODO: check out other possibly useful Python plugins at:
-    " https://codeinthehole.com/tips/vim-text-objects/
-
     " Add plugins to &runtimepath
     call plug#end()
 
@@ -79,20 +61,6 @@ let g:NERDTreeNodeDelimiter = "\u00a0" " Hide unsightly `^G` prefixes on filenam
 " My snippets are old; use the legacy snippet parser for now
 let g:snipMate = { 'snippet_version' : 0 }
 
-" " OK seriously, I don't want *any* autocompletion popping up in Python just
-" " because I typed a freaking dot, okay?  GET OUT OF MY FACE, VIM
-" let g:pymode_rope = 0
-" let g:jedi#popup_on_dot = 0 " can still use C-<space> to open intellisense-like autocompletion
-"
-" let g:pymode_lint_on_write = 0 " don't lint on save
-" let g:pymode_lint_unmodified = 0 " don't lint on save especially if the file hasn't changed
-" let g:pymode_lint_on_fly = 0 " don't lint while typing
-" let g:pymode_lint = 0 " you know what, just don't lint, period
-" let g:pymode_lint_checkers = [] " don't use any, thanks.  really. stop linting.
-
-" maybe this will get syntastic to stfu on `:w`?
-let g:syntastic_python_checkers = ['pylint']
-
 " stop syntastic from complaining about trailing ` ; nil` in stuff I intend to
 " paste into Rails console
 let g:syntastic_quiet_messages = {
@@ -100,6 +68,34 @@ let g:syntastic_quiet_messages = {
 
 
 let NERDTreeIgnore = ['\.pyc$']
+
+
+" ========
+" VIMWIKI!
+" ========
+
+" Both the 'vim-windowswap' and 'vimwiki' plugins map <leader>ww.  Despite many
+" years of muscle memory using vim-windowswap, I'm giving it to vimwiki and
+" remapping to 'sw' for 'swap windows'
+let g:windowswap_map_keys = 0 "prevent default bindings
+nmap <leader>sw :call WindowSwap#EasyWindowSwap()<CR>
+
+" Vimwiki should keep its data in Dropbox so I don't have to remember to use
+" Git commands to sync it
+let g:vimwiki_list = [
+  \ { 'path': '~/Dropbox/vimwiki/',          'syntax': 'markdown', 'ext': '.md', 'path_html': '/dev/null' },
+  \ { 'path': '~/Dropbox/Valimail/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'path_html': '/dev/null' },
+  \ ]
+
+" Per the Vimwiki wiki:
+" > Vimwiki has a feature called 'Temporary Wikis', that will treat every file
+" > with configured file-extension as a wiki.
+" This sounds horrible, so:
+let g:vimwiki_global_ext = 0
+
+" hi VimwikiHeader1 guifg
+
+
 
 " undo tree config
 nnoremap <C-u> :MundoToggle<CR>
@@ -178,7 +174,7 @@ set magic                          " make regular expressions behave sanely (i.e
 set showmatch                      " Show matching bracets when text indicator is over them
 set noerrorbells                   " No sound on errors
 set novisualbell
-set t_vb=                          " set the "visual bell" code to nothing
+set vb t_vb=                       " set the "visual bell" code to nothing
 set nu                             " print line numbers in gutter
 set numberwidth=4
 
@@ -187,12 +183,7 @@ set numberwidth=4
 " ditto trailing whitespace
 " this used to be some weird bullshit I didn't understand; now, spacehi.vim does it
 autocmd BufNewFile,BufRead * SpaceHi
-nmap <leader>s :ToggleSpaceHi<cr>
 nmap <leader><Space> :ToggleSpaceHi<cr>
-
-" IDK why, but these colors keep getting reset or something?  Vim is weird.
-autocmd WinEnter * hi IndentGuidesOdd ctermbg=237
-autocmd WinEnter * hi IndentGuidesEven ctermbg=236
 
 " vim-indent-guides:
 " - always enable
@@ -221,10 +212,6 @@ set equalalways " Vertical and horizontal splits default to equal sizes when cre
 set redrawtime=5000
 
 
-" ===== Colors =====
-set t_Co=256
-set background=dark
-
 " ===== Encoding and locale =====
 set encoding=utf8
 
@@ -233,7 +220,8 @@ try
 catch
 endtry
 
-set ffs=unix,dos,mac "Default file types
+set ffs=unix,dos,mac " Default file types
+
 
 " ===== Files and backups =====
 
@@ -241,6 +229,7 @@ set ffs=unix,dos,mac "Default file types
 set nobackup
 set nowb
 set noswapfile
+
 
 " ===== Text, tab and indent related =====
 
@@ -263,43 +252,10 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" " Close the current buffer
-" map <leader>bd :Bclose<cr>
-"
 " Show buffer list (also mapped to "<leader>be", but this is easier to type
 map <leader>bb :BufExplorer<cr>
 
-" Show/hide NERDTree pane
-map <leader>nn :NERDTreeToggle<cr>
 
-" command! Bclose call <SID>BufcloseCloseIt()
-" function! <SID>BufcloseCloseIt()
-"   let l:currentBufNum = bufnr("%")
-"   let l:alternateBufNum = bufnr("#")
-"
-"   if buflisted(l:alternateBufNum)
-"     buffer #
-"   else
-"     bnext
-"   endif
-"
-"   if bufnr("%") == l:currentBufNum
-"     new
-"   endif
-"
-"   if buflisted(l:currentBufNum)
-"     execute("bdelete! ".l:currentBufNum)
-"   endif
-" endfunction
-"
-" " Specify the behavior when switching between buffers
-" try
-"   set switchbuf=usetab
-"   set stal=1
-" catch
-" endtry
-"
-"
 " ===== Statusline =====
 
 " Never hide the statusline
@@ -339,23 +295,9 @@ autocmd FileType ruby :set foldlevel=1
 autocmd FileType ruby :set fileformat=unix
 autocmd FileType ruby :set expandtab
 autocmd FileType ruby :set tabstop=13
-" TODO: consider swiping the tabstop/softtabstop/etc from Python, below
-
-" ===== Python files =====
-autocmd FileType python :set foldmethod=indent
-autocmd FileType python :set foldlevel=1
-" https://realpython.com/vim-and-python-a-match-made-in-heaven/
-autocmd BufNewFile,BufRead *.py set expandtab
-autocmd BufNewFile,BufRead *.py set tabstop=8
-autocmd BufNewFile,BufRead *.py set softtabstop=4
-autocmd BufNewFile,BufRead *.py set shiftwidth=4
-autocmd BufNewFile,BufRead *.py set autoindent
-
-" ===== Go files =====
-autocmd BufNewFile,BufRead *.go :NoSpaceHi
-autocmd FileType go :set tabstop=4
-autocmd FileType go :set shiftwidth=4
-autocmd FileType go :set fileformat=unix
+autocmd FileType ruby :set softtabstop=2
+autocmd FileType ruby :set shiftwidth=2
+autocmd FileType ruby :set autoindent
 
 
 
@@ -389,7 +331,12 @@ set wrap
 set linebreak
 set nolist  " list disables linebreak
 
-" Colors
+
+" ===== Colors =====
+" IDK why, but these colors keep getting reset or something?  Vim is weird.
+autocmd WinEnter * hi IndentGuidesOdd ctermbg=237
+autocmd WinEnter * hi IndentGuidesEven ctermbg=236
+
 set t_Co=256 " 256 colors
 set background=dark
 colorscheme herald
@@ -546,6 +493,7 @@ vmap <Leader>a{ :Tabularize/\s{/l0c1<CR>:Tabularize/}\s/l1c0<CR>
 :nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Vim doesn't always cope with display changes well; force full redraw
-nmap <Leader>t :redraw!<CR>
+" Also, the command window seems to like to embiggen itself now (Jan 2023), so reset that shit too
+nmap <Leader>t :redraw!<CR>:set cmdheight=2<CR>:set cmdheight=1<CR>
 
 
