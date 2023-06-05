@@ -1,21 +1,27 @@
-mkdir -p ~/.config/bat
-ln -fs ~/dotfiles/batfile          ~/.config/bat/config
-ln -fs ~/dotfiles/bashrc           ~/.bashrc
-ln -fs ~/dotfiles/bash_profile     ~/.bash_profile # http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
-ln -fs ~/dotfiles/gemrc            ~/.gemrc
-ln -fs ~/dotfiles/gitattributes    ~/.gitattributes
-ln -fs ~/dotfiles/gitconfig        ~/.gitconfig
-ln -fs ~/dotfiles/gitignore_global ~/.gitignore_global
-ln -fs ~/dotfiles/irbrc            ~/.irbrc
-ln -fs ~/dotfiles/inputrc          ~/.inputrc
-ln -fs ~/dotfiles/tool-versions    ~/.tool-versions
-ln -fs ~/dotfiles/tmux.conf        ~/.tmux.conf
-ln -fs ~/dotfiles/vimrc            ~/.vimrc
-ln -fs ~/dotfiles/vim              ~/.vim
+# the usual cruft
+ln -fs ~/dotfiles/bashrc               ~/.bashrc
+ln -fs ~/dotfiles/bash_profile         ~/.bash_profile # http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
+ln -fs ~/dotfiles/gemrc                ~/.gemrc
+ln -fs ~/dotfiles/gitattributes        ~/.gitattributes
+ln -fs ~/dotfiles/gitconfig            ~/.gitconfig
+ln -fs ~/dotfiles/gitignore_global     ~/.gitignore_global
+ln -fs ~/dotfiles/irbrc                ~/.irbrc
+ln -fs ~/dotfiles/inputrc              ~/.inputrc
+ln -fs ~/dotfiles/tool-versions        ~/.tool-versions
+ln -fs ~/dotfiles/tmux.conf            ~/.tmux.conf
+ln -fs ~/dotfiles/vimrc                ~/.vimrc
+ln -fs ~/dotfiles/vim                 ~/.vim
+
+# https://www.hammerspoon.org/
+mkdir -p ~/.hammerspoon/
+ln -fs ~/dotfiles/hammerspoon-init.lua ~/.hammerspoon/init.lua
+
+# https://github.com/sharkdp/bat
+mkdir -p ~/.config/bat/
+ln -fs ~/dotfiles/batfile ~/.config/bat/config
 
 # getting to icloud files from the terminal is super annoying without this
 ln -fs ~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents ~/icloud
-
 
 # NeoVim uses a weird autoload directory
 mkdir -p ~/.local/share/nvim/site/autoload

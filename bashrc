@@ -1,11 +1,10 @@
 export EDITOR='vim'
 
 # Include stuff
-source ~/dotfiles/bash/path
-source ~/dotfiles/bash/aliases
 if [ -f ~/dotfiles/private/bashrc ]; then
   source ~/dotfiles/private/bashrc
 fi
+
 source ~/dotfiles/bash/git-completion.bash
 source ~/dotfiles/bash/git-prompt.sh
 source ~/dotfiles/bash/history_sharing.bash
@@ -15,6 +14,7 @@ source ~/dotfiles/bash/macos_notifications.bash
 source ~/dotfiles/bash/misc-fu.bash
 source ~/dotfiles/bash/ruby-fu.bash
 
+source ~/dotfiles/bash/aliases.bash
 # Notification for long-running processes
 function _sys_notify_status() {
   local notification_command="display notification \"That thing you asked for is done.\" with title \"$1\""
@@ -34,3 +34,8 @@ alias  long_prompt="export PS1=\"\n\[\e[30;102m\][ \@ | \\w\\\$(__git_ps1 ' | (g
 alias short_prompt="export PS1=\"\n\[\e[30;102m\][ \\w\\\$(__git_ps1 ' | %s') ]\[\e[m\]\n$ \""
 alias  tiny_prompt="export PS1=\"$ \""
 long_prompt
+
+
+
+# make sure my path stuff is first, period KTHXBYE
+source ~/dotfiles/bash/path.bash

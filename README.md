@@ -4,6 +4,7 @@ These are my dotfiles.  There are many like them, but these ones are mine.
 
 ## New computer?
 
+* Install Hammerspoon:  https://www.hammerspoon.org/
 * clone this repo to ~/dotfiles
 * `cd dotfiles`
 * Set up shell helpers, aliases, config files, and so on:
