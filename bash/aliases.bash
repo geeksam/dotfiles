@@ -45,10 +45,9 @@ alias    gs='git status -bs'
 alias   gst='git status'
 alias  gwip='git reset --soft HEAD^ && git reset HEAD .'
 
-# Rails
+# Ruby/Rails
 alias r='bundle exec rails'
-
-# RSpec
+alias acab='echo ; echo ------------------------------ ; echo --- ALL CATS ARE BEAUTIFUL --- ; echo ------------------------------ ; echo ; time bundle exec rubocop'
 alias spec='time bundle exec rspec --no-profile --order defined'
 alias spec_random='time bundle exec rspec --no-profile --order random'
 
