@@ -5,7 +5,6 @@
 
     " Miscellaneous useful stuff
 
-    Plug 'vimwiki/vimwiki'                              " A wiki. In Vim. Whodathunkit?
     Plug 'scrooloose/nerdtree'                          " file navigation
     Plug 'rking/ag.vim'                                 " use the Silver Searcher in vim
     Plug 'jremmen/vim-ripgrep'                          " use RipGrep in vim
@@ -28,7 +27,7 @@
     Plug 'simnalamburt/vim-mundo'                       " visualize the undo/redo tree for great power
     Plug 'nathanaelkane/vim-indent-guides'              " vertical indentation highlighting
     Plug 'jpalardy/spacehi.vim'                         " highlight spaces
-    Plug 'ludovicchabant/vim-gutentags'                 " manage ctags transparently
+    " Plug 'ludovicchabant/vim-gutentags'                 " manage ctags transparently
 
     " TODO: look into 'sjl/gundo' for undo tree superpowers
 
@@ -68,33 +67,6 @@ let g:syntastic_quiet_messages = {
 
 
 let NERDTreeIgnore = ['\.pyc$']
-
-
-" ========
-" VIMWIKI!
-" ========
-
-" Both the 'vim-windowswap' and 'vimwiki' plugins map <leader>ww.  Despite many
-" years of muscle memory using vim-windowswap, I'm giving it to vimwiki and
-" remapping to 'sw' for 'swap windows'
-let g:windowswap_map_keys = 0 "prevent default bindings
-nmap <leader>sw :call WindowSwap#EasyWindowSwap()<CR>
-
-" Vimwiki should keep its data in Dropbox so I don't have to remember to use
-" Git commands to sync it
-let g:vimwiki_list = [
-  \ { 'path': '~/Dropbox/vimwiki/',          'syntax': 'markdown', 'ext': '.md', 'path_html': '/dev/null' },
-  \ { 'path': '~/Dropbox/Valimail/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'path_html': '/dev/null' },
-  \ ]
-
-" Per the Vimwiki wiki:
-" > Vimwiki has a feature called 'Temporary Wikis', that will treat every file
-" > with configured file-extension as a wiki.
-" This sounds horrible, so:
-let g:vimwiki_global_ext = 0
-
-" hi VimwikiHeader1 guifg
-
 
 
 " undo tree config
@@ -186,7 +158,7 @@ autocmd BufNewFile,BufRead * SpaceHi
 nmap <leader><Space> :ToggleSpaceHi<cr>
 
 " vim-indent-guides:
-" - always enable
+" - disable by default
 " - add a binding
 " - color customizations are with the other color settings, below.
 let g:indent_guides_enable_on_vim_startup=0
@@ -299,6 +271,9 @@ autocmd FileType ruby :set softtabstop=2
 autocmd FileType ruby :set shiftwidth=2
 autocmd FileType ruby :set autoindent
 
+" ===== YAML files (hork) =====
+autocmd FileType yaml :set foldmethod=indent
+autocmd FileType yaml :set foldlevel=1
 
 
 " ===== Sam's Customizations =====
@@ -421,6 +396,8 @@ set textwidth=0 " Default to 'stop \'helping\' me, vim'
 nmap <Leader>e. :e %:h<CR>
 " ...the way spacemacs does it
 nmap <Space>ff :e %:h<CR>
+" send current filename to pbcopy (NB: `echo -n` omits trailing newline)
+nmap <Leader>c. :!echo -n % \| pbcopy<CR>
 
 
 " Fonts for MacVIM
@@ -478,8 +455,8 @@ nmap <Leader>a, :Tabularize/, \zs/l0c1<CR>
 vmap <Leader>a, :Tabularize/, \zs/l0c1<CR>
 nmap <Leader>a\| :Tabularize/\s\|/l0c1<CR>
 vmap <Leader>a\| :Tabularize/\s\|/l0c1<CR>
-nmap <Leader>ato :Tabularize/).to\(_not\)\?<CR>:Tabularize/expect(<CR>:Tabularize/change<CR>
-vmap <Leader>ato :Tabularize/).to\(_not\)\?<CR>:Tabularize/expect(<CR>:Tabularize/change<CR>
+nmap <Leader>ato :Tabularize/).\(to\|to_not\|not_to\)\?<CR>:Tabularize/expect(<CR>:Tabularize/change<CR>
+vmap <Leader>ato :Tabularize/).\(to\|to_not\|not_to\)\?<CR>:Tabularize/expect(<CR>:Tabularize/change<CR>
 nmap <Leader>a( :Tabularize/(\zs/l0c1<CR>:Tabularize/)/l1c0<CR>
 vmap <Leader>a( :Tabularize/(\zs/l0c1<CR>:Tabularize/)/l1c0<CR>
 nmap <Leader>a[ :Tabularize/[\zs/l0c1<CR>:Tabularize/]/l1c0<CR>
@@ -490,10 +467,17 @@ vmap <Leader>a{ :Tabularize/\s{/l0c1<CR>:Tabularize/}\s/l1c0<CR>
 
 " Trailing whitespace sucks. (spacehi.vim makes it visible, or should...)
 " Nuke it with F6:
-:nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Vim doesn't always cope with display changes well; force full redraw
 " Also, the command window seems to like to embiggen itself now (Jan 2023), so reset that shit too
 nmap <Leader>t :redraw!<CR>:set cmdheight=2<CR>:set cmdheight=1<CR>
+
+
+" NOTE:
+"   `gv` re-selects the last visual selection;
+"   this maps `gv` to re-select the last paste
+"   source: https://vimtricks.com/p/reselect-pasted-text/
+nnoremap gp `[v`]
 
 
