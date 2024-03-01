@@ -7,6 +7,7 @@ fi
 
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
+source ~/dotfiles/bash/asdf.bash
 source ~/dotfiles/bash/git-completion.bash
 source ~/dotfiles/bash/git-prompt.sh
 source ~/dotfiles/bash/history_sharing.bash
@@ -14,7 +15,6 @@ source ~/dotfiles/bash/js-fu.bash
 source ~/dotfiles/bash/kubernetes-fu.bash
 source ~/dotfiles/bash/macos_notifications.bash
 source ~/dotfiles/bash/misc-fu.bash
-source ~/dotfiles/bash/ruby-fu.bash
 
 source ~/dotfiles/bash/aliases.bash
 

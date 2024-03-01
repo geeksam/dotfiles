@@ -17,13 +17,21 @@ These are my dotfiles.  There are many like them, but these ones are mine.
   * ack, the_silver_searcher, ripgrep (can't have too many grep alternatives!)
   * fzf (fuzzy finder)
 * Launch vim and run `:PlugInstall`
-* Install some Ruby version manager (probably rbenv):
+* Install `asdf` from https://asdf-vm.com/guide/getting-started.html
+  * as of Feb 2024 they recommend installing via Git, so if you do that, use
+    the "Git + bash" instructions, not the "homebrew + bash" set
+  * use `asdf` to install a Ruby
+    * ???
+
+<s>
+x Install some Ruby version manager (probably rbenv):
   * rbenv: https://github.com/rbenv/rbenv
   * RVM: http://rvm.io/
   * asdf:
     * `brew install asdf`
     * `brew install openssl libyaml libffi` (required by the `asdf-ruby` plugin; note that this may cause some Ruby Woes below)
     * `asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git`
+</s>
 
 ## Ruby Woes
 
