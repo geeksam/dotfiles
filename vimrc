@@ -48,6 +48,9 @@
     Plug 'nelstrom/vim-textobj-rubyblock' " spiffy nav inside/around Ruby blocks
     Plug 'kchmck/vim-coffee-script'       " pretty much what it says on the tin
 
+    " golang (sighing intensifies)
+    Plug 'fatih/vim-go'
+
     " Add plugins to &runtimepath
     call plug#end()
 
