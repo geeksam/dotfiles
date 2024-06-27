@@ -42,6 +42,19 @@ function focus_app(app_identifier, all_windows)
   end
 end
 
+function zoooom()
+  return function()
+    hs.application.launchOrFocus("Zoom.us")
+    zoom = hs.application("Zoom.us")
+    windows = zoom:allWindows()
+    for _, w in ipairs(windows) do
+      if w:title() ~= "Zoom Workplace" then
+        w:focus()
+      end
+    end
+  end
+end
+
 function hermes_cmd(cmd)
   return function()
     local _cmd = 'tell application "Hermes" to ' .. cmd
@@ -91,7 +104,7 @@ hs.hotkey.bind( meh, "t", focus_app("iTerm") )
 hs.hotkey.bind( meh, "v", focus_app("MacVim") ) -- TODO: cycle instances? https://www.hammerspoon.org/Spoons/AppWindowSwitcher.html
 hs.hotkey.bind( meh, "w", focus_app("Safari") )
 hs.hotkey.bind( meh, "x", focus_app("Camera Settings") ) -- X is next to Z?  ¯\_(ツ)_/¯
-hs.hotkey.bind( meh, "z", focus_app("Zoom.us", true) )
+hs.hotkey.bind( meh, "z", zoooom() )
 
 
 

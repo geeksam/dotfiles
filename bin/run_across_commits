@@ -11,3 +11,5 @@ if [from_commit, to_commit, command].any? { |e| e.nil? || e =~ /^\s*$/ }
 end
 
 exec "(set -e && git rev-list --reverse #{from_commit}..#{to_commit} | while read rev; do git checkout $rev; #{command}; done)"
+
+# TODO: check out the original branch after running?

@@ -64,9 +64,9 @@ alias dcr='docker compose run'
 alias dcrsp='docker compose run --service-ports'
 
 # Kubernetes (abbreviated "k8s", pronounced "cybernoodles")
-alias  kctl="kubectl"
-alias  kctx="kubectx"
-alias   kns="kubens"
+alias     k="kubectl"
+alias    kc="kubectx"
+alias    kn="kubens"
 alias klogs="kubectl logs"
 alias kpods="kubectl get pods"
 
@@ -78,3 +78,6 @@ alias reagent='deagent && agent'
 # NPM (ugh)
 alias nomdance="rm -rf node_modules && npm install"
 alias yarndance="rm -rf node_modules && yarn install"
+
+# dig
+alias d="dig +noall +answer"

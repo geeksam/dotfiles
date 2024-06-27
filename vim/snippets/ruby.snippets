@@ -1,0 +1,77 @@
+version 1
+
+snippet __b
+	__breadcrumb__
+
+snippet FIC
+	#################################################
+	##                                             ##
+	##  ###### ######   #####   ##    ##   #####   ##
+	##  ##       ##    ##   ##  ##    ##  ##   ##  ##
+	##  ##       ##   ##        ##    ##  ##       ##
+	##  ####     ##   ##        ##    ##   #####   ##
+	##  ##       ##   ##        ##    ##       ##  ##
+	##  ##       ##    ##   ##  ##    ##  ##   ##  ##
+	##  ##     ######   #####    ######    #####   ##
+	##                                             ##
+	#################################################
+	fcontext "FICUS" do
+
+snippet fic
+	fcontext "FICUS" do
+
+snippet ef
+	end # FICUS
+
+snippet unf
+	xcontext "UN-FICUS" do
+
+snippet eu
+	end # UN-FICUS
+
+snippet kwargs
+        def foo(*args, &block)
+          target(*args, &block)
+        end
+        ruby2_keywords :foo if respond_to?(:ruby2_keywords, true)
+
+snippet patfh
+	Pathname.new(File.dirname(__FILE__)).join("$0")
+
+snippet rec
+	receive
+
+snippet have_rec
+	have_received
+
+snippet tap
+	tap { |${1:x}| $0 }
+
+snippet {
+	{ |${1:x}| $0 }
+
+snippet ->
+	->(${1:x}) { $0 }
+
+snippet mod
+	module ${0:Foo}
+		module ClassMethods
+		end
+
+		module InstanceMethods
+		end
+
+		def self.included(receiver)
+			receiver.extend         ClassMethods
+			receiver.send :include, InstanceMethods
+		end
+	end
+
+
+snippet slugs
+	it 'sets slugs to originating: ${1:"unknown"}, delivery: ${2:$1}' do
+	  classify
+	  expect(classifier).to have_slugs(originating: ${3:$1}, delivery: ${4:$2})
+	end
+
+

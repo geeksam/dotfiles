@@ -45,8 +45,6 @@
     Plug 'tpope/vim-rails'                " pretty much what it says on the tin
     Plug 'tpope/vim-endwise'              " Automatically enter closing tokens (e.g., 'end' in Ruby)
     Plug 'vim-ruby/vim-ruby'              " Recent-ish Ruby syntax highlighting
-    Plug 'nelstrom/vim-textobj-rubyblock' " spiffy nav inside/around Ruby blocks
-    Plug 'kchmck/vim-coffee-script'       " pretty much what it says on the tin
 
     " golang (sighing intensifies)
     Plug 'fatih/vim-go'
@@ -60,8 +58,8 @@ set runtimepath+=/usr/local/opt/fzf
 map <C-p> :FZF<Enter>
 let g:NERDTreeNodeDelimiter = "\u00a0" " Hide unsightly `^G` prefixes on filenames
 
-" My snippets are old; use the legacy snippet parser for now
-let g:snipMate = { 'snippet_version' : 0 }
+" silence snipMate deprecation warning
+let g:snipMate = { 'snippet_version' : 1 }
 
 " stop syntastic from complaining about trailing ` ; nil` in stuff I intend to
 " paste into Rails console
@@ -157,8 +155,15 @@ set numberwidth=4
 " make hard tabs visible (I want to type "ducking" more often than I want tabs)
 " ditto trailing whitespace
 " this used to be some weird bullshit I didn't understand; now, spacehi.vim does it
-autocmd BufNewFile,BufRead * SpaceHi
 nmap <leader><Space> :ToggleSpaceHi<cr>
+augroup mostly_spacehi
+  autocmd Syntax    *       SpaceHi
+  autocmd FileType  help  NoSpaceHi
+  autocmd FileType  diff  NoSpaceHi
+  autocmd FileType  man   NoSpaceHi
+  autocmd FileType  go    NoSpaceHi
+  autocmd FileType  make  NoSpaceHi
+augroup END
 
 " vim-indent-guides:
 " - disable by default
@@ -277,6 +282,50 @@ autocmd FileType ruby :set autoindent
 " ===== YAML files (hork) =====
 autocmd FileType yaml :set foldmethod=indent
 autocmd FileType yaml :set foldlevel=1
+
+" ===== golang =====
+" NB:  SpaceHi is managed in its own `augroup`
+autocmd FileType go :set foldmethod=syntax
+autocmd FileType go :set foldlevel=0
+autocmd FileType go :set noexpandtab
+autocmd FileType go :set tabstop=4
+autocmd FileType go :set shiftwidth=4
+
+
+" ====== Golang Settings (swiped from coworker) ========
+
+" Go syntax highlighting
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+
+" Auto formatting and importing
+let g:go_fmt_autosave = 0
+let g:go_fmt_command = "goimports"
+
+" Status line types/signatures
+let g:go_auto_type_info = 1
+
+"Use gopls for go autocompletion
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+
+" Run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+" nmap <leader>gb :GoBuild<CR>
+" nmap <leader>gt :GoTest<CR>
+
+" ==== Golang Settings END =====
 
 
 " ===== Sam's Customizations =====
@@ -421,8 +470,8 @@ nmap <Leader>jl :SplitjoinJoin<CR>
 nmap <Leader>ah :Tabularize/=><CR>
 vmap <Leader>ah :Tabularize/=><CR>
 " lolvim: the sequence "\@!" apparently means "zero of the thing I just said"
-nmap <Leader>a= :Tabularize/=\+>\@!<CR>
-vmap <Leader>a= :Tabularize/=\+>\@!<CR>
+nmap <Leader>a= :Tabularize/:\?=\+>\@!<CR>
+vmap <Leader>a= :Tabularize/:\?=\+>\@!<CR>
 
 nmap <Leader>a; :Tabularize/;<CR>
 vmap <Leader>a; :Tabularize/;<CR>

@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+USAGE = <<~EOF
+
+  Looks up a DKIM record.  Equivalent to:
+    dig +noall +answer SELECTOR._domainkey.DOMAIN TYPE
+
+  Usage:
+    #{__FILE__} domain selector type
+
+EOF
+
+case ARGV.length
+when 3
+  domain, selector, type = *ARGV
+else
+  puts USAGE
+  exit
+end
+
+cmd = "dig +noall +answer #{selector}._domainkey.#{domain} #{type}"
+puts
+puts "  #{cmd}"
+puts "  " + `#{cmd}`
+puts

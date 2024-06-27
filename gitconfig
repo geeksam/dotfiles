@@ -31,6 +31,9 @@
 # Swiped from:  https://gist.github.com/ruediger/5647207#gistcomment-2012538
 [diff "ecmascript"]
         xfuncname = "^((.*function.*)|([ \t]+it\\(.*))$"
+
 [init]
 	defaultBranch = main
 
+[url "git@github.com:"]
+     insteadOf = https://github.com/

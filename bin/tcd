@@ -3,7 +3,7 @@ require_relative 'tmux_utils'
 include TmuxUtils
 
 begin
-  require_relative "../private/tcd-seekrit" rescue nil
+  require_relative "../private/tcd-seekrit"
 rescue LoadError
   LABELS_TO_PATHS = {
     # "guspants" => "augustus_monkeypants",
@@ -20,7 +20,19 @@ when ARGV.length > 1
   exit
 end
 
-label = ARGV.first
+label = ARGV.first.gsub(%r(/+$), '')
 path = LABELS_TO_PATHS.fetch(label) { label }
+
+p({label: label, path: path})
+
+# make sure the path actually exists within N subdirs of home
+# (IDK how to read bash's $CDPATH from Ruby, so this is a bit of a kludge)
+max_depth = 2
+dirs = `find ~ -type d -name #{path} -maxdepth #{max_depth}`.split("\n").map(&:strip)
+if dirs.empty?
+  puts "Couldn't find a path named #{path.inspect}"
+  puts "custom paths: #{LABELS_TO_PATHS.inspect}"
+  exit
+end
 
 vim_and_shell path, label: label

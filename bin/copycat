@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+if ARGV.empty?
+  puts "please provide one or more args"
+  exit
+end
+
+cmd = "cat #{ARGV.join(" ")} | pbcopy"
+puts cmd
+exec cmd

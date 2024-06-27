@@ -18,6 +18,7 @@ These are my dotfiles.  There are many like them, but these ones are mine.
     * ack, the_silver_searcher, ripgrep (can't have too many grep alternatives!)
     * fzf (fuzzy finder)
     * blueutil (controls bluetooth, useful for hammerspoon automation)
+    * jordanbaird-ice (Bartender replacement)
 * Launch vim and run `:PlugInstall`
 * Install `asdf` from https://asdf-vm.com/guide/getting-started.html
   * as of Feb 2024 they recommend installing via Git, so if you do that, use
