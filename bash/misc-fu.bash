@@ -4,3 +4,14 @@
 
 # Configure 'thefuck'
 eval "$(thefuck --alias)"
+
+
+pyme() {
+    if [ ! -d "./ve" ]; then
+        echo "Creating ve.."
+        python -m venv ve
+        echo "Updating virtual environment..."
+        ./ve/bin/pip install -I -U pip setuptools wheel
+    fi
+    source ./ve/bin/activate
+}
