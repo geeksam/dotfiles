@@ -367,7 +367,10 @@ autocmd WinEnter * hi IndentGuidesEven ctermbg=236
 
 set t_Co=256 " 256 colors
 set background=dark
-colorscheme herald
+
+" HERALD
+if (1 == 1)
+  colorscheme herald
 
   " ===================================================================
   " ===== COLOR CHEAT SHEET: https://jonasjacek.github.io/colors/ =====
@@ -399,6 +402,7 @@ colorscheme herald
 
   " Also, make the background a shade darker (terminal only)
   if &t_Co == 256
+    " NB:  233 = #121212
     hi Normal                  ctermbg=233
 
     hi Comment                 ctermbg=233
@@ -431,6 +435,8 @@ colorscheme herald
     hi htmlUnderline           ctermbg=233
     hi htmlUnderlineItalic     ctermbg=233
   endif
+endif
+
 
 
 " Quickly toggle wordwrap
