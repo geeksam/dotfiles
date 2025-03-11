@@ -14,7 +14,7 @@ ln -fs ~/dotfiles/vimrc                ~/.vimrc
 ln -fs ~/dotfiles/vim                 ~/.vim
 
 # NeoVim
-mkdir -p ~/.config/nvim/
+mkdir -p ~/.config/
 ln -fs ~/dotfiles/nvim ~/.config/nvim
 
 # https://www.hammerspoon.org/
