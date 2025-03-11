@@ -23,6 +23,7 @@ end
 
 if ARGV.empty?
   puts "\n\n\n\tgcollab with whom, pray tell?\n\n\n"
+  puts table(COLLABORATORS.to_a.sort)
   exit
 end
 
