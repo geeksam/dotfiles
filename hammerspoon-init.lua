@@ -91,6 +91,7 @@ hs.hotkey.bind( meh, "F9", hermes_cmd("next song") )
 -- hs.hotkey.bind( meh, "a", shell_cmd("blueutil -p 0") )
 -- hs.hotkey.bind( meh, "b", shell_cmd("blueutil -p 1") )
 
+hs.hotkey.bind( meh, "a", focus_app("Activity Monitor") )
 hs.hotkey.bind( meh, "c", focus_app("Google Chrome") )
 hs.hotkey.bind( meh, "d", focus_app("Dash") )
 hs.hotkey.bind( meh, "f", focus_app("Finder") )
@@ -101,6 +102,7 @@ hs.hotkey.bind( meh, "m", focus_app("TextMate") )
 hs.hotkey.bind( meh, "p", focus_app("1Password") )
 hs.hotkey.bind( meh, "s", focus_app("Slack", true) )
 hs.hotkey.bind( meh, "t", focus_app("iTerm") )
+hs.hotkey.bind( meh, "u", focus_app("Shush") )
 hs.hotkey.bind( meh, "v", focus_app("MacVim") ) -- TODO: cycle instances? https://www.hammerspoon.org/Spoons/AppWindowSwitcher.html
 hs.hotkey.bind( meh, "w", focus_app("Safari") )
 hs.hotkey.bind( meh, "x", focus_app("Camera Settings") ) -- X is next to Z?  ¯\_(ツ)_/¯

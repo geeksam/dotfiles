@@ -25,7 +25,7 @@ source ~/dotfiles/bash/aliases.bash
 # - /usr/local for Intel/Rosetta stuff
 # - /opt/homebrew on Apple CPUs; this may change in future
 # HOMEBREW_PREFIX=$(brew --prefix)
-export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Notification for long-running processes
 function _sys_notify_status() {

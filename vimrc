@@ -6,8 +6,7 @@
     " Miscellaneous useful stuff
 
     Plug 'scrooloose/nerdtree'                          " file navigation
-    Plug 'rking/ag.vim'                                 " use the Silver Searcher in vim
-    Plug 'jremmen/vim-ripgrep'                          " use RipGrep in vim
+    Plug 'mhinz/vim-grepper'                            " one grep tool to rule them all?
     Plug 'jlanzarotta/bufexplorer'                      " Buffer Explorer, quite useful
     Plug 'godlygeek/tabular'                            " Tabularize:  vertical alignment goodness
     Plug 'tomtom/tcomment_vim'                          " Ctrl+dash 2x to comment (and a bunch of other stuff I never use)
@@ -27,7 +26,6 @@
     Plug 'simnalamburt/vim-mundo'                       " visualize the undo/redo tree for great power
     Plug 'nathanaelkane/vim-indent-guides'              " vertical indentation highlighting
     Plug 'jpalardy/spacehi.vim'                         " highlight spaces
-    " Plug 'ludovicchabant/vim-gutentags'                 " manage ctags transparently
 
     " TODO: look into 'sjl/gundo' for undo tree superpowers
 
@@ -47,7 +45,7 @@
     Plug 'vim-ruby/vim-ruby'              " Recent-ish Ruby syntax highlighting
 
     " golang (sighing intensifies)
-    Plug 'fatih/vim-go'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
     " Add plugins to &runtimepath
     call plug#end()
@@ -55,7 +53,7 @@
 " ===== Plugin config =====
 
 set runtimepath+=/usr/local/opt/fzf
-map <C-p> :FZF<Enter>
+map <C-p> :FZF<CR>
 let g:NERDTreeNodeDelimiter = "\u00a0" " Hide unsightly `^G` prefixes on filenames
 
 " silence snipMate deprecation warning
@@ -172,9 +170,6 @@ augroup END
 let g:indent_guides_enable_on_vim_startup=0
 nmap <leader>i :IndentGuidesToggle<cr>
 
-" open a new line without entering insert mode
-map <Enter> o<ESC>
-
 " sometimes the Escape key is too far away
 " and in THE FUTURE, it might not even be a physical key. COURAGE
 imap jj <Esc>
@@ -191,6 +186,10 @@ set equalalways " Vertical and horizontal splits default to equal sizes when cre
 " Syntax highlighting can be slow on some large files.  Be more patient.
 set redrawtime=5000
 
+" quickfix list. WHO KNEW?!
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>x :cclose<CR>
 
 " ===== Encoding and locale =====
 set encoding=utf8
@@ -235,6 +234,8 @@ map <C-l> <C-W>l
 " Show buffer list (also mapped to "<leader>be", but this is easier to type
 map <leader>bb :BufExplorer<cr>
 
+" IDK why <CR> stopped working in my quickfix lists (Sep 2024), but this mapping does what I want
+nmap <leader>o :.cc<CR>
 
 " ===== Statusline =====
 
@@ -462,6 +463,10 @@ endif
 nmap <Leader>r gqip
 vmap <Leader>r gq
 
+" Visual mode ops: sort, [sort+]uniq
+vmap <Leader>so !sort<CR>
+vmap <Leader>su !sort<Space>\|<Space>uniq<CR>
+
 " SplitJoin
 nmap <Leader>sl :SplitjoinSplit<CR>
 nmap <Leader>jl :SplitjoinJoin<CR>
@@ -531,5 +536,25 @@ nmap <Leader>t :redraw!<CR>:set cmdheight=2<CR>:set cmdheight=1<CR>
 "   this maps `gv` to re-select the last paste
 "   source: https://vimtricks.com/p/reselect-pasted-text/
 nnoremap gp `[v`]
+
+
+" vim-grepper!
+let g:grepper = {}
+
+let g:grepper.dir = 'repo,cwd'
+let g:grepper.tools = ['ag', 'rg']
+let g:grepper.rg = {} " have to set this for the next line to work
+let g:grepper.rg.grepprg = 'rg -H --no-heading --vimgrep --sort=path'
+
+let g:grepper.prompt_quote = 0
+
+let g:grepper.highlight    = 1
+let g:grepper.quickfix     = 1 " using location list means ':.cc' doesn't work. why is vim like this. why.
+let g:grepper.open         = 1 " do open the list (if there are results)
+let g:grepper.switch       = 1 " do switch to the list after open
+let g:grepper.jump         = 0 " BUT don't clobber existing buffers, tyvm
+
+nnoremap <leader>g :Grepper -tool rg<CR>
+nnoremap <leader>* :Grepper -tool rg -cword<CR>
 
 

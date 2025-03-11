@@ -81,3 +81,6 @@ alias yarndance="rm -rf node_modules && yarn install"
 
 # dig
 alias d="dig +noall +answer"
+
+# aws cli (sigh)
+alias awtf='aws configure list-profiles'
