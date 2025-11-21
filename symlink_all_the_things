@@ -9,11 +9,7 @@ ln -fs ~/dotfiles/irbrc                ~/.irbrc
 ln -fs ~/dotfiles/inputrc              ~/.inputrc
 ln -fs ~/dotfiles/tmux.conf            ~/.tmux.conf
 ln -fs ~/dotfiles/vimrc                ~/.vimrc
-ln -fs ~/dotfiles/vim                 ~/.vim
-
-# NeoVim
-mkdir -p ~/.config/
-ln -fs ~/dotfiles/nvim ~/.config/nvim
+ln -fs ~/dotfiles/vim                  ~/.vim
 
 # https://www.hammerspoon.org/
 mkdir -p ~/.hammerspoon/
@@ -25,8 +21,3 @@ ln -fs ~/dotfiles/batfile ~/.config/bat/config
 
 # getting to icloud files from the terminal is super annoying without this
 ln -fs ~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents ~/icloud
-
-# NeoVim uses a weird autoload directory
-mkdir -p ~/.local/share/nvim/site/autoload
-ln -fs ~/dotfiles/vim/autoload/plug.vim ~/.local/share/nvim/site/autoload/plug.vim
-
