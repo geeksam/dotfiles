@@ -7,7 +7,6 @@ fi
 
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
-source ~/dotfiles/bash/asdf.bash
 source ~/dotfiles/bash/git-completion.bash
 source ~/dotfiles/bash/git-prompt.sh
 source ~/dotfiles/bash/history_sharing.bash
