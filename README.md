@@ -20,21 +20,10 @@ These are my dotfiles.  There are many like them, but these ones are mine.
     * blueutil (controls bluetooth, useful for hammerspoon automation)
     * jordanbaird-ice (Bartender replacement)
 * Launch vim and run `:PlugInstall`
-* Install `asdf` from https://asdf-vm.com/guide/getting-started.html
-  * as of Feb 2024 they recommend installing via Git, so if you do that, use
-    the "Git + bash" instructions, not the "homebrew + bash" set
-  * use `asdf` to install a Ruby
-    * ???
-
-<s>
-x Install some Ruby version manager (probably rbenv):
+* Install some Ruby version manager:
+  * rv: https://github.com/spinel-coop/rv?tab=readme-ov-file
   * rbenv: https://github.com/rbenv/rbenv
   * RVM: http://rvm.io/
-  * asdf:
-    * `brew install asdf`
-    * `brew install openssl libyaml libffi` (required by the `asdf-ruby` plugin; note that this may cause some Ruby Woes below)
-    * `asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git`
-</s>
 
 ## Ruby Woes
 
@@ -48,12 +37,3 @@ example.)
   `-- --with-mysql-config=/usr/local/opt/mysql@5.6/bin/mysql_config`
 * If `-lss` can't be linked, try adding:
   `-- --with-ldflags=-L/usr/local/opt/openssl/lib --with-cppflags=-I/usr/local/opt/openssl/include`
-
---
-
-Clever ideas I could possibly implement at some point:
-
-- add an indicator to the prompt showing whether the last command had an
-  exit status of 0
-
-
