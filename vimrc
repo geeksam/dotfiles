@@ -44,8 +44,6 @@
     Plug 'tpope/vim-endwise'              " Automatically enter closing tokens (e.g., 'end' in Ruby)
     Plug 'vim-ruby/vim-ruby'              " Recent-ish Ruby syntax highlighting
 
-    " golang (sighing intensifies)
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
     " Add plugins to &runtimepath
     call plug#end()
@@ -302,26 +300,6 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
 
-" Auto formatting and importing
-let g:go_fmt_autosave = 0
-let g:go_fmt_command = "goimports"
-
-" Status line types/signatures
-let g:go_auto_type_info = 1
-
-"Use gopls for go autocompletion
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-
-" Run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
 
 " nmap <leader>gb :GoBuild<CR>
 " nmap <leader>gt :GoTest<CR>
