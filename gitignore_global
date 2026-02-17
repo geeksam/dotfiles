@@ -3,3 +3,5 @@ vendor/cache/
 tags
 tags.lock
 tags.temp
+.tool-versions
+.idea/

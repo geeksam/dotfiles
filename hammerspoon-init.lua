@@ -18,18 +18,15 @@ A few quick snippets:
 
 TODO list:
 
-* turn bluetooth back on (e.g., after sleep)
-  * https://github.com/toy/blueutil
-
-* consider moving window management out of Moom and into here
+* consider moving window management out of Moom and into here?
   * http://www.hammerspoon.org/docs/hs.screen.html
   * https://livingissodear.com/posts/using-hammerspoon-for-window-management/
 
 --]]
 
 meh   = {"ctrl", "alt", "shift"}
-mash  = {"ctrl", "alt", "cmd"}
 hyper = {"ctrl", "alt", "shift", "cmd"}
+mash  = {"ctrl", "alt",          "cmd"} -- this is my own convention, for moom
 
 
 
@@ -86,27 +83,26 @@ hs.hotkey.bind( meh, "F7", focus_app("Hermes") )
 hs.hotkey.bind( meh, "F8", hermes_cmd("playpause") )
 hs.hotkey.bind( meh, "F9", hermes_cmd("next song") )
 
--- turn bluetooth on (necessitated by work security policy)
--- (doesn't actually work tho?)
--- hs.hotkey.bind( meh, "a", shell_cmd("blueutil -p 0") )
--- hs.hotkey.bind( meh, "b", shell_cmd("blueutil -p 1") )
-
+-- LEFT HAND
 hs.hotkey.bind( meh, "a", focus_app("Activity Monitor") )
 hs.hotkey.bind( meh, "c", focus_app("Google Chrome") )
 hs.hotkey.bind( meh, "d", focus_app("Dash") )
 hs.hotkey.bind( meh, "f", focus_app("Finder") )
-hs.hotkey.bind( meh, "g", open_folder("~/Dropbox/GIFs") )
-hs.hotkey.bind( meh, "h", focus_app("Hammerspoon") )
-hs.hotkey.bind( meh, "k", focus_app("Ergodox EZ Configurator") )
-hs.hotkey.bind( meh, "m", focus_app("TextMate") )
-hs.hotkey.bind( meh, "p", focus_app("1Password") )
+hs.hotkey.bind( meh, "g", focus_app("Fork") )
 hs.hotkey.bind( meh, "s", focus_app("Slack", true) )
 hs.hotkey.bind( meh, "t", focus_app("iTerm") )
-hs.hotkey.bind( meh, "u", focus_app("Shush") )
 hs.hotkey.bind( meh, "v", focus_app("MacVim") ) -- TODO: cycle instances? https://www.hammerspoon.org/Spoons/AppWindowSwitcher.html
 hs.hotkey.bind( meh, "w", focus_app("Safari") )
 hs.hotkey.bind( meh, "x", focus_app("Camera Settings") ) -- X is next to Z?  ¯\_(ツ)_/¯
 hs.hotkey.bind( meh, "z", zoooom() )
+
+-- RIGHT HAND
+hs.hotkey.bind( meh, "h", focus_app("Hammerspoon") )
+hs.hotkey.bind( meh, "k", focus_app("Oryx") )
+hs.hotkey.bind( meh, "l", open_folder("~/Dropbox/GIFs") )
+hs.hotkey.bind( meh, "m", focus_app("TextMate") )
+hs.hotkey.bind( meh, "p", focus_app("1Password") )
+hs.hotkey.bind( meh, "u", focus_app("Shush") )
 
 
 

@@ -1,4 +1,5 @@
 set editing-mode vi
+# just leaving a comment here because I did a grep for 'vim' and didn't find this file :D
 
 Control-l: clear-screen
 Control-p: previous-history

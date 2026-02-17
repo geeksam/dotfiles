@@ -1,2 +1,2 @@
-eval "$(rv shell init bash)"
-eval "$(rv shell completions bash)"
+eval "$(/opt/homebrew/bin/rv shell init bash)"
+eval "$(/opt/homebrew/bin/rv shell completions bash)"

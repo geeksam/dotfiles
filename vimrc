@@ -337,7 +337,12 @@ set nolist  " list disables linebreak
 autocmd WinEnter * hi IndentGuidesOdd ctermbg=237
 autocmd WinEnter * hi IndentGuidesEven ctermbg=236
 
-set t_Co=256 " 256 colors
+" Find out what syntax selector to use for the token under the cursor
+nnoremap <Leader>wtf :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" set t_Co=256 " 256 colors
 set background=dark
 
 " HERALD
@@ -431,6 +436,17 @@ nmap <Space>ff :e %:h<CR>
 nmap <Leader>c. :!echo -n % \| pbcopy<CR>
 
 
+" Reload the current file *and* unfold all
+nmap <Leader>E :e!<cr>zRgg
+
+
+" being lazy about typing a colon
+:noremap <leader>,w :w<cr>
+:noremap <leader>,wa :wa<cr>
+:noremap <leader>,q :q<cr>
+
+
+
 " Fonts for MacVIM
 if has("gui_running")
   set guioptions=-t
@@ -482,22 +498,22 @@ vmap <Leader>awh :Tabularize/when<CR>
 "   "left, then zero spaces, then [delimiter], then 1 space"
 "   See: https://raw.github.com/godlygeek/tabular/master/doc/Tabular.txt
 " TODO: this can probably be replaced with just \s, in at least some cases?
-nmap <Leader>a# :Tabularize/ # /l0c0<CR>
-vmap <Leader>a# :Tabularize/ # /l0c0<CR>
-nmap <Leader>a: :Tabularize/:\zs /l0c0<CR>
-vmap <Leader>a: :Tabularize/:\zs /l0c0<CR>
-nmap <Leader>a, :Tabularize/, \zs/l0c1<CR>
-vmap <Leader>a, :Tabularize/, \zs/l0c1<CR>
+nmap <Leader>a#  :Tabularize/ # /l0c0<CR>
+vmap <Leader>a#  :Tabularize/ # /l0c0<CR>
+nmap <Leader>a:  :Tabularize/:\zs /l0c0<CR>
+vmap <Leader>a:  :Tabularize/:\zs /l0c0<CR>
+nmap <Leader>a,  :Tabularize/, \zs/l0c1<CR>
+vmap <Leader>a,  :Tabularize/, \zs/l0c1<CR>
 nmap <Leader>a\| :Tabularize/\s\|/l0c1<CR>
 vmap <Leader>a\| :Tabularize/\s\|/l0c1<CR>
-nmap <Leader>ato :Tabularize/).\(to\|to_not\|not_to\)\?<CR>:Tabularize/expect(<CR>:Tabularize/change<CR>
-vmap <Leader>ato :Tabularize/).\(to\|to_not\|not_to\)\?<CR>:Tabularize/expect(<CR>:Tabularize/change<CR>
-nmap <Leader>a( :Tabularize/(\zs/l0c1<CR>:Tabularize/)/l1c0<CR>
-vmap <Leader>a( :Tabularize/(\zs/l0c1<CR>:Tabularize/)/l1c0<CR>
-nmap <Leader>a[ :Tabularize/[\zs/l0c1<CR>:Tabularize/]/l1c0<CR>
-vmap <Leader>a[ :Tabularize/[\zs/l0c1<CR>:Tabularize/]/l1c0<CR>
-nmap <Leader>a{ :Tabularize/\s{/l0c1<CR>:Tabularize/}\s/l1c0<CR>
-vmap <Leader>a{ :Tabularize/\s{/l0c1<CR>:Tabularize/}\s/l1c0<CR>
+nmap <Leader>ato :Tabularize/).\(not_\)\?to/l1r1<CR>:Tabularize/expect(/l0r1<CR>:Tabularize/change<CR>
+vmap <Leader>ato :Tabularize/).\(not_\)\?to/l1r1<CR>:Tabularize/expect(/l0r1<CR>:Tabularize/change<CR>
+nmap <Leader>a(  :Tabularize/(\zs/l0c1<CR>:Tabularize/)/l1c0<CR>
+vmap <Leader>a(  :Tabularize/(\zs/l0c1<CR>:Tabularize/)/l1c0<CR>
+nmap <Leader>a[  :Tabularize/[\zs/l0c1<CR>:Tabularize/]/l1c0<CR>
+vmap <Leader>a[  :Tabularize/[\zs/l0c1<CR>:Tabularize/]/l1c0<CR>
+nmap <Leader>a{  :Tabularize/\s{/l0c1<CR>:Tabularize/}\s/l1c0<CR>
+vmap <Leader>a{  :Tabularize/\s{/l0c1<CR>:Tabularize/}\s/l1c0<CR>
 
 
 " Trailing whitespace sucks. (spacehi.vim makes it visible, or should...)
@@ -534,5 +550,3 @@ let g:grepper.jump         = 0 " BUT don't clobber existing buffers, tyvm
 
 nnoremap <leader>g :Grepper -tool rg<CR>
 nnoremap <leader>* :Grepper -tool rg -cword<CR>
-
-

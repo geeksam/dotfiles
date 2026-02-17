@@ -49,11 +49,13 @@ long_prompt
 
 
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/sam.livingston-gray/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
-
-
 # make sure my path stuff is first, period KTHXBYE
 source ~/dotfiles/bash/path.bash
+
+
+
+    #############################################
+    ##### ANYTHING BELOW THIS LINE IS CRUFT #####
+    #############################################
+
+
