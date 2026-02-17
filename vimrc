@@ -22,7 +22,6 @@
     Plug 'tpope/vim-fugitive'                           " Fugitive. You know, for Git!
     Plug 'Konfekt/FastFold'                             " hopefully, keep vim from slowing down when editing complex files...
     Plug 'manu-mannattil/vim-longlines'                 " Navigate long lines while word wrapping is on
-    Plug 'vim-syntastic/syntastic'                      " multi-language syntax tools
     Plug 'simnalamburt/vim-mundo'                       " visualize the undo/redo tree for great power
     Plug 'nathanaelkane/vim-indent-guides'              " vertical indentation highlighting
     Plug 'jpalardy/spacehi.vim'                         " highlight spaces
@@ -56,11 +55,6 @@ let g:NERDTreeNodeDelimiter = "\u00a0" " Hide unsightly `^G` prefixes on filenam
 
 " silence snipMate deprecation warning
 let g:snipMate = { 'snippet_version' : 1 }
-
-" stop syntastic from complaining about trailing ` ; nil` in stuff I intend to
-" paste into Rails console
-let g:syntastic_quiet_messages = {
-  \ 'regex': 'useless use of nil in void context' }
 
 
 let NERDTreeIgnore = ['\.pyc$']
