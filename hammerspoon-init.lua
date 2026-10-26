@@ -54,13 +54,6 @@ function zoooom()
   end
 end
 
-function hermes_cmd(cmd)
-  return function()
-    local _cmd = 'tell application "Hermes" to ' .. cmd
-    hs.applescript.applescript(_cmd)
-  end
-end
-
 function open_folder(path)
   return function()
     local _cmd = "open " .. path
@@ -77,15 +70,8 @@ end
 
 
 
--- Pandora/Hermes
--- On the Mac KB, F7=rewind, F8=play/pause, F9=next
--- Since Pandora doesn't do rewind, F7 seems appropriate for activating the app
--- (plus then I don't have to waffle over assigning 'P' or 'H', lol)
-hs.hotkey.bind( meh, "F7", focus_app("Hermes") )
-hs.hotkey.bind( meh, "F8", hermes_cmd("playpause") )
-hs.hotkey.bind( meh, "F9", hermes_cmd("next song") )
-
 -- LEFT HAND
+hs.hotkey.bind( meh, "F7", focus_app("Pandora") ) -- 'P' is already mapped; this was chosen for historical reasons
 hs.hotkey.bind( meh, "a", focus_app("Activity Monitor") )
 hs.hotkey.bind( meh, "c", focus_app("Google Chrome") )
 hs.hotkey.bind( meh, "d", focus_app("Dash") )
