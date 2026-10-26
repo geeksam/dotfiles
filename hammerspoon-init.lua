@@ -73,6 +73,7 @@ end
 -- LEFT HAND
 hs.hotkey.bind( meh, "F7", focus_app("Pandora") ) -- 'P' is already mapped; this was chosen for historical reasons
 hs.hotkey.bind( meh, "a", focus_app("Activity Monitor") )
+hs.hotkey.bind( meh, "b", focus_app("Bitwarden") )
 hs.hotkey.bind( meh, "c", focus_app("Google Chrome") )
 hs.hotkey.bind( meh, "d", focus_app("Dash") )
 hs.hotkey.bind( meh, "f", focus_app("Finder") )
@@ -89,7 +90,6 @@ hs.hotkey.bind( meh, "h", focus_app("Hammerspoon") )
 hs.hotkey.bind( meh, "k", focus_app("Oryx") )
 hs.hotkey.bind( meh, "l", open_folder("~/Dropbox/GIFs") )
 hs.hotkey.bind( meh, "m", focus_app("TextMate") )
-hs.hotkey.bind( meh, "p", focus_app("1Password") )
 hs.hotkey.bind( meh, "u", focus_app("Shush") )
 
 
