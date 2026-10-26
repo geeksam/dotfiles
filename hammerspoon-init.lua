@@ -43,10 +43,12 @@ function zoooom()
   return function()
     hs.application.launchOrFocus("Zoom.us")
     zoom = hs.application("Zoom.us")
-    windows = zoom:allWindows()
-    for _, w in ipairs(windows) do
-      if w:title() ~= "Zoom Workplace" then
-        w:focus()
+    if zoom then
+      windows = zoom:allWindows()
+      for _, w in ipairs(windows) do
+        if w:title() ~= "Zoom Workplace" then
+          w:focus()
+        end
       end
     end
   end
