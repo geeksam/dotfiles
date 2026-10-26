@@ -452,10 +452,8 @@ nmap <Leader>c. :!echo -n % \| pbcopy<CR>
 nmap <Leader>E :e!<cr>zRgg
 
 
-" being lazy about typing a colon
-:noremap <leader>,w :w<cr>
-:noremap <leader>,wa :wa<cr>
-:noremap <leader>,q :q<cr>
+" Been using Vim for 14 years and didn't realize `za` toggled folding
+nmap <Leader>f za
 
 
 
