@@ -43,6 +43,8 @@
     Plug 'tpope/vim-endwise'              " Automatically enter closing tokens (e.g., 'end' in Ruby)
     Plug 'vim-ruby/vim-ruby'              " Recent-ish Ruby syntax highlighting
 
+    " Python, I guess
+    " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
     " Add plugins to &runtimepath
     call plug#end()
@@ -271,6 +273,16 @@ autocmd FileType ruby :set tabstop=13
 autocmd FileType ruby :set softtabstop=2
 autocmd FileType ruby :set shiftwidth=2
 autocmd FileType ruby :set autoindent
+
+" ===== Python files =====
+autocmd FileType python :set foldmethod=indent
+autocmd FileType python :set foldlevel=0
+
+" augroup equalprgs " https://www.seanh.cc/2026/01/18/ruff-format-in-vim/
+"   autocmd!
+"   autocmd FileType python setlocal equalprg=ruff\ format\ -
+"     augroup END
+" augroup END
 
 " ===== YAML files (hork) =====
 autocmd FileType yaml :set foldmethod=indent
